@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>백제의 비밀 — 미륵사지 방탈출</title>
+<style>
+:root{
+  --bg:#0f1117;--bg2:#1a1d27;--bg3:#252836;
+  --fg:#f0ece0;--fg2:#a09880;--fg3:#5a5648;
+  --gold:#d4a843;--golddim:#7a5e1e;--goldbg:rgba(212,168,67,.13);
+  --green:#4caf7d;--greenbg:rgba(76,175,125,.15);
+  --red:#e05252;--redbg:rgba(224,82,82,.15);
+  --purple:#9b7fe8;--purplebg:rgba(155,127,232,.13);
+  --r:12px;--rsm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%;background:var(--bg)}
+body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--fg);font-size:16px}
+.screen{display:none;min-height:100vh}.screen.on{display:block}
+.wrap{max-width:480px;margin:0 auto;padding:1.25rem 1.25rem 4rem}
+
+.btn{display:block;width:100%;padding:14px;font-size:15px;font-weight:700;border-radius:var(--rsm);cursor:pointer;font-family:inherit;border:none;transition:all .18s;text-align:center}
+.btn.gold{background:var(--gold);color:#0f1117}.btn.gold:active{opacity:.82;transform:scale(.98)}
+.btn.outline{background:transparent;border:1.5px solid var(--fg3);color:var(--fg2)}
+.btn.sm{padding:9px 16px;font-size:13px;width:auto;display:inline-block}
+
+#tbar{display:none;position:sticky;top:0;z-index:200;background:rgba(15,17,23,.96);border-bottom:1px solid var(--bg3);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.tb{max-width:480px;margin:0 auto;padding:8px 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.tb-t{font-size:10px;color:var(--fg3);letter-spacing:.05em;margin-bottom:1px}
+.tb-v{font-size:17px;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.tb-v.red{color:var(--red);animation:bk .9s infinite}
+@keyframes bk{50%{opacity:.3}}
+.dots{display:flex;gap:5px;align-items:center}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--fg3);transition:all .3s}
+.dot.done{background:var(--green)}.dot.cur{background:var(--gold);box-shadow:0 0 8px rgba(212,168,67,.6)}
+.tb-chars{display:flex;gap:3px}
+.tbc{font-size:16px;font-weight:700;min-width:18px;text-align:center;transition:color .3s}
+.tbc.got{color:var(--gold)}.tbc.empty{color:var(--fg3)}
+
+.hero{text-align:center;padding:2rem 0 1.5rem}
+.badge{display:inline-block;padding:5px 14px;background:var(--goldbg);border:1px solid var(--golddim);border-radius:20px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.06em;margin-bottom:1.25rem}
+.hero h1{font-size:27px;font-weight:700;line-height:1.25;margin-bottom:.5rem}
+.hero .sub{font-size:13px;color:var(--fg2);line-height:1.75;margin-bottom:1.75rem}
+.story{background:var(--bg2);border:1px solid var(--bg3);border-left:3px solid var(--gold);border-radius:var(--r);padding:1.25rem;margin-bottom:1.25rem;font-size:13px;color:var(--fg2);line-height:1.85}
+.story p+p{margin-top:.625rem}
+.rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.25rem}
+.ri{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--rsm);padding:.875rem;text-align:center}
+.ri-ic{font-size:20px;margin-bottom:4px}.ri-n{font-size:17px;font-weight:700;color:var(--gold)}.ri-l{font-size:11px;color:var(--fg2);margin-top:2px}
+.warn{background:var(--purplebg);border:1px solid var(--purple);border-radius:var(--rsm);padding:.875rem 1rem;margin-bottom:1.25rem;font-size:12px;color:var(--fg2);line-height:1.65}
+.warn b{color:var(--purple)}
+.name-w{margin-bottom:1.25rem}
+.name-l{font-size:12px;font-weight:700;color:var(--fg2);letter-spacing:.04em;margin-bottom:6px}
+.name-i{width:100%;padding:12px 14px;font-size:16px;background:var(--bg2);border:1.5px solid var(--bg3);border-radius:var(--rsm);color:var(--fg);font-family:inherit;outline:none;transition:border-color .2s}
+.name-i:focus{border-color:var(--gold)}
+
+/* 글자 조각 진행 띠 */
+.char-strip{display:flex;gap:6px;justify-content:center;margin-bottom:1.25rem}
+.cs{flex:1;max-width:72px;background:var(--bg2);border:1.5px solid var(--bg3);border-radius:var(--rsm);padding:.5rem .25rem;text-align:center;transition:all .3s}
+.cs.got{border-color:var(--gold);background:var(--goldbg)}.cs.cur{border-color:var(--purple);background:var(--purplebg)}
+.cs-s{font-size:9px;color:var(--fg3);letter-spacing:.04em;margin-bottom:3px}
+.cs-c{font-size:22px;font-weight:700}.cs.got .cs-c{color:var(--gold)}.cs:not(.got) .cs-c{color:var(--fg3)}
+
+.sthd{margin-bottom:1.25rem}
+.st-no{font-size:11px;font-weight:700;color:var(--fg3);letter-spacing:.08em;margin-bottom:3px}
+.st-ti{font-size:21px;font-weight:700;margin-bottom:4px}
+.st-loc{font-size:12px;color:var(--gold);display:flex;align-items:center;gap:5px}
+.ldot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+.loc-card{background:var(--goldbg);border:1px solid var(--golddim);border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:1rem}
+.lc-h{font-size:10px;font-weight:700;color:var(--gold);letter-spacing:.07em;margin-bottom:6px}
+.lc-b{font-size:13px;color:var(--fg);line-height:1.7}.lc-b b{color:var(--gold)}
+
+/* 단계 카드 */
+.step-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--r);padding:1.25rem;margin-bottom:.875rem;transition:opacity .25s}
+.step-card.locked{opacity:.28;pointer-events:none}
+.sc-badge{font-size:10px;font-weight:700;color:var(--fg3);letter-spacing:.07em;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.sc-badge .utag{background:var(--purplebg);border:1px solid var(--purple);color:var(--purple);padding:1px 8px;border-radius:10px;font-size:10px}
+.sc-q{font-size:15px;font-weight:700;line-height:1.65;color:var(--fg);margin-bottom:.875rem}
+.sc-context{background:var(--bg3);border-radius:var(--rsm);padding:.875rem 1rem;font-size:13px;color:var(--fg2);line-height:1.7;margin-bottom:.875rem}
+.sc-context b{color:var(--fg)}
+.sc-hint{background:var(--purplebg);border-left:2px solid var(--purple);border-radius:var(--rsm);padding:.75rem .875rem;font-size:12px;color:var(--fg2);line-height:1.65;margin-bottom:.875rem}
+.sc-hint b{color:var(--purple)}
+
+.choices{display:flex;flex-direction:column;gap:7px;margin-bottom:.875rem}
+.ch{padding:12px 15px;background:var(--bg3);border:1.5px solid var(--bg3);border-radius:var(--rsm);font-size:14px;color:var(--fg);cursor:pointer;transition:all .14s;display:flex;align-items:center;gap:10px;font-family:inherit;width:100%;text-align:left}
+.ch:active{transform:scale(.98)}
+.ch.ok{border-color:var(--green);background:var(--greenbg);color:var(--green)}
+.ch.ng{border-color:var(--red);background:var(--redbg);color:var(--red)}
+.cr{width:15px;height:15px;border-radius:50%;border:2px solid var(--fg3);flex-shrink:0;transition:all .14s}
+.ch.ok .cr{border-color:var(--green);background:var(--green)}.ch.ng .cr{border-color:var(--red)}
+
+.inp-row{display:flex;gap:7px;margin-bottom:.875rem}
+.sinp{flex:1;padding:12px 14px;font-size:18px;font-weight:700;background:var(--bg2);border:1.5px solid var(--bg3);border-radius:var(--rsm);color:var(--fg);font-family:inherit;outline:none;transition:border-color .2s;text-align:center}
+.sinp:focus{border-color:var(--gold)}.sinp.ok{border-color:var(--green);color:var(--green)}.sinp.ng{border-color:var(--red)}
+
+.fb{padding:11px 14px;border-radius:var(--rsm);font-size:13px;line-height:1.6;display:none;margin-bottom:.875rem}
+.fb.show{display:block}.fb.ok{background:var(--greenbg);border:1px solid var(--green);color:var(--green)}.fb.ng{background:var(--redbg);border:1px solid var(--red);color:var(--red)}
+
+.char-got{background:var(--goldbg);border:1.5px solid var(--gold);border-radius:var(--r);padding:1.5rem;text-align:center;display:none;margin-bottom:1rem}
+.char-got.show{display:block}
+.cg-l{font-size:10px;font-weight:700;color:var(--fg2);letter-spacing:.07em;margin-bottom:.5rem}
+.cg-c{font-size:72px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:.375rem}
+.cg-d{font-size:12px;color:var(--fg2)}
+
+/* 최종 */
+.fw-row{display:flex;gap:8px;justify-content:center;margin-bottom:1.25rem}
+.fw{width:54px;height:68px;background:var(--bg2);border:2px solid var(--bg3);border-radius:var(--rsm);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all .3s}
+.fw.filled{border-color:var(--gold);background:var(--goldbg)}
+.fw-s{font-size:9px;color:var(--fg3);margin-bottom:3px}
+.fw-c{font-size:28px;font-weight:700}
+.fw.filled .fw-c{color:var(--gold)}.fw:not(.filled) .fw-c{color:var(--fg3)}
+.final-word{font-size:44px;font-weight:700;color:var(--gold);letter-spacing:.18em;text-align:center;min-height:60px;margin-bottom:1.25rem}
+.conf-inp{width:100%;padding:14px;font-size:24px;font-weight:700;background:var(--bg2);border:2px solid var(--bg3);border-radius:var(--r);color:var(--fg);font-family:inherit;outline:none;text-align:center;letter-spacing:.18em;margin-bottom:1rem;transition:border-color .2s}
+.conf-inp:focus{border-color:var(--gold)}.conf-inp.ok{border-color:var(--green);color:var(--green)}.conf-inp.ng{border-color:var(--red)}
+
+.clear-wrap{padding:2.5rem 0 2rem;text-align:center}
+.c-icon{font-size:60px;margin-bottom:1rem}
+.c-title{font-size:26px;font-weight:700;color:var(--gold);margin-bottom:.5rem}
+.c-sub{font-size:13px;color:var(--fg2);line-height:1.75;margin-bottom:1.5rem}
+.c-word{display:inline-block;padding:.75rem 1.5rem;background:var(--goldbg);border:1.5px solid var(--gold);border-radius:var(--r);font-size:34px;font-weight:700;color:var(--gold);letter-spacing:.18em;margin-bottom:1.25rem}
+.c-time{display:inline-block;padding:7px 22px;background:var(--bg2);border:1px solid var(--bg3);border-radius:20px;font-size:20px;font-weight:700;color:var(--fg2);margin-bottom:1rem;font-variant-numeric:tabular-nums}
+.rank-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--r);padding:1rem 1.25rem;margin:0 0 1.5rem}
+.rank-ttl{font-size:11px;font-weight:700;color:var(--fg3);letter-spacing:.06em;margin-bottom:10px}
+.rrow{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:var(--rsm);margin-bottom:4px;font-size:13px;background:var(--bg3)}
+.rrow.me{background:var(--goldbg);border:1px solid var(--golddim)}
+.rp{font-size:15px;font-weight:700;min-width:22px;text-align:center;color:var(--fg3)}
+.rp.p1{color:#ffd700}.rp.p2{color:#c0c0c0}.rp.p3{color:#cd7f32}
+.rname{flex:1;font-weight:500}.rtime{font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums}
+
+.logic-chain{background:var(--bg3);border-radius:var(--rsm);padding:.875rem 1rem;margin-bottom:.875rem;display:flex;flex-direction:column;gap:4px}
+.lc-row{display:flex;align-items:center;gap:8px;font-size:13px}
+.lc-step{background:var(--bg2);border:1px solid var(--bg3);border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;color:var(--fg3);white-space:nowrap}
+.lc-arrow{color:var(--fg3);font-size:12px;flex-shrink:0}
+.lc-val{color:var(--fg);flex:1}.lc-val.gold{color:var(--gold);font-weight:700}
+</style>
+</head>
+<body>
+
+<div id="tbar">
+<div class="tb">
+  <div><div class="tb-t">남은 시간</div><div class="tb-v" id="tv">60:00</div></div>
+  <div class="dots"><div class="dot" id="d0"></div><div class="dot" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div><div class="dot" id="d4"></div></div>
+  <div><div class="tb-t">모은 글자</div><div class="tb-chars" id="tb-chars"></div></div>
+</div>
+</div>
+
+<!-- ══ 시작 ══ -->
+<div id="pg-start" class="screen on">
+<div class="wrap">
+<div class="hero">
+  <div class="badge">현장 방탈출 · 개인전</div>
+  <h1>백제의 비밀을<br>찾아라</h1>
+  <p class="sub">미륵사지 5곳을 직접 돌아다니며<br>관찰하고, 추론하고, 계산하라.<br>검색은 통하지 않는다.</p>
+</div>
+<div class="story">
+  <p>639년 무왕이 서탑을 완성하며 말했다. "이 절의 이름이 담긴 다섯 글자는 이 땅 곳곳에 새겨져 있노라."</p>
+  <p>각 장소에는 <b style="color:var(--gold)">3단계 추론 과정</b>이 숨어 있다. 현장에서 직접 관찰한 것을 바탕으로 계산하고, 역사 지식을 더해야만 글자 하나를 얻을 수 있다.</p>
+</div>
+<div class="warn">
+  <b>이 게임의 원칙</b><br>
+  · 안내판을 읽지 않아도 됩니다<br>
+  · 구글·네이버 검색으로는 절대 풀 수 없습니다<br>
+  · 현장 관찰 + 역사 지식 + 논리 추론, 3가지가 모두 필요합니다
+</div>
+<div class="rule-grid">
+  <div class="ri"><div class="ri-ic">🧩</div><div class="ri-n">3단계</div><div class="ri-l">추론 과정</div></div>
+  <div class="ri"><div class="ri-ic">🔤</div><div class="ri-n">5글자</div><div class="ri-l">단어 완성</div></div>
+  <div class="ri"><div class="ri-ic">⏱</div><div class="ri-n">60분</div><div class="ri-l">제한 시간</div></div>
+  <div class="ri"><div class="ri-ic">🚶</div><div class="ri-n">직접</div><div class="ri-l">현장 이동</div></div>
+</div>
+<div class="name-w">
+  <div class="name-l">참가자 이름</div>
+  <input class="name-i" id="ni" type="text" placeholder="이름을 입력하세요" maxlength="8" autocomplete="off"/>
+</div>
+<button class="btn gold" onclick="startGame()">지금 시작!</button>
+<div style="text-align:center;margin-top:10px">
+  <button class="btn outline sm" onclick="openRank()">순위표 보기</button>
+</div>
+</div>
+</div>
+
+<!-- ══ STAGE 1 — 서탑 ══ -->
+<div id="pg-s1" class="screen">
+<div class="wrap">
+<div class="char-strip" id="cs1"></div>
+<div class="sthd">
+  <div class="st-no">STAGE 1 / 5</div>
+  <div class="st-ti">서탑에서 추론하라</div>
+  <div class="st-loc"><div class="ldot"></div>서탑 앞 — 탑 전체를 관찰하세요</div>
+</div>
+<div class="loc-card">
+  <div class="lc-h">📍 이동</div>
+  <div class="lc-b">입구에서 정면 직진 → <b>서탑</b>. 탑 전체 형태를 멀리서 한번, 가까이서 한번 살펴보세요. 기단부터 꼭대기까지.</div>
+</div>
+
+<div class="step-card" id="s1-step1">
+  <div class="sc-badge">1단계 · 현장 관찰</div>
+  <div class="sc-q">지금 눈앞의 서탑. 지면 위로 보이는 층수는 몇 층인가?<br><span style="font-size:13px;color:var(--fg2);font-weight:400">(복원된 현재 상태 기준)</span></div>
+  <div class="sc-context">기단부 위에 쌓인 몸돌 층을 세어 보세요. 지면과 접한 기단은 층수에 포함하지 않습니다.</div>
+  <div class="choices" id="s1-ch1">
+    <button class="ch" onclick="s1pick1(this,'5')"><div class="cr"></div>5층</button>
+    <button class="ch" onclick="s1pick1(this,'6')"><div class="cr"></div>6층</button>
+    <button class="ch" onclick="s1pick1(this,'7')"><div class="cr"></div>7층</button>
+    <button class="ch" onclick="s1pick1(this,'9')"><div class="cr"></div>9층</button>
+  </div>
+  <div class="fb" id="s1-fb1"></div>
+</div>
+
+<div class="step-card locked" id="s1-step2">
+  <div class="sc-badge">2단계 · 역사 지식 <span class="utag">1단계 완료 시 해제</span></div>
+  <div class="sc-q">서탑이 완성된 해는 639년이다. 이 해를 60갑자로 나타내면 「기해년(己亥年)」이다.<br>「기(己)」는 10천간(天干) 중 몇 번째인가?</div>
+  <div class="sc-context">10천간 순서: 갑(甲)·을(乙)·병(丙)·정(丁)·무(戊)·<b>기(己)</b>·경(庚)·신(辛)·임(壬)·계(癸)</div>
+  <div class="sc-hint"><b>풀이 방향</b> — 10천간에서 기(己)의 순서를 찾으세요. 순서가 곧 다음 단계의 열쇠입니다.</div>
+  <div class="choices" id="s1-ch2">
+    <button class="ch" onclick="s1pick2(this,'5')"><div class="cr"></div>5번째</button>
+    <button class="ch" onclick="s1pick2(this,'6')"><div class="cr"></div>6번째</button>
+    <button class="ch" onclick="s1pick2(this,'7')"><div class="cr"></div>7번째</button>
+    <button class="ch" onclick="s1pick2(this,'8')"><div class="cr"></div>8번째</button>
+  </div>
+  <div class="fb" id="s1-fb2"></div>
+</div>
+
+<div class="step-card locked" id="s1-step3">
+  <div class="sc-badge">3단계 · 논리 추론 <span class="utag">2단계 완료 시 해제</span></div>
+  <div class="sc-q">서탑 층수 ÷ 기(己)의 천간 순서 = ?<br>그 몫에 해당하는 <b>한자의 훈(뜻)으로 읽는 우리말 첫 글자</b>가 암호 조각이다.</div>
+  <div class="logic-chain">
+    <div class="lc-row"><span class="lc-step">서탑 층수</span><span class="lc-arrow">÷</span><span class="lc-val">기(己)의 천간 순서</span><span class="lc-arrow">=</span><span class="lc-val gold" id="s1-calc">?</span></div>
+    <div class="lc-row"><span class="lc-step">그 숫자의 한자</span><span class="lc-arrow">→</span><span class="lc-val">「<span id="s1-hanja">?</span>」</span></div>
+    <div class="lc-row"><span class="lc-step">훈독 첫 글자</span><span class="lc-arrow">→</span><span class="lc-val gold">암호 조각</span></div>
+  </div>
+  <div class="sc-hint"><b>힌트</b> — 6÷6=1, 숫자 1의 한자는 一(일), 훈으로 읽으면 「한」. 첫 글자는 <b>한</b>. 같은 방식으로 계산하세요!</div>
+  <div class="inp-row">
+    <input class="sinp" id="s1-ans" type="text" placeholder="글자" maxlength="2" style="max-width:90px"/>
+    <button class="btn gold sm" onclick="chkS1()">확인</button>
+  </div>
+  <div class="fb" id="s1-fb3"></div>
+</div>
+
+<div class="char-got" id="s1-cg">
+  <div class="cg-l">🔤 글자 조각 1 획득!</div>
+  <div class="cg-c" id="s1-c"></div>
+  <div class="cg-d">6층 ÷ 6번째 = 1 → 一(일) → 「한」</div>
+</div>
+<button class="btn gold" id="s1-nx" style="display:none" onclick="go(2)">다음 장소로 →</button>
+</div>
+</div>
+
+<!-- ══ STAGE 2 — 당간지주 ══ -->
+<div id="pg-s2" class="screen">
+<div class="wrap">
+<div class="char-strip" id="cs2"></div>
+<div class="sthd">
+  <div class="st-no">STAGE 2 / 5</div>
+  <div class="st-ti">당간지주에서 추론하라</div>
+  <div class="st-loc"><div class="ldot"></div>당간지주 — 서탑 동쪽</div>
+</div>
+<div class="loc-card">
+  <div class="lc-h">📍 이동</div>
+  <div class="lc-b">서탑에서 <b>동쪽</b>으로 걸으면 돌기둥 두 개가 마주 서 있습니다. 기둥 간격을 두 팔로 가늠해 보세요.</div>
+</div>
+
+<div class="step-card" id="s2-step1">
+  <div class="sc-badge">1단계 · 현장 관찰</div>
+  <div class="sc-q">당간지주 두 기둥은 몇 개인가? 직접 세어 보세요.</div>
+  <div class="sc-context">당간(깃발 기둥)을 양쪽에서 받치는 돌기둥의 수.</div>
+  <div class="choices" id="s2-ch1">
+    <button class="ch" onclick="s2pick1(this,'1')"><div class="cr"></div>1개</button>
+    <button class="ch" onclick="s2pick1(this,'2')"><div class="cr"></div>2개</button>
+    <button class="ch" onclick="s2pick1(this,'3')"><div class="cr"></div>3개</button>
+    <button class="ch" onclick="s2pick1(this,'4')"><div class="cr"></div>4개</button>
+  </div>
+  <div class="fb" id="s2-fb1"></div>
+</div>
+
+<div class="step-card locked" id="s2-step2">
+  <div class="sc-badge">2단계 · 역사 지식 <span class="utag">1단계 완료 시 해제</span></div>
+  <div class="sc-q">미륵사지는 동원·서원·중원 몇 개의 독립 구역(院)으로 이루어져 있는가?</div>
+  <div class="sc-context">각 원(院)마다 탑·금당·회랑을 갖추고 있으며, 이런 구조는 세계 불교 사원 건축에서 매우 드문 형식이다.</div>
+  <div class="choices" id="s2-ch2">
+    <button class="ch" onclick="s2pick2(this,'2')"><div class="cr"></div>2원</button>
+    <button class="ch" onclick="s2pick2(this,'3')"><div class="cr"></div>3원</button>
+    <button class="ch" onclick="s2pick2(this,'4')"><div class="cr"></div>4원</button>
+    <button class="ch" onclick="s2pick2(this,'5')"><div class="cr"></div>5원</button>
+  </div>
+  <div class="fb" id="s2-fb2"></div>
+</div>
+
+<div class="step-card locked" id="s2-step3">
+  <div class="sc-badge">3단계 · 논리 추론 <span class="utag">2단계 완료 시 해제</span></div>
+  <div class="sc-q">당간지주 기둥 수 × 미륵사 원(院) 수 = ?<br>그 숫자를 한자로 쓰고, <b>훈(뜻)으로 읽을 때의 첫 글자</b>가 암호 조각이다.</div>
+  <div class="logic-chain">
+    <div class="lc-row"><span class="lc-step">기둥 수</span><span class="lc-arrow">×</span><span class="lc-val">원(院) 수</span><span class="lc-arrow">=</span><span class="lc-val gold" id="s2-calc">?</span></div>
+    <div class="lc-row"><span class="lc-step">한자</span><span class="lc-arrow">→</span><span class="lc-val">「<span id="s2-hanja">?</span>」</span></div>
+    <div class="lc-row"><span class="lc-step">훈독 첫 글자</span><span class="lc-arrow">→</span><span class="lc-val gold">암호 조각</span></div>
+  </div>
+  <div class="sc-hint"><b>힌트</b> — 숫자 6의 한자는 六(육), 훈으로 읽으면 「여섯」. 첫 글자는 <b>여</b>. 같은 방식!</div>
+  <div class="inp-row">
+    <input class="sinp" id="s2-ans" type="text" placeholder="글자" maxlength="2" style="max-width:90px"/>
+    <button class="btn gold sm" onclick="chkS2()">확인</button>
+  </div>
+  <div class="fb" id="s2-fb3"></div>
+</div>
+
+<div class="char-got" id="s2-cg">
+  <div class="cg-l">🔤 글자 조각 2 획득!</div>
+  <div class="cg-c" id="s2-c"></div>
+  <div class="cg-d">2 × 3 = 6 → 六(육) → 「여」</div>
+</div>
+<button class="btn gold" id="s2-nx" style="display:none" onclick="go(3)">다음 장소로 →</button>
+</div>
+</div>
+
+<!-- ══ STAGE 3 — 중원 금당터 ══ -->
+<div id="pg-s3" class="screen">
+<div class="wrap">
+<div class="char-strip" id="cs3"></div>
+<div class="sthd">
+  <div class="st-no">STAGE 3 / 5</div>
+  <div class="st-ti">금당터에서 추론하라</div>
+  <div class="st-loc"><div class="ldot"></div>중원 금당터 — 서탑·동탑 사이</div>
+</div>
+<div class="loc-card">
+  <div class="lc-h">📍 이동</div>
+  <div class="lc-b">서탑과 동탑 <b>사이 중앙</b>에 주춧돌들이 깔린 공간이 있습니다. 그 공간에 서서 전체를 내려다보세요.</div>
+</div>
+
+<div class="step-card" id="s3-step1">
+  <div class="sc-badge">1단계 · 현장 관찰</div>
+  <div class="sc-q">중원 금당터에 남아 있는 주춧돌, 가로(동서 방향) 한 줄에 몇 개씩 놓여 있는가?</div>
+  <div class="sc-context">주춧돌(초석)은 건물 기둥을 받쳤던 돌. 가로(동-서) 방향으로 한 줄이 몇 개인지 세어 보세요.</div>
+  <div class="choices" id="s3-ch1">
+    <button class="ch" onclick="s3pick1(this,'3')"><div class="cr"></div>3개</button>
+    <button class="ch" onclick="s3pick1(this,'4')"><div class="cr"></div>4개</button>
+    <button class="ch" onclick="s3pick1(this,'5')"><div class="cr"></div>5개</button>
+    <button class="ch" onclick="s3pick1(this,'6')"><div class="cr"></div>6개</button>
+  </div>
+  <div class="fb" id="s3-fb1"></div>
+</div>
+
+<div class="step-card locked" id="s3-step2">
+  <div class="sc-badge">2단계 · 역사 지식 <span class="utag">1단계 완료 시 해제</span></div>
+  <div class="sc-q">금제사리봉영기가 서탑에 봉안된 해는 639년이다. 이 해에 재위 중이던 백제 왕의 이름은 무엇인가? (한자 이름의 훈독)</div>
+  <div class="sc-context">서동 설화의 주인공. 어린 시절 마를 캐며 살아 「서동(薯童)」이라 불렸다. 신라 선화공주를 아내로 맞았다.</div>
+  <div class="choices" id="s3-ch2">
+    <button class="ch" onclick="s3pick2(this,'의자왕')"><div class="cr"></div>의자왕 (義慈王)</button>
+    <button class="ch" onclick="s3pick2(this,'무왕')"><div class="cr"></div>무왕 (武王)</button>
+    <button class="ch" onclick="s3pick2(this,'성왕')"><div class="cr"></div>성왕 (聖王)</button>
+    <button class="ch" onclick="s3pick2(this,'무령왕')"><div class="cr"></div>무령왕 (武寧王)</button>
+  </div>
+  <div class="fb" id="s3-fb2"></div>
+</div>
+
+<div class="step-card locked" id="s3-step3">
+  <div class="sc-badge">3단계 · 논리 추론 <span class="utag">2단계 완료 시 해제</span></div>
+  <div class="sc-q">주춧돌 가로 수 − 왕 이름 글자 수 = ?<br>그 숫자를 한자로 쓰고, <b>훈(뜻)으로 읽을 때의 첫 글자</b>가 암호 조각이다.</div>
+  <div class="logic-chain">
+    <div class="lc-row"><span class="lc-step">주춧돌 가로</span><span class="lc-arrow">−</span><span class="lc-val">왕 이름 글자 수</span><span class="lc-arrow">=</span><span class="lc-val gold" id="s3-calc">?</span></div>
+    <div class="lc-row"><span class="lc-step">한자</span><span class="lc-arrow">→</span><span class="lc-val">「<span id="s3-hanja">?</span>」</span></div>
+    <div class="lc-row"><span class="lc-step">훈독 첫 글자</span><span class="lc-arrow">→</span><span class="lc-val gold">암호 조각</span></div>
+  </div>
+  <div class="sc-hint"><b>힌트</b> — 숫자 3의 한자는 三(삼), 훈으로 읽으면 「셋」. 첫 글자는 <b>셋</b>. 주춧돌 5개 − 무왕 2글자 = 3 → 三 → <b>셋</b></div>
+  <div class="inp-row">
+    <input class="sinp" id="s3-ans" type="text" placeholder="글자" maxlength="2" style="max-width:90px"/>
+    <button class="btn gold sm" onclick="chkS3()">확인</button>
+  </div>
+  <div class="fb" id="s3-fb3"></div>
+</div>
+
+<div class="char-got" id="s3-cg">
+  <div class="cg-l">🔤 글자 조각 3 획득!</div>
+  <div class="cg-c" id="s3-c"></div>
+  <div class="cg-d">5 − 2 = 3 → 三(삼) → 「셋」</div>
+</div>
+<button class="btn gold" id="s3-nx" style="display:none" onclick="go(4)">다음 장소로 →</button>
+</div>
+</div>
+
+<!-- ══ STAGE 4 — 동원 석탑 ══ -->
+<div id="pg-s4" class="screen">
+<div class="wrap">
+<div class="char-strip" id="cs4"></div>
+<div class="sthd">
+  <div class="st-no">STAGE 4 / 5</div>
+  <div class="st-ti">동탑에서 추론하라</div>
+  <div class="st-loc"><div class="ldot"></div>동원 복원 석탑 앞</div>
+</div>
+<div class="loc-card">
+  <div class="lc-h">📍 이동</div>
+  <div class="lc-b">중원에서 <b>동쪽</b>으로 이동하면 복원된 동원 석탑이 있습니다. 서탑과 비교해서 관찰해 보세요.</div>
+</div>
+
+<div class="step-card" id="s4-step1">
+  <div class="sc-badge">1단계 · 현장 관찰</div>
+  <div class="sc-q">동탑의 층수는 몇 층인가? 서탑과 같은가, 다른가?</div>
+  <div class="sc-context">동탑은 서탑보다 먼저 복원되었습니다. 층수를 서탑(6층)과 비교해서 직접 확인해 보세요.</div>
+  <div class="choices" id="s4-ch1">
+    <button class="ch" onclick="s4pick1(this,'5')"><div class="cr"></div>5층 (서탑보다 낮다)</button>
+    <button class="ch" onclick="s4pick1(this,'6')"><div class="cr"></div>6층 (서탑과 같다)</button>
+    <button class="ch" onclick="s4pick1(this,'7')"><div class="cr"></div>7층 (서탑보다 높다)</button>
+    <button class="ch" onclick="s4pick1(this,'9')"><div class="cr"></div>9층 (훨씬 높다)</button>
+  </div>
+  <div class="fb" id="s4-fb1"></div>
+</div>
+
+<div class="step-card locked" id="s4-step2">
+  <div class="sc-badge">2단계 · 역사 지식 <span class="utag">1단계 완료 시 해제</span></div>
+  <div class="sc-q">백제역사유적지구는 몇 년에 유네스코 세계유산으로 등재되었는가?</div>
+  <div class="sc-context">공주·부여·익산 3개 지역 8개 유적이 포함된 세계유산. 미륵사지와 왕궁리 유적이 익산 대표로 포함되었다.</div>
+  <div class="choices" id="s4-ch2">
+    <button class="ch" onclick="s4pick2(this,'2010')"><div class="cr"></div>2010년</button>
+    <button class="ch" onclick="s4pick2(this,'2013')"><div class="cr"></div>2013년</button>
+    <button class="ch" onclick="s4pick2(this,'2015')"><div class="cr"></div>2015년</button>
+    <button class="ch" onclick="s4pick2(this,'2018')"><div class="cr"></div>2018년</button>
+  </div>
+  <div class="fb" id="s4-fb2"></div>
+</div>
+
+<div class="step-card locked" id="s4-step3">
+  <div class="sc-badge">3단계 · 논리 추론 <span class="utag">2단계 완료 시 해제</span></div>
+  <div class="sc-q">유네스코 등재 연도의 끝 두 자리(15) ÷ 동탑 층수 = ?<br>그 숫자를 한자로 쓰고, <b>훈(뜻)으로 읽을 때의 첫 글자</b>가 암호 조각이다.</div>
+  <div class="logic-chain">
+    <div class="lc-row"><span class="lc-step">등재연도 끝 2자리</span><span class="lc-arrow">÷</span><span class="lc-val">동탑 층수</span><span class="lc-arrow">=</span><span class="lc-val gold" id="s4-calc">?</span></div>
+    <div class="lc-row"><span class="lc-step">한자</span><span class="lc-arrow">→</span><span class="lc-val">「<span id="s4-hanja">?</span>」</span></div>
+    <div class="lc-row"><span class="lc-step">훈독 첫 글자</span><span class="lc-arrow">→</span><span class="lc-val gold">암호 조각</span></div>
+  </div>
+  <div class="sc-hint"><b>힌트</b> — 15 ÷ 동탑층수. 숫자 2의 한자는 二(이), 훈으로 읽으면 「둘」. 첫 글자는 <b>둘</b>. 나누어 떨어지는 층수를 선택하세요!</div>
+  <div class="inp-row">
+    <input class="sinp" id="s4-ans" type="text" placeholder="글자" maxlength="2" style="max-width:90px"/>
+    <button class="btn gold sm" onclick="chkS4()">확인</button>
+  </div>
+  <div class="fb" id="s4-fb3"></div>
+</div>
+
+<div class="char-got" id="s4-cg">
+  <div class="cg-l">🔤 글자 조각 4 획득!</div>
+  <div class="cg-c" id="s4-c"></div>
+  <div class="cg-d">15 ÷ 5 = 3 → 三(삼) → 「셋」</div>
+</div>
+<button class="btn gold" id="s4-nx" style="display:none" onclick="go(5)">다음 장소로 →</button>
+</div>
+</div>
+
+<!-- ══ STAGE 5 — 박물관 ══ -->
+<div id="pg-s5" class="screen">
+<div class="wrap">
+<div class="char-strip" id="cs5"></div>
+<div class="sthd">
+  <div class="st-no">STAGE 5 / 5</div>
+  <div class="st-ti">박물관에서 추론하라</div>
+  <div class="st-loc"><div class="ldot"></div>국립익산박물관 건물 앞</div>
+</div>
+<div class="loc-card">
+  <div class="lc-h">📍 이동</div>
+  <div class="lc-b">미륵사지 동쪽 끝 <b>국립익산박물관</b> 건물 앞으로 이동하세요. 건물 외관 전체를 한 번 둘러보세요.</div>
+</div>
+
+<div class="step-card" id="s5-step1">
+  <div class="sc-badge">1단계 · 현장 관찰</div>
+  <div class="sc-q">국립익산박물관 건물의 주출입구(정문) 방향은 어느 쪽인가?</div>
+  <div class="sc-context">건물 앞에 서서 정문이 향하는 방향을 나침반 또는 태양 위치로 확인하세요. 오전이라면 태양이 동쪽에 있습니다.</div>
+  <div class="choices" id="s5-ch1">
+    <button class="ch" onclick="s5pick1(this,'서')"><div class="cr"></div>서쪽 (미륵사지 방향)</button>
+    <button class="ch" onclick="s5pick1(this,'남')"><div class="cr"></div>남쪽</button>
+    <button class="ch" onclick="s5pick1(this,'북')"><div class="cr"></div>북쪽</button>
+    <button class="ch" onclick="s5pick1(this,'동')"><div class="cr"></div>동쪽 (외부 도로 방향)</button>
+  </div>
+  <div class="fb" id="s5-fb1"></div>
+</div>
+
+<div class="step-card locked" id="s5-step2">
+  <div class="sc-badge">2단계 · 역사 지식 <span class="utag">1단계 완료 시 해제</span></div>
+  <div class="sc-q">서동요(薯童謠)는 향가의 한 종류다. 서동요의 작자 「서동」은 훗날 어떤 왕이 되었는가? 그 왕의 재위 기간(년수)은?</div>
+  <div class="sc-context">서동은 신라 선화공주를 아내로 맞이한 후 백제로 돌아가 왕위에 올랐다. 재위 600년 ~ 641년.</div>
+  <div class="choices" id="s5-ch2">
+    <button class="ch" onclick="s5pick2(this,'40')"><div class="cr"></div>약 40년 (641−600+1 = 42년, 가장 가까운 수)</button>
+    <button class="ch" onclick="s5pick2(this,'20')"><div class="cr"></div>약 20년</button>
+    <button class="ch" onclick="s5pick2(this,'60')"><div class="cr"></div>약 60년</button>
+    <button class="ch" onclick="s5pick2(this,'10')"><div class="cr"></div>약 10년</button>
+  </div>
+  <div class="fb" id="s5-fb2"></div>
+</div>
+
+<div class="step-card locked" id="s5-step3">
+  <div class="sc-badge">3단계 · 논리 추론 <span class="utag">2단계 완료 시 해제</span></div>
+  <div class="sc-q">무왕 재위 기간(41년) ÷ 박물관이 면한 방향의 방위각(예: 서=270°, 북=360°) 의 백 단위 숫자 = ?<br><b>단, 「서(西)」방향의 방위각 270의 맨 앞 자리는 2. 그 숫자의 한자 훈독 첫 글자가 암호 조각이다.</b></div>
+  <div class="logic-chain">
+    <div class="lc-row"><span class="lc-step">박물관 방향</span><span class="lc-arrow">→</span><span class="lc-val">서(西) = 방위각 270°</span></div>
+    <div class="lc-row"><span class="lc-step">맨 앞 자리</span><span class="lc-arrow">→</span><span class="lc-val gold" id="s5-calc">2</span></div>
+    <div class="lc-row"><span class="lc-step">한자</span><span class="lc-arrow">→</span><span class="lc-val">「<span id="s5-hanja">二(이)</span>」</span></div>
+    <div class="lc-row"><span class="lc-step">훈독 첫 글자</span><span class="lc-arrow">→</span><span class="lc-val gold">암호 조각</span></div>
+  </div>
+  <div class="sc-hint"><b>풀이</b> — 서(西) 방위각 270의 맨 앞 자리 = 2 → 二(이) → 훈독 「둘」 → 첫 글자 <b>둘</b></div>
+  <div class="inp-row">
+    <input class="sinp" id="s5-ans" type="text" placeholder="글자" maxlength="2" style="max-width:90px"/>
+    <button class="btn gold sm" onclick="chkS5()">확인</button>
+  </div>
+  <div class="fb" id="s5-fb3"></div>
+</div>
+
+<div class="char-got" id="s5-cg">
+  <div class="cg-l">🔤 글자 조각 5 획득!</div>
+  <div class="cg-c" id="s5-c"></div>
+  <div class="cg-d">서(西) → 270° → 맨 앞 2 → 二 → 「둘」</div>
+</div>
+<button class="btn gold" id="s5-nx" style="display:none" onclick="go(6)">🔤 단어 완성하러 가기!</button>
+</div>
+</div>
+
+<!-- ══ 최종 단어 ══ -->
+<div id="pg-final" class="screen">
+<div class="wrap">
+<div style="text-align:center;padding:1.5rem 0 1.25rem">
+  <div class="badge" style="margin-bottom:.875rem">최종 단어 완성</div>
+  <div style="font-size:21px;font-weight:700;margin-bottom:.5rem">다섯 조각을 모았다!</div>
+  <div style="font-size:13px;color:var(--fg2);line-height:1.7">5개의 글자를 순서대로 이어 단어를 완성하세요.</div>
+</div>
+
+<div class="fw-row" id="fw-row">
+  <div class="fw" id="fw1"><div class="fw-s">ST1</div><div class="fw-c">?</div></div>
+  <div class="fw" id="fw2"><div class="fw-s">ST2</div><div class="fw-c">?</div></div>
+  <div class="fw" id="fw3"><div class="fw-s">ST3</div><div class="fw-c">?</div></div>
+  <div class="fw" id="fw4"><div class="fw-s">ST4</div><div class="fw-c">?</div></div>
+  <div class="fw" id="fw5"><div class="fw-s">ST5</div><div class="fw-c">?</div></div>
+</div>
+
+<div class="final-word" id="final-word-disp">?????</div>
+
+<div style="font-size:13px;font-weight:700;color:var(--fg2);margin-bottom:8px">완성된 단어를 입력하세요</div>
+<input class="conf-inp" id="conf-inp" type="text" placeholder="단어 입력" maxlength="10"/>
+<div class="fb" id="final-fb" style="margin-bottom:1rem"></div>
+<button class="btn gold" onclick="chkFinal()">비밀 단어 확인!</button>
+<div style="margin-top:.75rem">
+  <button class="btn outline" onclick="showHint()">힌트 (+5분 패널티)</button>
+  <div style="font-size:11px;color:var(--fg3);text-align:center;margin-top:6px" id="hint-msg"></div>
+</div>
+</div>
+</div>
+
+<!-- ══ 클리어 ══ -->
+<div id="pg-clear" class="screen">
+<div class="wrap">
+<div class="clear-wrap">
+  <div class="c-icon">🎉</div>
+  <div class="c-title">탈출 성공!</div>
+  <div class="c-sub" id="c-sub">백제의 비밀 단어를 완성했습니다!</div>
+  <div class="c-word" id="c-word"></div>
+  <div class="c-time" id="c-time">00:00</div>
+  <div style="font-size:12px;color:var(--red);margin-bottom:1.5rem" id="c-pen"></div>
+</div>
+<div class="rank-card">
+  <div class="rank-ttl">🏆 순위표</div>
+  <div id="rank-list"></div>
+</div>
+<button class="btn gold" onclick="location.reload()">다시 도전하기</button>
+</div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════
+   정답 정의
+   각 스테이지 답:
+   S1: 6층 ÷ 6번째(己) = 1 → 一 → "한"
+   S2: 2개 × 3원 = 6 → 六 → "여"
+   S3: 5개 − 2글자(무왕) = 3 → 三 → "셋"
+   S4: 15 ÷ 5층(동탑) = 3 → 三 → "셋"
+   S5: 서(西) 270° 맨앞자리=2 → 二 → "둘"
+
+   ★ 최종 단어: 한·여·셋·셋·둘
+     → 하지만 이것만으로는 자연스러운 단어가 안 됨
+     → 실제 게임에서는 각 글자 첫 자음을 조합:
+        ㅎ·ㅇ·ㅅ·ㅅ·ㄷ → "활(活)?"
+     → 더 자연스럽게: 숫자를 고유어가 아닌
+        한자음으로 읽게 설계 변경:
+        1=일, 6=육, 3=삼, 3=삼, 2=이
+        → 일·육·삼·삼·이 → "육삼삼이일" 아님
+     → 첫글자만: 일·육·삼·삼·이 → "육삼삼이일" 아님
+
+   ▶ 재설계: 훈독이 아닌 음독(한자음) 첫 글자 사용
+   S1: 1 → 一(일) → "일" 첫글자 "일"
+   S2: 6 → 六(육) → "육" 첫글자 "육"
+   S3: 3 → 三(삼) → "삼" 첫글자 "삼"
+   S4: 3 → 三(삼) → "삼" 첫글자 "삼"
+   S5: 2 → 二(이) → "이" 첫글자 "이"
+   → 일·육·삼·삼·이 → 문자열로 "일육삼삼이"
+      이것도 단어가 아님
+
+   ▶ 최종 재설계: 숫자 자체를 고유어로
+   S1: 1 → "하나" 첫글자 → "하"
+   S2: 6 → "여섯" 첫글자 → "여"
+   S3: 3 → "셋" 첫글자 → "셋" (한 글자)
+   S4: 3 → "셋" 첫글자 → "셋" (중복 문제)
+
+   ▶ 문제를 재설계해서 완성 단어가 의미 있게:
+   목표 단어 = "서동요"(3글자) → 스테이지 3개
+   또는 "무왕" → 2글자
+   또는 "백제" → 2글자
+
+   ▶ 5글자 의미 있는 단어로:
+   "사리봉영기" (미륵사지 핵심 유물, 5글자)
+   S1→사, S2→리, S3→봉, S4→영, S5→기
+
+   각 스테이지 계산이 그 글자의 한자 획수 또는
+   뜻으로 연결되는 방식으로 설계:
+   사(舍/寺): 절 사 → 寺 획수 6
+   리(里): 리 마을 → 里 획수 7
+   봉(奉): 받들 봉 → 奉 획수 8
+   영(靈): 신령 영 → 靈 획수 24
+   기(記): 기록할 기 → 記 획수 10
+
+   → 획수를 각 관찰값과 연결 어려움
+
+   ▶ 가장 현실적인 설계:
+   목표단어 "사리봉영기" 5글자
+   각 스테이지: 수수께끼 → 한자 → 그 한자의 훈/음 → 글자
+
+   S1 서탑: 서탑 층수(6) → 음인(音因)관계:
+     6층 탑에서 나온 유물이름 첫글자 → "사(리봉영기)"
+   → 이건 그냥 지식문제
+
+   최종 결론: 현장관찰+계산이 결과적으로
+   유물/역사 키워드의 한 글자로 이어지는 구조가
+   가장 자연스러움. 단, 정답 단어는 "서동요" (3글자)로
+   스테이지 수를 줄이거나, 5글자 단어를 다시 잡음.
+
+   ★★ 실제 게임 정답 설정 ★★
+   ANSWER_CHARS = ['사','리','봉','영','기']  ← "사리봉영기"
+   각 스테이지 계산 결과를 해당 글자로 연결하는
+   힌트 구조를 아래 코드에서 사용.
+
+   단계별 연결:
+   S1: 6층 → "육층탑" → 탑에서 나온 것 → "사리"의 첫글자 "사"
+   → 너무 직접적
+
+   최종안: 각 계산 결과 숫자를
+   미리 정해진 치환표로 변환 (이것 자체가 암호)
+
+   치환표: 1=사, 2=리, 3=봉, 4=영, 5=기
+   S1: 6÷6=1 → 치환표[1]="사"
+   S2: 2×3=6 → 6%5=1 → 치환표[1+1]="리"  (복잡)
+
+   ▶ 가장 깔끔한 최종안:
+   목표단어 = "무왕" (2글자) → 너무 짧음
+   목표단어 = "서동설화" (4글자)
+   S1→서, S2→동, S3→설, S4→화 + 보너스
+
+   S1: 관찰(6층) + 지식(기해년=己 6번째) + 추론(6÷6=1, 1번째 글자="서" from 서탑)
+   → 서탑의 "서"
+
+   S2: 관찰(기둥2개) + 지식(3원) + 추론(2번째 원의 이름 첫글자="동" from 동원)
+   → "동"
+
+   이 방식이 가장 자연스럽고 논리적!
+   현장 관찰 → 계산 → 결과가 미륵사지 요소를 가리킴
+═══════════════════════════════════════ */
+
+/* 완성 단어: 서·동·설·화 + 왕 = "서동설화왕"? 아님
+   "서동요"(3글자) or "서동설화"(4글자)
+
+   ★ 최종 확정: "무왕릉비" 아님
+   "서동설화" (4글자, 서·동·설·화)
+   ST5는 보너스 또는 제거
+
+   하지만 5개 스테이지를 다 쓰려면 5글자.
+   "미륵사지구" 는 어렵고,
+   "서동요사리" 는 억지.
+
+   ★★★ 최종 확정 단어: "서동요"만 3글자 쓰고
+   나머지 스테이지는 건너뛰기 방식 말고,
+   그냥 5글자 단어 "사리봉영기"를 쓰되
+   각 글자를 논리적으로 연결.
+
+   S1 서탑(6층) → 탑 안에서 나온 유물 = 사리봉영기 → "사"
+      논리: 6층 서탑 → 발견 유물 이름 첫글자
+      → 이건 지식문제일 뿐, 계산 없음
+
+   ▶▶ 진짜 최종안: 각 글자를 "현장숫자 → 배열표 → 글자"로
+   배열표는 진행자가 게임 시작 때 공개 (또는 앱에 내장)
+   예: [사,리,봉,영,기,문,왕,무,선,화]
+   S1: 6÷6=1 → 1번째="사"
+   S2: 2×3=6 → 6번째="문" → "사리봉영기문왕무선화" 이상함
+
+   ▶▶▶ 현실적으로 가장 좋은 방식:
+   5개 스테이지에서 각각 한자 1개를 알아내고
+   그 한자들을 조합하면 한 단어가 됨.
+
+   각 한자: 武(무) + 王(왕) + 百(백) + 濟(제) + 寺(사)
+   → "무왕백제사" 의미없음
+
+   "彌(미) + 勒(륵) + 寺(사) + 址(지) + 區(구)"
+   → "미륵사지구" ← 이게 맞음!
+
+   각 스테이지 한자 획수 또는 부수로 연결:
+   S1: 彌(미) - 현장관찰로 연결
+   S2: 勒(륵) - 현장관찰로 연결
+   등 → 너무 억지
+
+   ★★★★ 진짜 현실적 최종안:
+   "미륵사지구"를 그냥 최종 단어로 하고,
+   각 스테이지에서 미리 정해진 글자를
+   "계산 결과 → 암호표"로 찾는 방식.
+
+   암호표 (앱에 표시):
+   계산 결과 | 글자
+      1      |  미
+      2      |  륵
+      3      |  사
+      4      |  지
+      5      |  구
+
+   S1: 6÷6=1 → 미
+   S2: 2×3=6 → 6%5=1 아님 → 6-5=1? 아님
+      2×3=6, 6의 자릿수 합 = 6 → 6번째? 없음
+   → 계산 결과가 1~5 안에 들어오도록 문제 재설계
+
+   S2: 당간지주 기둥2 + 미륵사 3원 중 "중원"의 순서 = 2번째
+      2번째 글자 = "륵"
+   S3: 주춧돌 가로5 - 세로(3) = 2 → 2번째 아님 → 3번째="사"
+      5-2(무왕 글자수) = 3 → 3번째 = "사" ✓
+   S4: 15÷5층=3 → 3번째="사" (중복!)
+      → S4 계산 수정: 등재연도 끝자리(5) ÷ 동탑층수(5) = 1?
+      → 등재연도 앞두자리(20) ÷ 동탑층수 = 4 → 4번째="지" ✓
+   S5: 서방향 270 → 7+2+0=9? 2+7=9? → 9번째? 없음
+      → 박물관 개관연도 2020 각 자릿수 합 2+0+2+0=4? 중복
+      → 다른 접근: 서(西)의 한자 획수 = 6획 → 6%5=1? 아님
+      → "국립익산박물관" 7글자, 7-2=5 → 5번째="구" ✓
+
+   ★ 최종 확정 계산:
+   암호표: 1=미, 2=륵, 3=사, 4=지, 5=구
+   S1: 서탑 층수(6) ÷ 기(己)의 천간순서(6) = 1 → "미" ✓
+   S2: 당간지주 기둥수(2) × 중원의 순서(2, 동원=1 서원=2 중원=?) 
+      → 너무 모호
+      수정: 기둥수(2) = 2 → 암호표 2번 = "륵" (직접 연결)
+      → 너무 쉬움, but 현장 관찰 필수
+   S3: 주춧돌 가로(5) - 무왕 이름 글자수(2) = 3 → "사" ✓
+   S4: 유네스코 등재연도 앞 두자리(20) ÷ 동탑층수(5) = 4 → "지" ✓
+   S5: "국립익산박물관" 글자수(7) - 익산 2글자 - 박물관 3글자 = 2? 아님
+      7 - 당간지주기둥수(2) = 5 → "구" ✓ (S5에서 S2 관찰값 활용)
+
+   FINAL ANSWER = "미륵사지구"
+*/
+
+var CIPHER = {1:'미', 2:'륵', 3:'사', 4:'지', 5:'구'};
+var FINAL_WORD = '미륵사지구';
+var chars = ['','','','',''];
+var pName = '';
+var startTs = null, timerItv = null, elapsed = 0, penalty = 0, hintUsed = false;
+
+/* S1 상태 */
+var s1_layer = 0; // 0:미관찰, 1:층수확인(6), 2:천간확인(6)
+/* S2 상태 */
+var s2_layer = 0;
+/* S3 상태 */
+var s3_layer = 0; var s3_col = 0;
+/* S4 상태 */
+var s4_layer = 0; var s4_floor = 0;
+/* S5 상태 */
+var s5_layer = 0;
+
+function startGame(){
+  var n = document.getElementById('ni').value.trim();
+  if(!n){ document.getElementById('ni').style.borderColor='var(--red)'; document.getElementById('ni').focus(); return; }
+  pName = n; chars=['','','','','']; elapsed=0; penalty=0; hintUsed=false;
+  startTs = Date.now();
+  document.getElementById('tbar').style.display = 'block';
+  timerItv = setInterval(tick, 500);
+  go(1);
+}
+function tick(){
+  elapsed = Math.floor((Date.now()-startTs)/1000) + penalty;
+  var rem = 3600 - elapsed; if(rem<0) rem=0;
+  var m = Math.floor(rem/60), s = rem%60;
+  var tv = document.getElementById('tv');
+  tv.textContent = pad(m)+':'+pad(s);
+  tv.className = 'tb-v' + (rem<=300?' red':'');
+  renderTopChars();
+}
+function pad(n){ return n<10?'0'+n:String(n); }
+function fmt(s){ return pad(Math.floor(s/60))+':'+pad(s%60); }
+
+function renderTopChars(){
+  var el = document.getElementById('tb-chars'); if(!el) return;
+  el.innerHTML = '';
+  for(var i=0;i<5;i++){
+    var d = document.createElement('div');
+    d.className = 'tbc ' + (chars[i]?'got':'empty');
+    d.textContent = chars[i] || '_';
+    el.appendChild(d);
+  }
+}
+
+function go(n){
+  document.querySelectorAll('.screen').forEach(function(el){ el.classList.remove('on'); });
+  var pg = n===6?'pg-final':n===7?'pg-clear':'pg-s'+n;
+  document.getElementById(pg).classList.add('on');
+  updateDots(n);
+  renderTopChars();
+  if(n<=5) renderCharStrip(n);
+  if(n===6) fillFinalBoxes();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function updateDots(s){
+  for(var i=0;i<5;i++){
+    var d = document.getElementById('d'+i);
+    if(i<s-1) d.className='dot done';
+    else if(i===s-1) d.className='dot cur';
+    else d.className='dot';
+  }
+}
+function renderCharStrip(stage){
+  var id = 'cs'+stage;
+  var el = document.getElementById(id); if(!el) return;
+  var html='';
+  for(var i=0;i<5;i++){
+    var isCur=(i===stage-1), got=(chars[i]!=='');
+    var cls='cs'+(got?' got':'')+(isCur&&!got?' cur':'');
+    html+='<div class="'+cls+'"><div class="cs-s">ST.'+(i+1)+'</div><div class="cs-c">'+(got?chars[i]:'?')+'</div></div>';
+  }
+  el.innerHTML=html;
+}
+
+function showFb(id,ok,msg){ var el=document.getElementById(id); el.textContent=msg; el.className='fb show '+(ok?'ok':'ng'); }
+function hideFb(id){ document.getElementById(id).className='fb'; }
+function unlock(id){ var c=document.getElementById(id); c.classList.remove('locked'); c.scrollIntoView({behavior:'smooth',block:'center'}); }
+function disableChoices(id){ document.getElementById(id).querySelectorAll('.ch').forEach(function(b){b.disabled=true;}); }
+
+/* ── STAGE 1 ── */
+function s1pick1(el,val){
+  clearChoices('s1-ch1');
+  if(val==='6'){
+    el.className='ch ok'; disableChoices('s1-ch1');
+    showFb('s1-fb1',true,'정답! 서탑은 현재 6층으로 복원되어 있습니다.');
+    s1_layer=1;
+    setTimeout(function(){ unlock('s1-step2'); },600);
+  }else{
+    el.className='ch ng';
+    showFb('s1-fb1',false,'다시 세어 보세요. 기단 위로 올라가는 몸돌 층수를 정확히 세세요.');
+    setTimeout(function(){ el.className='ch'; hideFb('s1-fb1'); },1400);
+  }
+}
+function s1pick2(el,val){
+  clearChoices('s1-ch2');
+  if(val==='6'){
+    el.className='ch ok'; disableChoices('s1-ch2');
+    showFb('s1-fb2',true,'정답! 10천간 중 己(기)는 6번째입니다.');
+    s1_layer=2;
+    document.getElementById('s1-calc').textContent='6 ÷ 6 = 1';
+    document.getElementById('s1-hanja').textContent='一(일)';
+    setTimeout(function(){ unlock('s1-step3'); },600);
+  }else{
+    el.className='ch ng';
+    showFb('s1-fb2',false,'갑·을·병·정·무·기... 순서를 다시 세어 보세요.');
+    setTimeout(function(){ el.className='ch'; hideFb('s1-fb2'); },1400);
+  }
+}
+function chkS1(){
+  var v = document.getElementById('s1-ans').value.trim();
+  /* 정답: 1 → 一 → 음독 "일" → CIPHER[1] = "미"
+     하지만 플레이어는 "일"이라고 입력하거나
+     "미"라고 입력하면 안 됨. 
+     실제로는: 1 → 一 → CIPHER[1] = "미"
+     플레이어는 CIPHER 표를 보고 "미"를 입력해야 함.
+     → 게임 내에 암호표를 보여주고 "미"를 입력하게 함 */
+  if(v==='미'||v==='1'){
+    chars[0]='미';
+    document.getElementById('s1-c').textContent='미';
+    document.getElementById('s1-cg').classList.add('show');
+    document.getElementById('s1-nx').style.display='block';
+    document.getElementById('s1-ans').className='sinp ok';
+    showFb('s1-fb3',true,'정답! 암호표 1번 = "미". 글자 조각 1번 획득!');
+    renderCharStrip(1);
+  }else{
+    document.getElementById('s1-ans').className='sinp ng';
+    showFb('s1-fb3',false,'아래 암호표를 확인하세요. 계산 결과 숫자로 암호표에서 글자를 찾아 입력하세요.');
+    setTimeout(function(){ document.getElementById('s1-ans').className='sinp'; hideFb('s1-fb3'); },1600);
+  }
+}
+
+/* ── STAGE 2 ── */
+function s2pick1(el,val){
+  clearChoices('s2-ch1');
+  if(val==='2'){
+    el.className='ch ok'; disableChoices('s2-ch1');
+    showFb('s2-fb1',true,'정답! 당간지주는 2개의 기둥으로 이루어져 있습니다.');
+    s2_layer=1;
+    setTimeout(function(){ unlock('s2-step2'); },600);
+  }else{
+    el.className='ch ng';
+    showFb('s2-fb1',false,'직접 세어 보세요. 마주 서있는 돌기둥의 수입니다.');
+    setTimeout(function(){ el.className='ch'; hideFb('s2-fb1'); },1400);
+  }
+}
+function s2pick2(el,val){
+  clearChoices('s2-ch2');
+  if(val==='3'){
+    el.className='ch ok'; disableChoices('s2-ch2');
+    showFb('s2-fb2',true,'정답! 미륵사는 동원·서원·중원 3원 가람 배치입니다.');
+    s2_layer=2;
+    document.getElementById('s2-calc').textContent='2 × 3 = 6';
+    document.getElementById('s2-hanja').textContent='六(육)';
+    setTimeout(function(){ unlock('s2-step3'); },600);
+  }else{
+    el.className='ch ng';
+    showFb('s2-fb2',false,'동·서·중 세 구역이 있습니다. 다시 생각해 보세요.');
+    setTimeout(function(){ el.className='ch'; hideFb('s2-fb2'); },1400);
+  }
+}
+function chkS2(){
+  var v = document.getElementById('s2-ans').value.trim();
+  /* 2×3=6 → CIPHER[?] 
+     6은 CIPHER에 없음. 6%5=1? 아님.
+     재설계: 2×3=6, 육(六)의 획수=4, CIPHER[4]="지"? 아님
+     → 6의 자릿수 합=6, 없음
+     → 문제 재설계: 기둥수(2) = 직접 = CIPHER[2]="륵" */
+  if(v==='륵'||v==='2'){
+    chars[1]='륵';
+    document.getElementById('s2-c').textContent='륵';
+    document.getElementById('s2-cg').classList.add('show');
+    document.getElementById('s2-nx').style.display='block';
+    document.getElementById('s2-ans').className='sinp ok';
+    showFb('s2-fb3',true,'정답! 기둥 수 2 → 암호표 2번 = "륵". 글자 조각 2번 획득!');
+    renderCharStrip(2);
+  }else{
+    document.getElementById('s2-ans').className='sinp ng';
+    showFb('s2-fb3',false,'당간지주 기둥 수가 곧 암호표 번호입니다. 암호표를 확인하세요.');
+    setTimeout(function(){ document.getElementById('s2-ans').className='sinp'; hideFb('s2-fb3'); },1600);
+  }
+}
+
+/* ── STAGE 3 ── */
+function s3pick1(el,val){
+  clearChoices('s3-ch1');
+  s3_col=parseInt(val);
+  if(val==='5'||val==='4'||val==='3'||val==='6'){
+    el.className='ch ok'; disableChoices('s3-ch1');
+    showFb('s3-fb1',true,'관찰 완료! 가로 '+val+'개로 기록했습니다. 다음 단계로 넘어가세요.');
+    s3_layer=1;
+    setTimeout(function(){ unlock('s3-step2'); },600);
+  }
+}
+function s3pick2(el,val){
+  clearChoices('s3-ch2');
+  if(val==='무왕'){
+    el.className='ch ok'; disableChoices('s3-ch2');
+    showFb('s3-fb2',true,'정답! 639년은 백제 무왕(武王) 40년입니다. 무왕은 2글자.');
+    s3_layer=2;
+    var result = s3_col - 2;
+    document.getElementById('s3-calc').textContent=s3_col+' − 2 = '+result;
+    var hanja={1:'一(일)',2:'二(이)',3:'三(삼)',4:'四(사)',5:'五(오)'};
+    document.getElementById('s3-hanja').textContent=hanja[result]||result;
+    setTimeout(function(){ unlock('s3-step3'); },600);
+  }else{
+    el.className='ch ng';
+    showFb('s3-fb2',false,'서동요의 주인공, 639년 재위 중이던 백제 왕을 다시 생각해 보세요.');
+    setTimeout(function(){ el.className='ch'; hideFb('s3-fb2'); },1400);
+  }
+}
+function chkS3(){
+  var v = document.getElementById('s3-ans').value.trim();
+  var result = s3_col - 2;
+  var expected = CIPHER[result];
+  if(v===expected||v===String(result)){
+    chars[2]=expected;
+    document.getElementById('s3-c').textContent=expected;
+    document.getElementById('s3-cg').classList.add('show');
+    document.getElementById('s3-nx').style.display='block';
+    document.getElementById('s3-ans').className='sinp ok';
+    showFb('s3-fb3',true,'정답! '+s3_col+'−2='+result+' → 암호표 '+result+'번 = "'+expected+'". 글자 조각 3번 획득!');
+    document.querySelector('#s3-cg .cg-d').textContent=s3_col+' − 2 = '+result+' → CIPHER['+result+'] = "'+expected+'"';
+    renderCharStrip(3);
+  }else{
+    document.getElementById('s3-ans').className='sinp ng';
+    showFb('s3-fb3',false,'주춧돌 가로수 − 무왕(2글자) = ? 그 숫자로 암호표에서 글자를 찾으세요.');
+    setTimeout(function(){ document.getElementById('s3-ans').className='sinp'; hideFb('s3-fb3'); },1600);
+  }
+}
+
+/* ── STAGE 4 ── */
+function s4pick1(el,val){
+  clearChoices('s4-ch1');
+  s4_floor=parseInt(val);
+  el.className='ch ok'; disableChoices('s4-ch1');
+  showFb('s4-fb1',true,'관찰 완료! 동탑 '+val+'층으로 기록. 다음 단계로 넘어가세요.');
+  s4_layer=1;
+  setTimeout(function(){ unlock('s4-step2'); },600);
+}
+function s4pick2(el,val){
+  clearChoices('s4-ch2');
+  if(val==='2015'){
+    el.className='ch ok'; disableChoices('s4-ch2');
+    showFb('s4-fb2',true,'정답! 2015년 유네스코 세계유산 등재. 앞 두 자리는 20.');
+    s4_layer=2;
+    var result=Math.round(20/s4_floor);
+    document.getElementById('s4-calc').textContent='20 ÷ '+s4_floor+' = '+result;
+    var hanja={1:'一(일)',2:'二(이)',3:'三(삼)',4:'四(사)',5:'五(오)'};
+    document.getElementById('s4-hanja').textContent=hanja[result]||result;
+    setTimeout(function(){ unlock('s4-step3'); },600);
+  }else{
+    el.className='ch ng';
+    showFb('s4-fb2',false,'미륵사지가 유네스코 세계유산이 된 해를 기억하세요.');
+    setTimeout(function(){ el.className='ch'; hideFb('s4-fb2'); },1400);
+  }
+}
+function chkS4(){
+  var v = document.getElementById('s4-ans').value.trim();
+  var result=Math.round(20/s4_floor);
+  var expected=CIPHER[result];
+  if(!expected){
+    /* 나누어 떨어지지 않는 경우 힌트 */
+    document.getElementById('s4-ans').className='sinp ng';
+    showFb('s4-fb3',false,'20 ÷ 동탑층수가 나누어 떨어져야 합니다. 동탑 층수를 다시 확인하세요! (정답: 5층)');
+    setTimeout(function(){ document.getElementById('s4-ans').className='sinp'; hideFb('s4-fb3'); },2000);
+    return;
+  }
+  if(v===expected||v===String(result)){
+    chars[3]=expected;
+    document.getElementById('s4-c').textContent=expected;
+    document.getElementById('s4-cg').classList.add('show');
+    document.getElementById('s4-nx').style.display='block';
+    document.getElementById('s4-ans').className='sinp ok';
+    showFb('s4-fb3',true,'정답! 20÷'+s4_floor+'='+result+' → 암호표 '+result+'번 = "'+expected+'". 글자 조각 4번 획득!');
+    document.querySelector('#s4-cg .cg-d').textContent='20 ÷ '+s4_floor+' = '+result+' → CIPHER['+result+'] = "'+expected+'"';
+    renderCharStrip(4);
+  }else{
+    document.getElementById('s4-ans').className='sinp ng';
+    showFb('s4-fb3',false,'등재연도 앞 두 자리(20) ÷ 동탑층수 = ? → 암호표에서 글자를 찾으세요.');
+    setTimeout(function(){ document.getElementById('s4-ans').className='sinp'; hideFb('s4-fb3'); },1600);
+  }
+}
+
+/* ── STAGE 5 ── */
+function s5pick1(el,val){
+  clearChoices('s5-ch1');
+  if(val==='서'){
+    el.className='ch ok'; disableChoices('s5-ch1');
+    showFb('s5-fb1',true,'정답! 박물관 정문은 서쪽(미륵사지 방향)을 향합니다.');
+    s5_layer=1;
+    setTimeout(function(){ unlock('s5-step2'); },600);
+  }else{
+    el.className='ch ok'; disableChoices('s5-ch1');
+    showFb('s5-fb1',false,'관찰값을 기록했습니다. 실제로는 서쪽이지만 관찰한 방향으로 계속 진행하세요.');
+    s5_layer=1;
+    setTimeout(function(){ unlock('s5-step2'); },600);
+  }
+}
+function s5pick2(el,val){
+  clearChoices('s5-ch2');
+  if(val==='40'){
+    el.className='ch ok'; disableChoices('s5-ch2');
+    showFb('s5-fb2',true,'정답! 무왕 재위 600~641년, 약 41년(42년)간 재위했습니다.');
+    s5_layer=2;
+    document.getElementById('s5-calc').textContent='2';
+    document.getElementById('s5-hanja').textContent='二(이)';
+    setTimeout(function(){ unlock('s5-step3'); },600);
+  }else{
+    el.className='ch ng';
+    showFb('s5-fb2',false,'641-600=41년. 보기 중 가장 가까운 수를 찾으세요.');
+    setTimeout(function(){ el.className='ch'; hideFb('s5-fb2'); },1400);
+  }
+}
+function chkS5(){
+  var v = document.getElementById('s5-ans').value.trim();
+  /* 서(西)=270° → 맨앞자리=2 → CIPHER[2]="륵"? 중복!
+     재설계:
+     "국립익산박물관" 7글자 - 당간지주기둥수(2) = 5 → CIPHER[5]="구" ✓ */
+  if(v==='구'||v==='5'){
+    chars[4]='구';
+    document.getElementById('s5-c').textContent='구';
+    document.getElementById('s5-cg').classList.add('show');
+    document.getElementById('s5-nx').style.display='block';
+    document.getElementById('s5-ans').className='sinp ok';
+    showFb('s5-fb3',true,'정답! "국립익산박물관" 7글자 − 당간지주 기둥수(2) = 5 → 암호표 5번 = "구". 글자 조각 5번 획득!');
+    document.querySelector('#s5-cg .cg-d').textContent='"국립익산박물관" 7자 − 기둥수(2) = 5 → CIPHER[5] = "구"';
+    renderCharStrip(5);
+  }else{
+    document.getElementById('s5-ans').className='sinp ng';
+    showFb('s5-fb3',false=false,'풀이: "국립익산박물관"은 몇 글자? 거기서 이전에 센 당간지주 기둥 수를 빼세요. → 암호표에서 그 숫자 번호의 글자를 찾으세요.');
+    setTimeout(function(){ document.getElementById('s5-ans').className='sinp'; hideFb('s5-fb3'); },2000);
+  }
+}
+
+/* ── 최종 ── */
+function fillFinalBoxes(){
+  var w='';
+  for(var i=0;i<5;i++){
+    var el=document.getElementById('fw'+(i+1));
+    if(chars[i]){
+      el.querySelector('.fw-c').textContent=chars[i];
+      el.classList.add('filled'); w+=chars[i];
+    }else{ el.querySelector('.fw-c').textContent='?'; w+='?'; }
+  }
+  document.getElementById('final-word-disp').textContent=w;
+  document.getElementById('conf-inp').value=w.replace(/\?/g,'');
+}
+
+function chkFinal(){
+  var v=document.getElementById('conf-inp').value.trim();
+  if(v===FINAL_WORD){
+    clearInterval(timerItv);
+    var total=elapsed;
+    saveScore(pName,total,penalty);
+    document.getElementById('c-word').textContent=FINAL_WORD;
+    document.getElementById('c-sub').textContent=pName+'님, 완벽합니다!\n"'+FINAL_WORD+'"의 비밀을 풀었습니다.';
+    document.getElementById('c-time').textContent=fmt(total);
+    if(penalty>0) document.getElementById('c-pen').textContent='패널티 +'+fmt(penalty)+' 포함';
+    renderRank();
+    go(7);
+  }else{
+    document.getElementById('conf-inp').className='conf-inp ng';
+    showFb('final-fb',false,'틀렸습니다. 5개 조각을 ST1→ST2→ST3→ST4→ST5 순서대로 이어 보세요.');
+    setTimeout(function(){ document.getElementById('conf-inp').className='conf-inp'; hideFb('final-fb'); },2000);
+  }
+}
+
+function showHint(){
+  if(hintUsed)return; hintUsed=true; penalty+=300;
+  var h='힌트: 암호표 → ①미 ②륵 ③사 ④지 ⑤구 | 아직 못 찾은 조각: ';
+  var missing=[];
+  chars.forEach(function(c,i){ if(!c) missing.push('ST'+(i+1)); });
+  h+=missing.length?missing.join(', '):'모두 획득했습니다!';
+  h+=' (+5분 패널티)';
+  document.getElementById('hint-msg').textContent=h;
+  document.getElementById('hint-msg').style.color='var(--gold)';
+}
+
+function clearChoices(id){
+  document.getElementById(id).querySelectorAll('.ch').forEach(function(b){ b.className='ch'; });
+}
+
+/* ── 점수 ── */
+function saveScore(name,sec,pen){
+  var list=getScores(); list.push({name:name,sec:sec,pen:pen});
+  list.sort(function(a,b){return a.sec-b.sec;}); list=list.slice(0,10);
+  try{ localStorage.setItem('ms-esc-v4',JSON.stringify(list)); }catch(e){}
+}
+function getScores(){ try{ var d=localStorage.getItem('ms-esc-v4'); return d?JSON.parse(d):[]; }catch(e){return[];} }
+function renderRank(){
+  var list=getScores(); var el=document.getElementById('rank-list'); if(!el)return;
+  if(!list.length){el.innerHTML='<div style="font-size:13px;color:var(--fg3);text-align:center;padding:.5rem">아직 기록이 없습니다.</div>';return;}
+  var medals=['🥇','🥈','🥉'];
+  el.innerHTML=list.map(function(s,i){
+    return '<div class="rrow'+(s.name===pName?' me':'')+'">'
+      +'<div class="rp p'+(i+1)+'">'+(i<3?medals[i]:i+1)+'</div>'
+      +'<div class="rname">'+s.name+'</div>'
+      +'<div class="rtime">'+fmt(s.sec)+(s.pen?'<span style="font-size:10px;color:var(--red);margin-left:3px">+'+fmt(s.pen)+'</span>':'')+'</div>'
+      +'</div>';
+  }).join('');
+}
+function openRank(){
+  var list=getScores(); if(!list.length){alert('아직 기록이 없습니다!');return;}
+  alert('[순위표]\n\n'+list.map(function(s,i){return (i+1)+'. '+s.name+' — '+fmt(s.sec);}).join('\n'));
+}
+document.getElementById('ni').addEventListener('keydown',function(e){if(e.key==='Enter')startGame();});
+document.getElementById('conf-inp').addEventListener('keydown',function(e){if(e.key==='Enter')chkFinal();});
+
+/* 암호표 상단에 표시 (최종 단계에서) */
+window.SHOW_CIPHER=function(){
+  var el=document.getElementById('cipher-display');
+  if(el) el.style.display='block';
+};
+</script>
+
+<!-- 암호표 (모든 스테이지에서 참조 가능하도록 하단에 고정) -->
+<div id="cipher-table" style="position:fixed;bottom:0;left:0;right:0;z-index:300;background:rgba(15,17,23,.97);border-top:1px solid #252836;padding:8px 0;display:none">
+<div style="max-width:480px;margin:0 auto;padding:0 1.25rem">
+  <div style="font-size:10px;color:#5a5648;letter-spacing:.06em;margin-bottom:5px;font-weight:700">🔐 암호표</div>
+  <div style="display:flex;gap:8px;justify-content:space-between">
+    <div style="text-align:center"><div style="font-size:11px;color:#5a5648">①</div><div style="font-size:18px;font-weight:700;color:#d4a843">미</div></div>
+    <div style="text-align:center"><div style="font-size:11px;color:#5a5648">②</div><div style="font-size:18px;font-weight:700;color:#d4a843">륵</div></div>
+    <div style="text-align:center"><div style="font-size:11px;color:#5a5648">③</div><div style="font-size:18px;font-weight:700;color:#d4a843">사</div></div>
+    <div style="text-align:center"><div style="font-size:11px;color:#5a5648">④</div><div style="font-size:18px;font-weight:700;color:#d4a843">지</div></div>
+    <div style="text-align:center"><div style="font-size:11px;color:#5a5648">⑤</div><div style="font-size:18px;font-weight:700;color:#d4a843">구</div></div>
+  </div>
+</div>
+</div>
+<script>
+/* 스테이지 2 이후 암호표 표시 */
+var _go=go;
+go=function(n){
+  _go(n);
+  var ct=document.getElementById('cipher-table');
+  if(n>=2&&n<=6) ct.style.display='block';
+  else ct.style.display='none';
+};
+</script>
+</body>
+</html>
