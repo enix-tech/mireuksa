@@ -797,6 +797,8 @@ function go(n){
   renderTopChars();
   if(n<=5) renderCharStrip(n);
   if(n===6) fillFinalBoxes();
+  var ct=document.getElementById('cipher-table');
+  if(ct) ct.style.display=(n>=2&&n<=6)?'block':'none';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function updateDots(s){
@@ -1074,7 +1076,7 @@ function chkS5(){
     renderCharStrip(5);
   }else{
     document.getElementById('s5-ans').className='sinp ng';
-    showFb('s5-fb3',false=false,'풀이: "국립익산박물관"은 몇 글자? 거기서 이전에 센 당간지주 기둥 수를 빼세요. → 암호표에서 그 숫자 번호의 글자를 찾으세요.');
+    showFb('s5-fb3',false,'풀이: "국립익산박물관"은 몇 글자? 거기서 이전에 센 당간지주 기둥 수를 빼세요. → 암호표에서 그 숫자 번호의 글자를 찾으세요.');
     setTimeout(function(){ document.getElementById('s5-ans').className='sinp'; hideFb('s5-fb3'); },2000);
   }
 }
@@ -1173,15 +1175,6 @@ window.SHOW_CIPHER=function(){
   </div>
 </div>
 </div>
-<script>
-/* 스테이지 2 이후 암호표 표시 */
-var _go=go;
-go=function(n){
-  _go(n);
-  var ct=document.getElementById('cipher-table');
-  if(n>=2&&n<=6) ct.style.display='block';
-  else ct.style.display='none';
-};
-</script>
+
 </body>
 </html>
