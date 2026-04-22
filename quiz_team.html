@@ -8,56 +8,55 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#f5f4f0;min-height:100vh;font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif}
 .app{max-width:480px;margin:0 auto;padding:1.25rem 1.25rem 3rem;position:relative}
-
-/* 공통 버튼 */
-.btn{display:block;width:100%;padding:13px;font-size:15px;font-weight:600;border-radius:10px;cursor:pointer;font-family:inherit;border:1px solid #d4d2ca;background:#fff;color:#1a1a1a;text-align:center;transition:all .15s}
-.btn:hover{background:#eceae4}
-.btn:active{transform:scale(.98)}
-.btn.blue{background:#2563eb;color:#fff;border-color:#2563eb}
-.btn.blue:hover{background:#1d4ed8}
+.btn{display:block;width:100%;padding:13px;font-size:15px;font-weight:600;border-radius:10px;cursor:pointer;font-family:inherit;border:1px solid #d4d2ca;background:#fff;color:#1a1a1a;text-align:center;transition:all .15s;-webkit-appearance:none}
+.btn:hover{background:#eceae4}.btn:active{transform:scale(.98)}
+.btn.blue{background:#2563eb;color:#fff;border-color:#2563eb}.btn.blue:hover{background:#1d4ed8}
 .btn.sm{padding:8px 14px;font-size:13px;width:auto}
-.btn.ghost{background:transparent;color:#666;border-color:#d4d2ca}
-.btn.ghost:hover{background:#eceae4}
+.btn.ghost{background:transparent;color:#666;border-color:#d4d2ca}.btn.ghost:hover{background:#eceae4}
 
-/* 시작 화면 */
+/* 시작 */
 .hero{text-align:center;padding:1.5rem 0 1.25rem}
 .hero-badge{display:inline-block;padding:4px 14px;background:#fef3c7;color:#b45309;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.05em;margin-bottom:.875rem}
 .hero-title{font-size:22px;font-weight:700;margin-bottom:.375rem;color:#1a1a1a}
 .hero-desc{font-size:13px;color:#666;line-height:1.7;margin-bottom:1.5rem}
 .rule-box{background:#fff;border:1px solid #d4d2ca;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem;font-size:13px;color:#555;line-height:1.7}
-
-/* 팀 설정 */
 .team-card{background:#fff;border:1.5px solid #d4d2ca;border-radius:10px;padding:1rem;margin-bottom:.75rem}
-.team-card.a{border-color:#93c5fd}
-.team-card.b{border-color:#fca5a5}
+.team-card.a{border-color:#93c5fd}.team-card.b{border-color:#fca5a5}
 .tc-lbl{font-size:12px;font-weight:700;margin-bottom:6px}
-.tc-lbl.a{color:#2563eb}
-.tc-lbl.b{color:#dc2626}
+.tc-lbl.a{color:#2563eb}.tc-lbl.b{color:#dc2626}
 .tc-input{width:100%;padding:10px 12px;font-size:15px;border:1px solid #d4d2ca;border-radius:8px;background:#fff;color:#1a1a1a;font-family:inherit;outline:none;-webkit-appearance:none}
 .tc-input:focus{border-color:#2563eb}
 
 /* VS 바 */
 .vs-bar{display:flex;align-items:center;gap:8px;padding:.875rem;background:#eceae4;border-radius:10px;margin-bottom:.875rem}
 .ts{flex:1;text-align:center}
-.ts-name{font-size:12px;font-weight:600;margin-bottom:3px}
-.ts-name.a{color:#2563eb}
-.ts-name.b{color:#dc2626}
+.ts-name{font-size:12px;font-weight:700;margin-bottom:3px}
+.ts-name.a{color:#2563eb}.ts-name.b{color:#dc2626}
 .ts-score{font-size:32px;font-weight:700;line-height:1}
-.ts-score.a{color:#2563eb}
-.ts-score.b{color:#dc2626}
+.ts-score.a{color:#2563eb}.ts-score.b{color:#dc2626}
 .vs-sep{font-size:14px;font-weight:700;color:#888}
-.turn-pill{text-align:center;padding:7px 14px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:1rem}
-.turn-pill.a{background:#dbeafe;color:#1d4ed8}
-.turn-pill.b{background:#fee2e2;color:#991b1b}
+.turn-pill{text-align:center;padding:7px 14px;border-radius:20px;font-size:13px;font-weight:700;margin-bottom:1rem}
+.turn-pill.a{background:#dbeafe;color:#1d4ed8}.turn-pill.b{background:#fee2e2;color:#991b1b}
+
+/* 턴 전환 화면 */
+.handover{background:#fff;border:1px solid #d4d2ca;border-radius:12px;padding:2rem 1.25rem;text-align:center;margin-bottom:1rem}
+.handover.a{border-top:4px solid #2563eb}.handover.b{border-top:4px solid #dc2626}
+.ho-emoji{font-size:48px;margin-bottom:.875rem}
+.ho-title{font-size:18px;font-weight:700;margin-bottom:.5rem;color:#1a1a1a}
+.ho-desc{font-size:13px;color:#666;line-height:1.65;margin-bottom:1.5rem}
+.ho-score{font-size:13px;font-weight:600;color:#888;margin-bottom:1.25rem}
 
 /* 문제 카드 */
 .q-stage{background:#fff;border:1px solid #d4d2ca;border-radius:12px;padding:1.25rem;margin-bottom:.75rem}
 .q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:.875rem}
 .q-counter{font-size:12px;color:#888}
 .q-pts{font-size:12px;font-weight:600;padding:3px 10px;border-radius:12px}
+.q-pts.p5{background:#dcfce7;color:#14532d}
+.q-pts.p4{background:#fef9c3;color:#854d0e}
+.q-pts.p3{background:#fef3c7;color:#b45309}
+.q-pts.p2{background:#fee2e2;color:#991b1b}
 .q-pts.p1{background:#f5f4f0;color:#888}
-.q-pts.p2{background:#fef3c7;color:#b45309}
-.q-pts.p3{background:#fee2e2;color:#991b1b}
+.q-pts.p0{background:#f5f4f0;color:#aaa}
 
 /* 단서 */
 .clues-wrap{display:flex;flex-direction:column;gap:8px;margin-bottom:1rem}
@@ -71,11 +70,11 @@ body{background:#f5f4f0;min-height:100vh;font-family:'Apple SD Gothic Neo','Malg
 .clue-body{padding:10px 12px;font-size:13px;line-height:1.65;color:#1a1a1a;background:#fff;border-top:1px solid #d4d2ca;display:none}
 .clue-body.open{display:block}
 .clue-cost{font-size:10px;color:#999;margin-top:4px}
-.pts-warn{font-size:12px;color:#dc2626;text-align:center;padding:4px 0}
+.pts-warn{font-size:12px;color:#dc2626;text-align:center;padding:4px 0;font-weight:600}
 
 /* 답 입력 */
 .ans-section{background:#f5f4f0;border-radius:8px;padding:10px 12px;margin-bottom:.75rem}
-.ans-label{font-size:11px;color:#888;margin-bottom:6px;font-weight:600}
+.ans-label{font-size:11px;color:#888;margin-bottom:6px;font-weight:700}
 .ans-row{display:flex;gap:6px}
 .ans-row input{flex:1;padding:11px 14px;font-size:16px;border:1.5px solid #d4d2ca;border-radius:8px;background:#fff;color:#1a1a1a;font-family:inherit;outline:none;-webkit-appearance:none}
 .ans-row input.inp-a{border-color:#2563eb}
@@ -88,7 +87,6 @@ body{background:#f5f4f0;min-height:100vh;font-family:'Apple SD Gothic Neo','Malg
 .feedback.correct{background:#dcfce7;color:#14532d}
 .feedback.wrong{background:#fee2e2;color:#7f1d1d}
 
-/* 점수 팝업 */
 @keyframes pop-up{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-50px)}}
 
 /* 결과 */
@@ -130,7 +128,8 @@ body{background:#f5f4f0;min-height:100vh;font-family:'Apple SD Gothic Neo','Malg
   <div class="rule-box">
     💡 단서 1개만 보고 맞히면 <b>최대 점수</b><br>
     단서를 열 때마다 획득 가능 점수 1점 감소<br>
-    오답 시 즉시 상대 팀으로 턴 이동
+    오답 시 즉시 상대 팀으로 턴 이동<br>
+    <b>상대 팀 화면은 가려집니다</b> — 스마트폰을 넘겨주세요!
   </div>
   <div class="team-card a">
     <div class="tc-lbl a">팀 A 이름</div>
@@ -141,34 +140,44 @@ body{background:#f5f4f0;min-height:100vh;font-family:'Apple SD Gothic Neo','Malg
     <input class="tc-input" id="name-b" type="text" placeholder="예: 신라팀" maxlength="8"/>
   </div>
   <div style="margin-top:.75rem">
-    <button class="btn blue" onclick="startGame()">대결 시작!</button>
+    <button class="btn blue" id="start-btn">대결 시작!</button>
+  </div>
+</div>
+
+<!-- 턴 전환 화면 -->
+<div id="pg-handover" style="display:none">
+  <div class="vs-bar">
+    <div class="ts"><div class="ts-name a" id="ho-label-a">팀 A</div><div class="ts-score a" id="ho-score-a">0</div></div>
+    <div class="vs-sep">VS</div>
+    <div class="ts"><div class="ts-name b" id="ho-label-b">팀 B</div><div class="ts-score b" id="ho-score-b">0</div></div>
+  </div>
+  <div class="handover" id="handover-card">
+    <div class="ho-emoji" id="ho-emoji">🔄</div>
+    <div class="ho-title" id="ho-title"></div>
+    <div class="ho-desc" id="ho-desc"></div>
+    <div class="ho-score" id="ho-score-msg"></div>
+    <button class="btn blue" id="ho-btn">준비됐어요! 문제 보기</button>
   </div>
 </div>
 
 <!-- 게임 -->
 <div id="pg-game" style="display:none">
   <div class="vs-bar">
-    <div class="ts">
-      <div class="ts-name a" id="label-a">팀 A</div>
-      <div class="ts-score a" id="score-a">0</div>
-    </div>
+    <div class="ts"><div class="ts-name a" id="label-a">팀 A</div><div class="ts-score a" id="score-a">0</div></div>
     <div class="vs-sep">VS</div>
-    <div class="ts">
-      <div class="ts-name b" id="label-b">팀 B</div>
-      <div class="ts-score b" id="score-b">0</div>
-    </div>
+    <div class="ts"><div class="ts-name b" id="label-b">팀 B</div><div class="ts-score b" id="score-b">0</div></div>
   </div>
   <div class="turn-pill" id="turn-pill">팀 A의 차례</div>
   <div class="q-stage">
     <div class="q-meta">
       <div class="q-counter" id="q-counter">문제 1 / 8</div>
-      <div class="q-pts p1" id="q-pts-badge">최대 5점</div>
+      <div class="q-pts p5" id="q-pts-badge">최대 5점</div>
     </div>
     <div class="clues-wrap" id="clues-wrap"></div>
     <div class="pts-warn" id="pts-warn" style="display:none"></div>
   </div>
   <div class="ans-section">
-    <div class="ans-label">답 입력</div>
+    <div class="ans-label" id="ans-label">답 입력</div>
     <div class="ans-row">
       <input id="ans-inp" type="text" placeholder="추론한 답을 입력하세요" maxlength="20"/>
       <button class="btn sm blue" id="submit-btn">제출</button>
@@ -202,111 +211,16 @@ body{background:#f5f4f0;min-height:100vh;font-family:'Apple SD Gothic Neo','Malg
 </div>
 
 </div>
-
 <script>
 var QUESTIONS=[
-  {
-    title:'나는 누구일까요?',maxPts:5,
-    clues:[
-      {label:'단서 1',text:'나는 2009년 어떤 건축물 안에서 발견되었다.'},
-      {label:'단서 2',text:'나를 만든 재료는 금(金)이다. 이름에도 그 재료가 들어간다.'},
-      {label:'단서 3',text:'나는 백제 시대에 만들어졌으며, 서기 639년에 제작되었다는 기록이 담겨 있다.'},
-      {label:'단서 4',text:'나는 익산 미륵사지의 탑 안 심주석에서 나왔다. 동탑도 서탑도 아닌 ○탑이다.'},
-      {label:'단서 5',text:'내 정식 이름은 다섯 글자다. ○○사리봉영기.'}
-    ],
-    accept:['금제사리봉영기','사리봉영기'],
-    answerFull:'금제사리봉영기',
-    explain:'2009년 미륵사지 서탑 1층 심주석에서 발견된 금제 유물. 639년(무왕 40년) 제작 기록이 새겨져 있어 미륵사 창건 시기를 고고학적으로 확인시켜 준 결정적 유물입니다.'
-  },
-  {
-    title:'나는 어떤 사건일까요?',maxPts:5,
-    clues:[
-      {label:'단서 1',text:'이 사건은 신라와 어떤 나라가 연합하여 일으켰다.'},
-      {label:'단서 2',text:'이 사건으로 한 왕국이 역사에서 사라졌다.'},
-      {label:'단서 3',text:'미륵사지를 만든 나라가 이 사건으로 무너졌다.'},
-      {label:'단서 4',text:'사건이 일어난 해의 숫자는 세 자리다. 6으로 시작한다.'},
-      {label:'단서 5',text:'이 해는 ○○○년. 신라와 당나라 연합군이 침공한 해.'}
-    ],
-    accept:['660','660년','백제멸망','백제 멸망'],
-    answerFull:'660년 (백제 멸망)',
-    explain:'660년 나당연합군의 침공으로 백제가 멸망했습니다. 의자왕이 항복하며 678년간의 백제 역사가 끝났습니다.'
-  },
-  {
-    title:'나는 누구일까요?',maxPts:5,
-    clues:[
-      {label:'단서 1',text:'나는 신라 공주였다.'},
-      {label:'단서 2',text:'나에 대한 노래가 지금까지 전해져 온다. 향가다.'},
-      {label:'단서 3',text:'그 노래를 지은 사람은 나중에 왕이 되었다.'},
-      {label:'단서 4',text:'나는 서동이라는 소년과 인연이 닿아 왕비가 되었다.'},
-      {label:'단서 5',text:'나는 진평왕의 딸이다. 이름은 두 글자. ○○공주.'}
-    ],
-    accept:['선화','선화공주'],
-    answerFull:'선화공주',
-    explain:'신라 진평왕의 딸 선화공주. 무왕(서동)이 어린 시절 지은 향가 서동요의 주인공이며, 훗날 백제 무왕의 왕비가 되었습니다.'
-  },
-  {
-    title:'나는 어떤 장소일까요?',maxPts:5,
-    clues:[
-      {label:'단서 1',text:'이곳은 전라북도에 있다.'},
-      {label:'단서 2',text:'이곳에는 백제 시대의 별궁이 있었다고 추정된다.'},
-      {label:'단서 3',text:'이곳에 있는 탑은 국보 제289호다.'},
-      {label:'단서 4',text:'그 탑은 5층 석탑이며, 탑 안에서 금제 사리함이 나왔다.'},
-      {label:'단서 5',text:'지명이 세 글자다. ○○리 유적. 익산에 있다.'}
-    ],
-    accept:['왕궁리','왕궁리유적','왕궁리 유적'],
-    answerFull:'왕궁리 유적',
-    explain:'익산 왕궁리 유적. 백제 무왕 대의 별궁지로 추정되며, 국보 제289호 왕궁리 5층 석탑이 현존합니다. 2015년 유네스코 세계유산 백제역사유적지구에 포함되었습니다.'
-  },
-  {
-    title:'나는 어떤 왕일까요?',maxPts:5,
-    clues:[
-      {label:'단서 1',text:'나는 백제의 왕이다.'},
-      {label:'단서 2',text:'나는 어린 시절 마를 캐며 살았고, 서동이라 불렸다.'},
-      {label:'단서 3',text:'나는 사랑하는 사람을 얻기 위해 노래를 만들었다.'},
-      {label:'단서 4',text:'나는 익산에 거대한 사찰과 별궁을 만들었다.'},
-      {label:'단서 5',text:'나는 백제 제30대 왕. 재위 600~641년.'}
-    ],
-    accept:['무왕','백제무왕'],
-    answerFull:'무왕 (백제 제30대)',
-    explain:'백제 제30대 무왕(재위 600~641년). 서동설화의 주인공으로 미륵사지와 왕궁리 유적을 조성했습니다. 금제사리봉영기를 통해 미륵사 창건과의 연관이 확인됩니다.'
-  },
-  {
-    title:'나는 무엇일까요?',maxPts:5,
-    clues:[
-      {label:'단서 1',text:'나는 어떤 사찰의 건물이다.'},
-      {label:'단서 2',text:'나는 현재 대한민국에 남아 있는 것 중 가장 오래된 종류다.'},
-      {label:'단서 3',text:'나는 2001년에 무너질 위험이 생겨 분해되기 시작했다.'},
-      {label:'단서 4',text:'내 안에서 639년에 만들어진 귀한 물건이 나왔다.'},
-      {label:'단서 5',text:'나는 익산 미륵사지의 ○탑. 2019년 복원 완료. 두 글자.'}
-    ],
-    accept:['석탑','미륵사지석탑','서탑','미륵사지 석탑','미륵사지서탑'],
-    answerFull:'미륵사지 석탑 (서탑)',
-    explain:'현존 최대·최고(最古)의 백제 석탑. 1999년 해체 보수를 시작해 2019년 6층 규모로 복원이 완료되었습니다. 해체 중 2009년 금제사리봉영기가 발견되었습니다.'
-  },
-  {
-    title:'나는 어떤 기관일까요?',maxPts:4,
-    clues:[
-      {label:'단서 1',text:'나는 유물을 보존하고 전시하는 곳이다.'},
-      {label:'단서 2',text:'나는 2020년에 문을 열었다.'},
-      {label:'단서 3',text:'나는 어떤 유적지 바로 옆에 위치한다. 현장 박물관 형식이다.'},
-      {label:'단서 4',text:'나는 국가가 운영한다. 이름에 도시 이름이 들어간다.'}
-    ],
-    accept:['국립익산박물관','익산박물관'],
-    answerFull:'국립익산박물관',
-    explain:'2020년 1월 미륵사지 사역 내에 개관한 현장 박물관. 미륵사지·왕궁리 유적 발굴 유물을 현지에서 보존·전시합니다.'
-  },
-  {
-    title:'나는 무엇일까요?',maxPts:4,
-    clues:[
-      {label:'단서 1',text:'나는 세계적으로 인정받은 문화유산이다.'},
-      {label:'단서 2',text:'나는 한 나라가 아닌 여러 지역에 걸쳐 있다.'},
-      {label:'단서 3',text:'나에 속한 곳은 총 8군데다. 충청도와 전라도에 걸쳐 있다.'},
-      {label:'단서 4',text:'나는 2015년에 유네스코에 등재되었다. 고대 왕국의 이름을 담고 있다.'}
-    ],
-    accept:['백제역사유적지구','백제역사유적','백제유적지구'],
-    answerFull:'백제역사유적지구',
-    explain:'2015년 유네스코 세계유산으로 등재된 백제역사유적지구. 공주·부여·익산 3개 지역 8개소(미륵사지·왕궁리 유적 포함)가 포함됩니다.'
-  }
+  {title:'나는 누구일까요?',maxPts:5,clues:[{label:'단서 1',text:'나는 2009년 어떤 건축물 안에서 발견되었다.'},{label:'단서 2',text:'나를 만든 재료는 금(金)이다. 이름에도 그 재료가 들어간다.'},{label:'단서 3',text:'나는 백제 시대에 만들어졌으며, 서기 639년에 제작되었다는 기록이 담겨 있다.'},{label:'단서 4',text:'나는 익산 미륵사지의 탑 안 심주석에서 나왔다.'},{label:'단서 5',text:'내 정식 이름은 다섯 글자다. ○○사리봉영기.'}],accept:['금제사리봉영기','사리봉영기'],answerFull:'금제사리봉영기',explain:'2009년 미륵사지 서탑 1층 심주석에서 발견된 금제 유물. 639년(무왕 40년) 제작 기록이 새겨져 미륵사 창건 시기를 고고학적으로 확인시켜준 결정적 유물.'},
+  {title:'나는 어떤 사건일까요?',maxPts:5,clues:[{label:'단서 1',text:'이 사건은 신라와 어떤 나라가 연합하여 일으켰다.'},{label:'단서 2',text:'이 사건으로 한 왕국이 역사에서 사라졌다.'},{label:'단서 3',text:'미륵사지를 만든 나라가 이 사건으로 무너졌다.'},{label:'단서 4',text:'사건이 일어난 해는 세 자리. 6으로 시작한다.'},{label:'단서 5',text:'이 해는 ○○○년. 신라와 당나라 연합군이 침공한 해.'}],accept:['660','660년','백제멸망','백제 멸망'],answerFull:'660년 (백제 멸망)',explain:'660년 나당연합군의 침공으로 백제가 멸망. 의자왕이 항복하며 678년간의 백제 역사가 끝났습니다.'},
+  {title:'나는 누구일까요?',maxPts:5,clues:[{label:'단서 1',text:'나는 신라 공주였다.'},{label:'단서 2',text:'나에 대한 노래가 지금까지 전해져 온다. 향가다.'},{label:'단서 3',text:'그 노래를 지은 사람은 나중에 왕이 되었다.'},{label:'단서 4',text:'나는 서동이라는 소년과 인연이 닿아 왕비가 되었다.'},{label:'단서 5',text:'나는 진평왕의 딸이다. 이름은 두 글자. ○○공주.'}],accept:['선화','선화공주'],answerFull:'선화공주',explain:'신라 진평왕의 딸. 무왕(서동)이 지은 향가 서동요의 주인공이며, 훗날 백제 무왕의 왕비가 되었습니다.'},
+  {title:'나는 어떤 장소일까요?',maxPts:5,clues:[{label:'단서 1',text:'이곳은 전라북도에 있다.'},{label:'단서 2',text:'이곳에는 백제 시대의 별궁이 있었다고 추정된다.'},{label:'단서 3',text:'이곳에 있는 탑은 국보 제289호다.'},{label:'단서 4',text:'그 탑은 5층 석탑이며, 탑 안에서 금제 사리함이 나왔다.'},{label:'단서 5',text:'지명이 세 글자다. ○○리 유적. 익산에 있다.'}],accept:['왕궁리','왕궁리유적','왕궁리 유적'],answerFull:'왕궁리 유적',explain:'익산 왕궁리 유적. 백제 무왕 대의 별궁지로 추정, 국보 제289호 왕궁리 5층 석탑이 현존. 2015년 유네스코 세계유산에 포함.'},
+  {title:'나는 어떤 왕일까요?',maxPts:5,clues:[{label:'단서 1',text:'나는 백제의 왕이다.'},{label:'단서 2',text:'나는 어린 시절 마를 캐며 살았고, 서동이라 불렸다.'},{label:'단서 3',text:'나는 사랑하는 사람을 얻기 위해 노래를 만들었다.'},{label:'단서 4',text:'나는 익산에 거대한 사찰과 별궁을 만들었다.'},{label:'단서 5',text:'나는 백제 제30대 왕. 재위 600~641년.'}],accept:['무왕','백제무왕'],answerFull:'무왕 (백제 제30대)',explain:'백제 제30대 무왕(재위 600~641년). 서동설화의 주인공으로 미륵사지와 왕궁리 유적을 조성.'},
+  {title:'나는 무엇일까요?',maxPts:5,clues:[{label:'단서 1',text:'나는 어떤 사찰의 건물이다.'},{label:'단서 2',text:'나는 현재 대한민국에 남아 있는 것 중 가장 오래된 종류다.'},{label:'단서 3',text:'나는 2001년에 무너질 위험이 생겨 분해되기 시작했다.'},{label:'단서 4',text:'내 안에서 639년에 만들어진 귀한 물건이 나왔다.'},{label:'단서 5',text:'나는 익산 미륵사지의 ○탑. 2019년 복원 완료.'}],accept:['석탑','미륵사지석탑','서탑','미륵사지 석탑'],answerFull:'미륵사지 석탑 (서탑)',explain:'현존 최대·최고(最古)의 백제 석탑. 1999년 해체 보수 시작, 2019년 6층으로 복원 완료.'},
+  {title:'나는 어떤 기관일까요?',maxPts:4,clues:[{label:'단서 1',text:'나는 유물을 보존하고 전시하는 곳이다.'},{label:'단서 2',text:'나는 2020년에 문을 열었다.'},{label:'단서 3',text:'나는 어떤 유적지 바로 옆에 위치한다.'},{label:'단서 4',text:'나는 국가가 운영한다. 이름에 도시 이름이 들어간다.'}],accept:['국립익산박물관','익산박물관'],answerFull:'국립익산박물관',explain:'2020년 1월 미륵사지 사역 내에 개관한 현장 박물관. 미륵사지·왕궁리 유적 발굴 유물을 현지에서 전시.'},
+  {title:'나는 무엇일까요?',maxPts:4,clues:[{label:'단서 1',text:'나는 세계적으로 인정받은 문화유산이다.'},{label:'단서 2',text:'나는 한 나라가 아닌 여러 지역에 걸쳐 있다.'},{label:'단서 3',text:'나에 속한 곳은 총 8군데다. 충청도와 전라도에 걸쳐 있다.'},{label:'단서 4',text:'나는 2015년에 유네스코에 등재되었다. 고대 왕국의 이름을 담고 있다.'}],accept:['백제역사유적지구','백제역사유적','백제유적지구'],answerFull:'백제역사유적지구',explain:'2015년 유네스코 세계유산 등재. 공주·부여·익산 3개 지역 8개소(미륵사지·왕궁리 유적 포함).'}
 ];
 
 var teamNames={a:'팀 A',b:'팀 B'};
@@ -316,18 +230,65 @@ var qIdx=0;
 var openedClues=0;
 var qResults=[];
 var answered=false;
+var pendingResult=null; /* 정답/오답 후 handover 전 저장 */
 
 function startGame(){
   var na=document.getElementById('name-a').value.trim()||'팀 A';
   var nb=document.getElementById('name-b').value.trim()||'팀 B';
   teamNames={a:na,b:nb};
-  scores={a:0,b:0};turn='a';qIdx=0;qResults=[];answered=false;
-  document.getElementById('label-a').textContent=na;
-  document.getElementById('label-b').textContent=nb;
-  document.getElementById('score-a').textContent='0';
-  document.getElementById('score-b').textContent='0';
-  renderQ();
-  show('pg-game');
+  scores={a:0,b:0};turn='a';qIdx=0;qResults=[];answered=false;pendingResult=null;
+  syncLabels();
+  showHandover('start');
+}
+
+function syncLabels(){
+  ['a','b'].forEach(function(t){
+    document.getElementById('label-'+t).textContent=teamNames[t];
+    document.getElementById('score-'+t).textContent=scores[t];
+    document.getElementById('ho-label-'+t).textContent=teamNames[t];
+    document.getElementById('ho-score-'+t).textContent=scores[t];
+    document.getElementById('sd-'+t).textContent=teamNames[t];
+    document.getElementById('sdp-'+t).textContent=scores[t]+'점';
+  });
+}
+
+/* 턴 전환 화면 표시 */
+function showHandover(type){
+  show('pg-handover');
+  var card=document.getElementById('handover-card');
+  var emoji=document.getElementById('ho-emoji');
+  var title=document.getElementById('ho-title');
+  var desc=document.getElementById('ho-desc');
+  var msg=document.getElementById('ho-score-msg');
+  syncLabels();
+  if(type==='start'){
+    card.className='handover '+turn;
+    emoji.textContent='🎮';
+    title.textContent=teamNames[turn]+'팀, 준비하세요!';
+    desc.textContent='스마트폰을 '+teamNames[turn]+'팀에게 넘겨주세요.\n버튼을 누르면 문제가 공개됩니다.';
+    msg.textContent='';
+  }else if(type==='correct'){
+    var prev=turn==='a'?'b':'a'; /* 방금 맞힌 팀 */
+    card.className='handover '+prev;
+    emoji.textContent='✅';
+    title.textContent=teamNames[prev]+'팀 정답!';
+    desc.textContent='다음은 '+teamNames[turn]+'팀의 차례입니다.\n스마트폰을 '+teamNames[turn]+'팀에게 넘겨주세요.';
+    msg.textContent=teamNames[prev]+' '+scores[prev]+'점 · '+teamNames[turn]+' '+scores[turn]+'점';
+  }else if(type==='wrong'){
+    var scorer=turn;
+    card.className='handover '+turn;
+    emoji.textContent='❌';
+    title.textContent='오답!';
+    desc.textContent='턴이 '+teamNames[turn]+'팀으로 넘어갑니다.\n스마트폰을 '+teamNames[turn]+'팀에게 넘겨주세요.';
+    msg.textContent=teamNames['a']+' '+scores['a']+'점 · '+teamNames['b']+' '+scores['b']+'점';
+  }else if(type==='skip'){
+    card.className='handover '+turn;
+    emoji.textContent='⏭';
+    title.textContent='패스!';
+    desc.textContent='다음 문제로 넘어갑니다.\n스마트폰을 '+teamNames[turn]+'팀에게 넘겨주세요.';
+    msg.textContent='';
+  }
+  document.getElementById('ho-btn').onclick=function(){renderQ();show('pg-game');};
 }
 
 function renderQ(){
@@ -337,15 +298,13 @@ function renderQ(){
   document.getElementById('q-counter').textContent='문제 '+(qIdx+1)+' / '+QUESTIONS.length;
   updPts(q.maxPts);
   document.getElementById('pts-warn').style.display='none';
-  var wrap=document.getElementById('clues-wrap');
-  wrap.innerHTML='';
+  var wrap=document.getElementById('clues-wrap');wrap.innerHTML='';
   q.clues.forEach(function(c,i){
     var box=document.createElement('div');box.className='clue-box';box.id='clue-'+i;
-    var isFree=i===0;
     box.innerHTML='<div class="clue-box-hd" onclick="toggleClue('+i+')">'
       +'<span class="clue-num">'+c.label+'</span>'
-      +'<span class="clue-title">'+(isFree?'첫 번째 단서 (무료)':'1점 차감')+'</span>'
-      +'<button class="reveal-btn" onclick="event.stopPropagation();openClue('+i+')">'+(isFree?'공개':'열기')+'</button>'
+      +'<span class="clue-title">'+(i===0?'첫 번째 단서 (무료)':'1점 차감')+'</span>'
+      +'<button class="reveal-btn" onclick="event.stopPropagation();openClue('+i+')">'+(i===0?'공개':'열기')+'</button>'
       +'</div>'
       +'<div class="clue-body" id="clue-body-'+i+'">'+c.text
       +(i>0?'<div class="clue-cost">※ 이 단서를 보면 최대 점수에서 1점 감소</div>':'')
@@ -355,6 +314,7 @@ function renderQ(){
   setTimeout(function(){openClue(0);},200);
   document.getElementById('ans-inp').value='';
   document.getElementById('ans-inp').className='inp-'+turn;
+  document.getElementById('ans-label').textContent=teamNames[turn]+'팀 답 입력';
   document.getElementById('feedback').className='feedback';
   updTurn();
 }
@@ -363,28 +323,11 @@ function openClue(i){
   var q=QUESTIONS[qIdx];
   var body=document.getElementById('clue-body-'+i);
   if(!body||body.classList.contains('open'))return;
-  if(i>0){
-    var remaining=q.maxPts-openedClues;
-    if(remaining<=1){
-      var w=document.getElementById('pts-warn');
-      w.textContent='단서를 더 열면 0점이 됩니다!';
-      w.style.display='block';
-    }
-    openedClues++;
-    updPts(q.maxPts-openedClues);
-  }
+  if(i>0){var remaining=q.maxPts-openedClues;if(remaining<=1){var w=document.getElementById('pts-warn');w.textContent='단서를 더 열면 0점이 됩니다!';w.style.display='block';}openedClues++;updPts(q.maxPts-openedClues);}
   body.classList.add('open');
 }
-function toggleClue(i){
-  var body=document.getElementById('clue-body-'+i);
-  if(body&&!body.classList.contains('open'))openClue(i);
-}
-function updPts(pts){
-  pts=Math.max(pts,0);
-  var b=document.getElementById('q-pts-badge');
-  b.textContent='최대 '+pts+'점';
-  b.className='q-pts'+(pts>=4?' p1':pts>=2?' p2':' p3');
-}
+function toggleClue(i){var body=document.getElementById('clue-body-'+i);if(body&&!body.classList.contains('open'))openClue(i);}
+function updPts(pts){pts=Math.max(pts,0);var b=document.getElementById('q-pts-badge');b.textContent='최대 '+pts+'점';b.className='q-pts p'+Math.min(pts,5);}
 function calcPts(){return Math.max(QUESTIONS[qIdx].maxPts-openedClues,0);}
 
 function submitAns(){
@@ -398,26 +341,34 @@ function submitAns(){
     answered=true;
     var pts=calcPts();
     scores[turn]+=pts;
-    document.getElementById('score-'+turn).textContent=scores[turn];
     qResults.push({q:q,winner:turn,ptsEarned:pts,opened:openedClues+1});
-    fb.textContent='정답! +'+pts+'점 획득 → '+teamNames[turn]+' '+scores[turn]+'점';
+    fb.textContent='정답! +'+pts+'점 → '+teamNames[turn]+' '+scores[turn]+'점';
     fb.className='feedback show correct';
     popScore(pts,turn);
     var nextTurn=turn==='a'?'b':'a';
-    setTimeout(function(){fb.className='feedback';qIdx++;turn=nextTurn;renderQ();},1800);
+    setTimeout(function(){
+      fb.className='feedback';
+      qIdx++;turn=nextTurn;
+      showHandover('correct');
+    },1500);
   }else{
     fb.textContent='오답! 턴이 '+teamNames[turn==='a'?'b':'a']+'으로 넘어갑니다.';
     fb.className='feedback show wrong';
     inp.value='';
     qResults.push({q:q,winner:null,ptsEarned:0,opened:openedClues+1,wrongAnswer:v});
     var nextTurn2=turn==='a'?'b':'a';
-    setTimeout(function(){fb.className='feedback';turn=nextTurn2;updTurn();qIdx++;renderQ();},1500);
+    setTimeout(function(){
+      fb.className='feedback';
+      turn=nextTurn2;qIdx++;
+      showHandover('wrong');
+    },1500);
   }
 }
 
 function skipQ(){
   qResults.push({q:QUESTIONS[qIdx],winner:null,ptsEarned:0,opened:openedClues+1,skipped:true});
-  turn=turn==='a'?'b':'a';qIdx++;renderQ();
+  turn=turn==='a'?'b':'a';qIdx++;
+  showHandover('skip');
 }
 
 function popScore(pts,t){
@@ -437,36 +388,25 @@ function updTurn(){
 
 function endGame(){
   var a=scores.a,b=scores.b;
-  var box=document.getElementById('winner-box');
-  var lbl=document.getElementById('wb-lbl');
-  var nm=document.getElementById('wb-name');
+  var box=document.getElementById('winner-box');var lbl=document.getElementById('wb-lbl');var nm=document.getElementById('wb-name');
   if(a>b){box.className='winner-box a';lbl.className='wb-lbl a';lbl.textContent='승리';nm.textContent=teamNames.a;}
   else if(b>a){box.className='winner-box b';lbl.className='wb-lbl b';lbl.textContent='승리';nm.textContent=teamNames.b;}
   else{box.className='winner-box tie';lbl.className='wb-lbl tie';lbl.textContent='무승부';nm.textContent=teamNames.a+' · '+teamNames.b;}
-  document.getElementById('sd-a').textContent=teamNames.a;
-  document.getElementById('sd-b').textContent=teamNames.b;
-  document.getElementById('sdp-a').textContent=a+'점';
-  document.getElementById('sdp-b').textContent=b+'점';
+  syncLabels();
   document.getElementById('rv-list').innerHTML=QUESTIONS.slice(0,qResults.length).map(function(q,i){
     var r=qResults[i];
     var cls=r.winner?'rv-item '+r.winner:'rv-item skip';
     var who=r.winner?(teamNames[r.winner]+' +'+r.ptsEarned+'점 (단서 '+r.opened+'개)'):r.skipped?'패스':'오답 처리';
-    return '<div class="'+cls+'">'
-      +'<div class="rv-q">'+q.answerFull+'</div>'
-      +'<div class="rv-who">'+who+'</div>'
-      +'<div class="rv-exp">'+q.explain+'</div>'
-      +'</div>';
+    return '<div class="'+cls+'"><div class="rv-q">'+q.answerFull+'</div><div class="rv-who">'+who+'</div><div class="rv-exp">'+q.explain+'</div></div>';
   }).join('');
   show('pg-result');
 }
 
 function show(id){
-  ['pg-start','pg-game','pg-result'].forEach(function(p){
-    document.getElementById(p).style.display=p===id?'block':'none';
-  });
+  ['pg-start','pg-handover','pg-game','pg-result'].forEach(function(p){document.getElementById(p).style.display=p===id?'block':'none';});
 }
 
-/* 이벤트 바인딩 */
+document.getElementById('start-btn').addEventListener('click',startGame);
 document.getElementById('submit-btn').addEventListener('click',submitAns);
 document.getElementById('skip-btn').addEventListener('click',skipQ);
 document.getElementById('end-btn').addEventListener('click',function(){if(confirm('게임을 끝낼까요?'))endGame();});
