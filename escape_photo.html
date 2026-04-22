@@ -314,31 +314,6 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 <button class="bm" id="nx5" style="display:none" onclick="go(6)">🔤 비밀 단어 완성!</button>
 </div>
 
-<!-- 최종 -->
-<div id="p6" class="pg">
-<div style="text-align:center;padding:1.5rem 0 1.25rem">
-  <div class="badge">비밀 단어 완성</div>
-  <h1 style="font-size:20px;margin-bottom:.5rem">다섯 조각을 모았다!</h1>
-  <p style="font-size:13px;color:#a09880;line-height:1.7">1→2→3→4→5 순서로 이어 입력하세요.</p>
-</div>
-<div class="fw">
-  <div class="fwb" id="fw1"><div class="fws">ST1</div><div class="fwc">?</div></div>
-  <div class="fwb" id="fw2"><div class="fws">ST2</div><div class="fwc">?</div></div>
-  <div class="fwb" id="fw3"><div class="fws">ST3</div><div class="fwc">?</div></div>
-  <div class="fwb" id="fw4"><div class="fws">ST4</div><div class="fwc">?</div></div>
-  <div class="fwb" id="fw5"><div class="fws">ST5</div><div class="fwc">?</div></div>
-</div>
-<div class="fd" id="fdsp">?????</div>
-<div style="font-size:13px;font-weight:700;color:#a09880;margin-bottom:8px">완성된 단어 입력</div>
-<input class="ci" id="cii" type="text" placeholder="단어 입력" maxlength="10"/>
-<div class="fb" id="ff" style="margin-bottom:1rem"></div>
-<button class="bm" id="fb2">비밀 단어 확인!</button>
-<div style="margin-top:.75rem">
-  <button class="bs" id="hb">힌트 보기 (+3분 패널티)</button>
-  <div style="font-size:11px;color:#5a5648;text-align:center;margin-top:6px" id="hm"></div>
-</div>
-</div>
-
 <!-- 최종 퀴즈 -->
 <div id="p6f" class="pg">
 <div style="text-align:center;padding:1.5rem 0 1rem">
@@ -561,13 +536,14 @@ function updTch(){
   el.innerHTML=h;
 }
 function go(n){
-  var ids=['p0','p1','p2','p3','p4','p5','p6','p6f','p7'];
-  ids.forEach(function(id){var p=document.getElementById(id);if(p)p.className='pg'+(id==='p'+n?' on':'');});
-  var inGame=(n>=1&&n<=6)||n==='6f';
-  document.getElementById('tb').style.display=inGame?'block':'none';
-  if(n===6)fillFinal();
+  ['p0','p1','p2','p3','p4','p5','p6f','p7'].forEach(function(id){
+    var p=document.getElementById(id);
+    if(p)p.className='pg'+(id==='p'+n?' on':'');
+  });
+  document.getElementById('tb').style.display=((n>=1&&n<=5)||n==='6f')?'block':'none';
   window.scrollTo(0,0);
 }
+
 function sfb(id,ok,msg){var e=document.getElementById(id);if(!e)return;e.textContent=msg;e.className='fb on '+(ok?'ok':'ng');}
 function hfb(id){var e=document.getElementById(id);if(e)e.className='fb';}
 function ulk(id){
@@ -601,8 +577,13 @@ function bindSubjective(btnId, inputs, stageNum, okMsg){
       setTimeout(function(){
         document.getElementById('gc'+stageNum).textContent=ch;
         document.getElementById('g'+stageNum).className='got on';
-        document.getElementById('nx'+stageNum).style.display='block';
         updTch();
+        var done=chars.filter(function(x){return x!=='';}).length;
+        if(done===5){
+          setTimeout(function(){go('6f');},1200);
+        }else{
+          document.getElementById('nx'+stageNum).style.display='block';
+        }
       },700);
     }else{
       inputs.forEach(function(inp){var el=document.getElementById(inp[0]);if(el)el.className='inp ng';});
@@ -645,22 +626,7 @@ function fillFinal(){
   document.getElementById('cii').value=w.replace(/\?/g,'');
 }
 
-document.getElementById('fb2').addEventListener('click',function(){
-  var v=document.getElementById('cii').value.trim();
-  if(v===FINAL_WORD){
-    clearInterval(timerItv);
-    saveScore(pName,elapsed,penalty);
-    document.getElementById('cword').textContent=FINAL_WORD;
-    document.getElementById('csub').textContent=pName+'님, 백제의 비밀을 풀었습니다!';
-    document.getElementById('ctime').textContent='클리어: '+fmt(elapsed);
-    if(penalty>0)document.getElementById('cpen').textContent='패널티 +'+fmt(penalty)+' 포함';
-    renderRank();renderGallery();go(7);
-  }else{
-    document.getElementById('cii').className='ci ng';
-    sfb('ff',false,'틀렸습니다! 1→2→3→4→5 순서로 이어 보세요.');
-    setTimeout(function(){document.getElementById('cii').className='ci';hfb('ff');},2000);
-  }
-});
+
 
 /* 최종 퀴즈 */
 document.getElementById('fq-btn').addEventListener('click',function(){
@@ -694,12 +660,7 @@ document.getElementById('fq-btn').addEventListener('click',function(){
 });
 document.getElementById('fq-inp').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('fq-btn').click();});
 
-document.getElementById('hb').addEventListener('click',function(){
-  if(hintUsed)return;hintUsed=true;penalty+=180;
-  var ms=[];for(var i=0;i<5;i++)if(!chars[i])ms.push('ST'+(i+1));
-  document.getElementById('hm').textContent=(ms.length?'미완성 구간: '+ms.join(', ')+'에서 글자를 찾아보세요.':'모든 조각 완료! 순서대로 입력하세요.')+' (+3분 패널티)';
-  document.getElementById('hm').style.color='#d4a843';
-});
+
 
 /* ━━━ 점수 ━━━ */
 function saveScore(n,s,p){var l=getS();l.push({name:n,sec:s,pen:p});l.sort(function(a,b){return a.sec-b.sec;});l=l.slice(0,10);try{localStorage.setItem('mse4',JSON.stringify(l));}catch(e){}}
