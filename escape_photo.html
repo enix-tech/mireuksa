@@ -91,6 +91,7 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 .rrow.me{background:rgba(212,168,67,.13);border:1px solid #7a5e1e}
 .rp{font-size:15px;font-weight:700;min-width:22px;text-align:center;color:#5a5648}
 .rp.p1{color:#ffd700}.rp.p2{color:#c0c0c0}.rp.p3{color:#cd7f32}
+.ir2{display:flex;flex-direction:column;gap:8px;margin-bottom:.875rem}
 </style>
 </head>
 <body>
@@ -133,22 +134,22 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
   <div class="pc-title">📸 장소 인증 <span class="cam-tag">AI 확인</span></div>
   <div class="photo-area" id="pa1" onclick="triggerPhoto(1)">
     <div class="ph-icon">📷</div>
-    <div class="ph-text">서탑을 정면으로 찍어<br>업로드하세요</div>
+    <div class="ph-text">서탑을 찍으면<br>자동으로 인증됩니다 📸</div>
   </div>
   <input class="photo-input" id="pi1" type="file" accept="image/*" capture="environment"/>
   <div class="ai-result" id="ar1"></div>
-  <button class="bm" id="pb1" onclick="analyzePhoto(1)" disabled>AI에게 인증받기</button>
+  <button class="bm" id="pb1" onclick="analyzePhoto(1)" disabled style="display:none">AI에게 인증받기</button>
 </div>
 
 <div class="card lk" id="s1q">
   <div class="slbl">역사 퀴즈 <span class="utag">사진 인증 완료 시 해제</span></div>
-  <div class="q">2009년 서탑 해체 중 심주석 안에서 발견된 유물의 이름은?</div>
-  <div class="ctx">백제 무왕 40년(639년)에 제작된 금으로 만든 유물로, 미륵사 창건 시기를 밝혀준 결정적 증거입니다.</div>
+  <div class="q">미륵사지 서탑은 몇 년에 해체 보수가 시작되어 몇 년에 복원이 완료되었나요?</div>
+  <div class="ctx">서탑은 오랜 해체·보수 작업을 거쳐 복원되었습니다. 해체 과정에서 심주석 안의 금제사리봉영기가 발견되었습니다.</div>
   <div class="chs" id="c1q">
-    <button class="bc" data-v="ng"><div class="d"></div>왕궁리 사리함</button>
-    <button class="bc" data-v="ok"><div class="d"></div>금제사리봉영기 (金製舍利奉迎記)</button>
-    <button class="bc" data-v="ng"><div class="d"></div>백제금동대향로</button>
-    <button class="bc" data-v="ng"><div class="d"></div>무령왕릉 금관</button>
+    <button class="bc" data-v="ng"><div class="d"></div>2001년 해체 시작 → 2015년 복원 완료</button>
+    <button class="bc" data-v="ok"><div class="d"></div>1999년 해체 시작 → 2019년 복원 완료</button>
+    <button class="bc" data-v="ng"><div class="d"></div>2009년 해체 시작 → 2019년 복원 완료</button>
+    <button class="bc" data-v="ng"><div class="d"></div>1985년 해체 시작 → 2005년 복원 완료</button>
   </div>
   <div class="fb" id="f1q"></div>
 </div>
@@ -172,22 +173,22 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
   <div class="pc-title">📸 장소 인증 <span class="cam-tag">AI 확인</span></div>
   <div class="photo-area" id="pa2" onclick="triggerPhoto(2)">
     <div class="ph-icon">📷</div>
-    <div class="ph-text">당간지주 돌기둥을<br>찍어 업로드하세요</div>
+    <div class="ph-text">당간지주를 찍으면<br>자동으로 인증됩니다 📸</div>
   </div>
   <input class="photo-input" id="pi2" type="file" accept="image/*" capture="environment"/>
   <div class="ai-result" id="ar2"></div>
-  <button class="bm" id="pb2" onclick="analyzePhoto(2)" disabled>AI에게 인증받기</button>
+  <button class="bm" id="pb2" onclick="analyzePhoto(2)" disabled style="display:none">AI에게 인증받기</button>
 </div>
 
 <div class="card lk" id="s2q">
   <div class="slbl">역사 퀴즈 <span class="utag">사진 인증 완료 시 해제</span></div>
-  <div class="q">당간지주(幢竿支柱)는 어떤 용도로 사용하던 구조물인가?</div>
-  <div class="ctx">사찰에서 행사가 있을 때 이것을 이용해 깃발을 높이 게양하여 사찰의 위치와 행사를 알렸습니다.</div>
+  <div class="q">미륵사지 당간지주는 어느 시대에 만들어진 것으로 추정되나요?</div>
+  <div class="ctx">당간지주는 사찰의 깃발을 게양하던 구조물입니다. 미륵사지는 백제 무왕 때 창건되었으며, 당간지주 역시 같은 시기의 유산입니다.</div>
   <div class="chs" id="c2q">
-    <button class="bc" data-v="ng"><div class="d"></div>범종(梵鐘)을 매달던 기둥</button>
-    <button class="bc" data-v="ng"><div class="d"></div>연등(燃燈)을 달던 등대</button>
-    <button class="bc" data-v="ok"><div class="d"></div>깃발(幡)을 매달던 깃대를 지지하는 구조물</button>
-    <button class="bc" data-v="ng"><div class="d"></div>경전(經典)을 보관하던 장치</button>
+    <button class="bc" data-v="ng"><div class="d"></div>고려 시대</button>
+    <button class="bc" data-v="ng"><div class="d"></div>통일신라 시대</button>
+    <button class="bc" data-v="ok"><div class="d"></div>백제 시대</button>
+    <button class="bc" data-v="ng"><div class="d"></div>조선 시대</button>
   </div>
   <div class="fb" id="f2q"></div>
 </div>
@@ -211,22 +212,22 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
   <div class="pc-title">📸 장소 인증 <span class="cam-tag">AI 확인</span></div>
   <div class="photo-area" id="pa3" onclick="triggerPhoto(3)">
     <div class="ph-icon">📷</div>
-    <div class="ph-text">금당터 주춧돌 배열을<br>찍어 업로드하세요</div>
+    <div class="ph-text">금당터를 찍으면<br>자동으로 인증됩니다 📸</div>
   </div>
   <input class="photo-input" id="pi3" type="file" accept="image/*" capture="environment"/>
   <div class="ai-result" id="ar3"></div>
-  <button class="bm" id="pb3" onclick="analyzePhoto(3)" disabled>AI에게 인증받기</button>
+  <button class="bm" id="pb3" onclick="analyzePhoto(3)" disabled style="display:none">AI에게 인증받기</button>
 </div>
 
 <div class="card lk" id="s3q">
   <div class="slbl">역사 퀴즈 <span class="utag">사진 인증 완료 시 해제</span></div>
-  <div class="q">삼국유사에 따르면 무왕이 미륵사를 창건하게 된 계기는?</div>
-  <div class="ctx">무왕과 선화공주가 이동 중 어떤 장소에서 특별한 일을 경험한 후 창건을 결심했습니다.</div>
+  <div class="q">미륵사는 동원·서원·중원으로 구성된 몇 원(院) 가람 형식인가요?<br><span style="font-size:13px;color:#a09880;font-weight:400">이 형식은 세계 불교 사원에서 매우 드문 구조입니다.</span></div>
+  <div class="ctx">각 원(院)은 탑·금당·회랑을 독립적으로 갖추고 있습니다. 지금 서 있는 이곳이 바로 중원(中院) 금당터입니다.</div>
   <div class="chs" id="c3q">
-    <button class="bc" data-v="ng"><div class="d"></div>당나라 승려의 권유로</button>
-    <button class="bc" data-v="ok"><div class="d"></div>용화산 아래 큰 못에서 미륵 세 부처가 나타나</button>
-    <button class="bc" data-v="ng"><div class="d"></div>신라와의 전쟁에서 승리한 것을 기념하여</button>
-    <button class="bc" data-v="ng"><div class="d"></div>왕비 선화공주의 간청으로</button>
+    <button class="bc" data-v="ng"><div class="d"></div>1원 가람 (단일 구역)</button>
+    <button class="bc" data-v="ng"><div class="d"></div>2원 가람 (동원·서원)</button>
+    <button class="bc" data-v="ok"><div class="d"></div>3원 가람 (동원·서원·중원)</button>
+    <button class="bc" data-v="ng"><div class="d"></div>5원 가람 (다섯 구역)</button>
   </div>
   <div class="fb" id="f3q"></div>
 </div>
@@ -250,22 +251,22 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
   <div class="pc-title">📸 장소 인증 <span class="cam-tag">AI 확인</span></div>
   <div class="photo-area" id="pa4" onclick="triggerPhoto(4)">
     <div class="ph-icon">📷</div>
-    <div class="ph-text">동탑 전체를 찍어<br>업로드하세요</div>
+    <div class="ph-text">동탑을 찍으면<br>자동으로 인증됩니다 📸</div>
   </div>
   <input class="photo-input" id="pi4" type="file" accept="image/*" capture="environment"/>
   <div class="ai-result" id="ar4"></div>
-  <button class="bm" id="pb4" onclick="analyzePhoto(4)" disabled>AI에게 인증받기</button>
+  <button class="bm" id="pb4" onclick="analyzePhoto(4)" disabled style="display:none">AI에게 인증받기</button>
 </div>
 
 <div class="card lk" id="s4q">
   <div class="slbl">역사 퀴즈 <span class="utag">사진 인증 완료 시 해제</span></div>
-  <div class="q">미륵사를 창건한 백제 무왕의 어린 시절 이름(별명)은?</div>
-  <div class="ctx">삼국유사 서동설화에 등장합니다. 어린 시절 마(薯)를 캐어 팔며 살았다고 하여 이 이름으로 불렸습니다.</div>
+  <div class="q">미륵사지 동탑과 서탑은 같은 재질인가요?<br>또한 동탑의 복원은 언제 완료되었나요?</div>
+  <div class="ctx">눈앞의 동탑과 이미 지나온 서탑을 비교해보세요. 재질과 복원 시기가 어떻게 다른지 알면 미륵사지를 더 잘 이해할 수 있습니다.</div>
   <div class="chs" id="c4q">
-    <button class="bc" data-v="ng"><div class="d"></div>마동 (麻童)</button>
-    <button class="bc" data-v="ok"><div class="d"></div>서동 (薯童)</button>
-    <button class="bc" data-v="ng"><div class="d"></div>화랑 (花郞)</button>
-    <button class="bc" data-v="ng"><div class="d"></div>금동 (金童)</button>
+    <button class="bc" data-v="ng"><div class="d"></div>동탑은 목탑, 서탑은 석탑 — 재질이 다름</button>
+    <button class="bc" data-v="ok"><div class="d"></div>모두 석탑 — 동탑은 1993년 복원 완료</button>
+    <button class="bc" data-v="ng"><div class="d"></div>모두 석탑 — 동탑은 2019년 복원 완료</button>
+    <button class="bc" data-v="ng"><div class="d"></div>동탑은 전탑(벽돌), 서탑은 석탑 — 재질이 다름</button>
   </div>
   <div class="fb" id="f4q"></div>
 </div>
@@ -289,22 +290,22 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
   <div class="pc-title">📸 장소 인증 <span class="cam-tag">AI 확인</span></div>
   <div class="photo-area" id="pa5" onclick="triggerPhoto(5)">
     <div class="ph-icon">📷</div>
-    <div class="ph-text">박물관 건물이나<br>명패를 찍어 업로드하세요</div>
+    <div class="ph-text">박물관을 찍으면<br>자동으로 인증됩니다 📸</div>
   </div>
   <input class="photo-input" id="pi5" type="file" accept="image/*" capture="environment"/>
   <div class="ai-result" id="ar5"></div>
-  <button class="bm" id="pb5" onclick="analyzePhoto(5)" disabled>AI에게 인증받기</button>
+  <button class="bm" id="pb5" onclick="analyzePhoto(5)" disabled style="display:none">AI에게 인증받기</button>
 </div>
 
 <div class="card lk" id="s5q">
   <div class="slbl">역사 퀴즈 <span class="utag">사진 인증 완료 시 해제</span></div>
-  <div class="q">서동이 신라 진평왕의 딸을 얻기 위해 지어 퍼뜨린 노래의 이름은?<br>이 노래는 현존하는 가장 오래된 향가 중 하나입니다.</div>
-  <div class="ctx">서동이 아이들에게 이 노래를 가르쳐 신라 서울에서 부르게 했고, 결국 공주가 서동과 혼인하게 되었다는 설화가 전해집니다.</div>
+  <div class="q">국립익산박물관이 미륵사지 사역 내에 개관한 해는 언제인가요?</div>
+  <div class="ctx">이 박물관은 미륵사지와 왕궁리 유적의 발굴 유물을 현장에서 직접 보존·전시하는 현장 박물관입니다.</div>
   <div class="chs" id="c5q">
-    <button class="bc" data-v="ng"><div class="d"></div>처용가 (處容歌)</button>
-    <button class="bc" data-v="ng"><div class="d"></div>제망매가 (祭亡妹歌)</button>
-    <button class="bc" data-v="ok"><div class="d"></div>서동요 (薯童謠)</button>
-    <button class="bc" data-v="ng"><div class="d"></div>찬기파랑가 (讚耆婆郞歌)</button>
+    <button class="bc" data-v="ng"><div class="d"></div>2015년</button>
+    <button class="bc" data-v="ng"><div class="d"></div>2019년</button>
+    <button class="bc" data-v="ok"><div class="d"></div>2020년</button>
+    <button class="bc" data-v="ng"><div class="d"></div>2022년</button>
   </div>
   <div class="fb" id="f5q"></div>
 </div>
@@ -468,14 +469,7 @@ var FINAL_WORD = '서동요백제';
 var chars=['','','','',''], pName='', startTs=null, timerItv=null, elapsed=0, penalty=0, hintUsed=false;
 var photoData={1:null,2:null,3:null,4:null,5:null};
 
-/* ━━━ 각 스테이지 AI 확인 프롬프트 ━━━ */
-var AI_PROMPTS = {
-  1: '이 사진이 익산 미륵사지의 서탑(西塔, 백제 석탑)인지 확인해주세요. 서탑은 여러 층으로 쌓인 대형 석조 탑입니다.',
-  2: '이 사진이 미륵사지의 당간지주(幢竿支柱, 두 개의 돌기둥 구조물)인지 확인해주세요.',
-  3: '이 사진이 미륵사지 중원 금당터(바닥에 주춧돌이 놓인 공터)인지 확인해주세요.',
-  4: '이 사진이 미륵사지 동원 석탑(동탑)인지 확인해주세요. 서탑보다 작고 먼저 복원된 탑입니다.',
-  5: '이 사진이 국립익산박물관 건물이나 명패인지 확인해주세요.'
-};
+/* AI_PROMPTS 제거 — 사진 촬영 즉시 자동 인증 방식으로 변경 */
 
 /* ━━━ 사진 처리 ━━━ */
 function triggerPhoto(n){ document.getElementById('pi'+n).click(); }
@@ -489,67 +483,31 @@ for(var _i=1;_i<=5;_i++){
         var pa=document.getElementById('pa'+n);
         pa.innerHTML='<img src="'+ev.target.result+'" alt="현장사진"/><div class="ph-change">다시 찍기</div>';
         photoData[n]=ev.target.result.split(',')[1];
-        document.getElementById('pb'+n).disabled=false;
         document.getElementById('pc'+n).classList.add('has-photo');
         document.getElementById('ar'+n).className='ai-result';
+        /* 사진 선택 즉시 자동 인증 */
+        setTimeout(function(){ analyzePhoto(n); }, 300);
       };
       reader.readAsDataURL(file);
     });
   })(_i);
 }
 
-/* ━━━ AI 사진 분석 ━━━ */
-async function analyzePhoto(n){
+/* ━━━ 사진 인증 — 사진 선택 즉시 통과 ━━━ */
+function analyzePhoto(n){
   if(!photoData[n])return;
-  var btn=document.getElementById('pb'+n);
   var ar=document.getElementById('ar'+n);
+  var btn=document.getElementById('pb'+n);
   btn.disabled=true;
   ar.className='ai-result on loading';
-  ar.innerHTML='🤖 AI가 사진을 확인하고 있습니다...<div class="dots"><span></span><span></span><span></span></div>';
-
-  try{
-    var res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:300,
-        messages:[{
-          role:'user',
-          content:[
-            {type:'image',source:{type:'base64',media_type:'image/jpeg',data:photoData[n]}},
-            {type:'text',text:AI_PROMPTS[n]+'\n\n다음 형식으로 한국어로 답해주세요:\n인증결과: 맞음 또는 틀림\n이유: (한 문장으로 설명)'}
-          ]
-        }]
-      })
-    });
-    var data=await res.json();
-    var text=(data.content&&data.content[0])?data.content[0].text:'분석 실패';
-    var isOk=text.includes('맞음')||text.includes('맞습니다')||text.includes('확인됩니다')||text.includes('맞아요')||text.includes('네,');
-    ar.className='ai-result on '+(isOk?'ok':'ng');
-    ar.innerHTML=(isOk?'✅ ':'❌ ')+text;
-    if(isOk){
-      document.getElementById('pc'+n).classList.add('verified');
-      document.getElementById('pc'+n).classList.remove('has-photo');
-      ulk('s'+n+'q');
-    }else{
-      btn.disabled=false;
-    }
-  }catch(err){
-    ar.className='ai-result on ng';
-    ar.innerHTML='❌ AI 연결에 실패했습니다. 네트워크를 확인하거나 아래에서 건너뛰세요.';
-    var skipBtn=document.createElement('button');
-    skipBtn.className='bm';skipBtn.style.marginTop='8px';skipBtn.style.background='#3a3d4a';skipBtn.style.color='#a09880';
-    skipBtn.textContent='사진 인증 건너뛰기';
-    skipBtn.onclick=function(){
-      document.getElementById('pc'+n).classList.add('verified');
-      ar.className='ai-result';
-      ulk('s'+n+'q');
-      skipBtn.remove();
-    };
-    ar.after(skipBtn);
-    btn.disabled=false;
-  }
+  ar.innerHTML='📸 현장 사진 확인 중...';
+  setTimeout(function(){
+    ar.className='ai-result on ok';
+    ar.innerHTML='✅ 현장 인증 완료! 역사 퀴즈가 열립니다.';
+    document.getElementById('pc'+n).classList.add('verified');
+    document.getElementById('pc'+n).classList.remove('has-photo');
+    ulk('s'+n+'q');
+  },800);
 }
 
 /* ━━━ 공통 유틸 ━━━ */
@@ -618,19 +576,19 @@ function bindQuiz(gid, stageNum, okMsg, ngMsg){
 }
 
 bindQuiz('c1q',1,
-  '정답! 금제사리봉영기(金製舍利奉迎記). 639년 무왕 40년에 제작. ✨ 글자 조각 「서」획득!',
+  '정답! 1999년 해체 시작 → 2009년 금제사리봉영기 발견 → 2019년 복원 완료. 20년이 걸린 대역사! ✨ 글자 조각 「서」획득!',
   '다시 생각해보세요. 서탑 심주석에서 나온 금으로 만든 유물입니다.');
 bindQuiz('c2q',2,
-  '정답! 당간에 깃발(幡)을 달아 사찰의 위치와 행사를 알렸습니다. ✨ 글자 조각 「동」획득!',
+  '정답! 미륵사지 당간지주는 백제 시대에 조성된 것으로 추정됩니다. ✨ 글자 조각 「동」획득!',
   '다시 생각해보세요. 당간지주는 깃대를 지지하는 구조물입니다.');
 bindQuiz('c3q',3,
-  '정답! 용화산 아래 큰 못에서 미륵 세 부처가 나타나 미륵사 창건을 결심했습니다. ✨ 글자 조각 「요」획득!',
+  '정답! 미륵사는 동원·서원·중원 3원 가람 배치로 세계에서 유례를 찾기 어려운 독특한 구조입니다. ✨ 글자 조각 「요」획득!',
   '삼국유사를 떠올려보세요. 무왕 부부가 이동 중 연못에서 특별한 경험을 했습니다.');
 bindQuiz('c4q',4,
-  '정답! 무왕의 어린 시절 이름은 서동(薯童). 마(薯)를 캐어 팔았다 하여 붙여진 이름입니다. ✨ 글자 조각 「백」획득!',
+  '정답! 동탑과 서탑 모두 석탑이며, 동탑은 서탑보다 먼저인 1993년에 복원 완료되었습니다. ✨ 글자 조각 「백」획득!',
   '삼국유사 서동설화를 떠올려보세요. 마(薯)와 관련된 이름입니다.');
 bindQuiz('c5q',5,
-  '정답! 서동요(薯童謠)! 현존 가장 오래된 향가 중 하나. 미륵사 창건의 주인공 서동이 지은 노래. ✨ 글자 조각 「제」획득!',
+  '정답! 국립익산박물관은 2020년 1월 미륵사지 사역 내에 개관. 미륵사지·왕궁리 발굴 유물을 현장에서 만날 수 있습니다. ✨ 글자 조각 「제」획득!',
   '서동이 신라 선화공주를 얻기 위해 만든 향가입니다. 이름을 떠올려보세요.');
 
 /* ━━━ 최종 단어 ━━━ */
