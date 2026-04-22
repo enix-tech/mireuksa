@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>백제의 비밀 — 미륵사지 방탈출</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f1117;color:#f0ece0;font-size:16px;-webkit-text-size-adjust:100%}
+.pg{display:none;min-height:100vh;padding:1.25rem 1.25rem 5rem;max-width:480px;margin:0 auto}
+.pg.on{display:block}
+.card{background:#1a1d27;border:1px solid #252836;border-radius:12px;padding:1.25rem;margin-bottom:.875rem}
+.card.g{border-left:3px solid #d4a843;background:rgba(212,168,67,.07)}
+.badge{display:inline-block;padding:5px 14px;background:rgba(212,168,67,.15);border:1px solid #7a5e1e;border-radius:20px;font-size:11px;font-weight:700;color:#d4a843;letter-spacing:.06em;margin-bottom:1.25rem}
+.slbl{font-size:10px;font-weight:700;color:#5a5648;letter-spacing:.07em;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.utag{background:rgba(155,127,232,.15);border:1px solid #9b7fe8;color:#9b7fe8;padding:1px 8px;border-radius:10px;font-size:10px}
+.q{font-size:15px;font-weight:700;line-height:1.7;color:#f0ece0;margin-bottom:.875rem}
+.ctx{font-size:13px;color:#a09880;line-height:1.75;background:#252836;border-radius:8px;padding:.875rem 1rem;margin-bottom:.875rem}
+.ctx b{color:#f0ece0}
+.formula{background:rgba(212,168,67,.1);border:1px solid #7a5e1e;border-radius:8px;padding:.875rem 1rem;margin-bottom:.875rem;font-size:13px;line-height:1.8}
+.formula .step{display:flex;align-items:flex-start;gap:8px;margin-bottom:4px}
+.formula .sn{background:#d4a843;color:#0f1117;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;flex-shrink:0;margin-top:2px}
+.formula .st{color:#f0ece0;font-size:13px}
+.chs{display:flex;flex-direction:column;gap:8px;margin-bottom:.875rem}
+.bc{width:100%;padding:13px 16px;background:#252836;border:2px solid #252836;border-radius:8px;font-size:14px;color:#f0ece0;cursor:pointer;text-align:left;font-family:inherit;display:flex;align-items:flex-start;gap:10px;-webkit-appearance:none;line-height:1.5}
+.bc:active{opacity:.8}
+.bc .d{width:14px;height:14px;border-radius:50%;border:2px solid #5a5648;flex-shrink:0;margin-top:2px}
+.bc.ok{border-color:#4caf7d;background:rgba(76,175,125,.15);color:#4caf7d}
+.bc.ok .d{border-color:#4caf7d;background:#4caf7d}
+.bc.ng{border-color:#e05252;background:rgba(224,82,82,.12);color:#e05252}
+.bc.ng .d{border-color:#e05252}
+.ir{display:flex;gap:8px;margin-bottom:.875rem}
+.inp{flex:1;padding:12px 14px;font-size:18px;font-weight:700;background:#1a1d27;border:2px solid #252836;border-radius:8px;color:#f0ece0;font-family:inherit;outline:none;-webkit-appearance:none;text-align:center}
+.inp:focus{border-color:#d4a843}.inp.ok{border-color:#4caf7d;color:#4caf7d}.inp.ng{border-color:#e05252}
+.fb{padding:11px 14px;border-radius:8px;font-size:13px;line-height:1.6;margin-bottom:.875rem;display:none}
+.fb.on{display:block}
+.fb.ok{background:rgba(76,175,125,.15);border:1px solid #4caf7d;color:#4caf7d}
+.fb.ng{background:rgba(224,82,82,.12);border:1px solid #e05252;color:#e05252}
+.fb.info{background:rgba(212,168,67,.12);border:1px solid #7a5e1e;color:#d4a843}
+.lk{opacity:.2;pointer-events:none;user-select:none}
+.got{background:rgba(212,168,67,.13);border:2px solid #d4a843;border-radius:12px;padding:1.5rem;text-align:center;display:none;margin-bottom:1rem}
+.got.on{display:block}
+.got-lbl{font-size:10px;font-weight:700;color:#a09880;letter-spacing:.07em;margin-bottom:.5rem}
+.got-ch{font-size:72px;font-weight:700;color:#d4a843;line-height:1;margin-bottom:.375rem}
+.got-sub{font-size:11px;color:#a09880;line-height:1.6}
+.bm{display:block;width:100%;padding:14px;font-size:15px;font-weight:700;border-radius:8px;cursor:pointer;font-family:inherit;border:none;text-align:center;background:#d4a843;color:#0f1117;-webkit-appearance:none;margin-bottom:8px}
+.bm:active{opacity:.82}
+.bm:disabled{opacity:.4;cursor:not-allowed}
+.bs{display:block;width:100%;padding:12px;font-size:13px;font-weight:600;border-radius:8px;cursor:pointer;font-family:inherit;background:transparent;border:1.5px solid #5a5648;color:#a09880;-webkit-appearance:none;text-align:center}
+.ni{width:100%;padding:12px 14px;font-size:16px;background:#1a1d27;border:2px solid #252836;border-radius:8px;color:#f0ece0;font-family:inherit;outline:none;-webkit-appearance:none;margin-bottom:1.25rem}
+.ni:focus{border-color:#d4a843}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.5rem}
+.ri{background:#1a1d27;border:1px solid #252836;border-radius:8px;padding:.875rem;text-align:center}
+.rin{font-size:17px;font-weight:700;color:#d4a843}
+.ril{font-size:11px;color:#a09880;margin-top:2px}
+#tb{display:none;background:rgba(15,17,23,.97);border-bottom:1px solid #252836;padding:8px 1.25rem;position:sticky;top:0;z-index:100;width:100%}
+.tbi{max-width:480px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.tbl{font-size:10px;color:#5a5648;letter-spacing:.05em}
+.tbv{font-size:17px;font-weight:700;color:#d4a843;font-variant-numeric:tabular-nums}
+.tbv.red{color:#e05252}
+.tch{display:flex;gap:4px}
+.tc{font-size:15px;font-weight:700}
+.tc.g{color:#d4a843}.tc.e{color:#5a5648}
+
+/* 📸 사진 인증 카드 */
+.photo-card{background:#1a1d27;border:2px dashed #3a3d4a;border-radius:12px;padding:1.25rem;margin-bottom:.875rem;transition:border-color .2s}
+.photo-card.has-photo{border-color:#d4a843;border-style:solid}
+.photo-card.verified{border-color:#4caf7d;border-style:solid}
+.pc-title{font-size:11px;font-weight:700;color:#5a5648;letter-spacing:.07em;margin-bottom:.75rem;display:flex;align-items:center;gap:6px}
+.pc-title .cam-tag{background:rgba(212,168,67,.15);border:1px solid #7a5e1e;color:#d4a843;padding:1px 8px;border-radius:10px;font-size:10px}
+.photo-area{width:100%;aspect-ratio:4/3;background:#252836;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;position:relative;overflow:hidden;margin-bottom:.875rem}
+.photo-area img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.photo-area .ph-icon{font-size:32px;margin-bottom:.5rem;opacity:.5}
+.photo-area .ph-text{font-size:13px;color:#5a5648;text-align:center;line-height:1.5}
+.photo-area .ph-change{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);color:#f0ece0;font-size:11px;padding:4px 10px;border-radius:20px;font-family:inherit}
+.photo-input{display:none}
+.ai-result{padding:10px 12px;border-radius:8px;font-size:13px;line-height:1.6;display:none;margin-bottom:.875rem}
+.ai-result.on{display:block}
+.ai-result.ok{background:rgba(76,175,125,.15);border:1px solid #4caf7d;color:#4caf7d}
+.ai-result.ng{background:rgba(224,82,82,.12);border:1px solid #e05252;color:#e05252}
+.ai-result.loading{background:rgba(212,168,67,.1);border:1px solid #7a5e1e;color:#d4a843}
+.ai-thinking{display:flex;align-items:center;gap:8px}
+.dots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#d4a843;animation:dot-bounce .8s infinite}
+.dots span:nth-child(2){animation-delay:.15s}
+.dots span:nth-child(3){animation-delay:.3s}
+@keyframes dot-bounce{0%,80%,100%{transform:scale(.6)}40%{transform:scale(1)}}
+
+/* 최종 */
+.fw{display:flex;gap:8px;justify-content:center;margin-bottom:1.25rem}
+.fwb{width:54px;height:64px;background:#1a1d27;border:2px solid #252836;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.fwb.f{border-color:#d4a843;background:rgba(212,168,67,.13)}
+.fws{font-size:9px;color:#5a5648;margin-bottom:3px}
+.fwc{font-size:28px;font-weight:700}
+.fwb.f .fwc{color:#d4a843}.fwb:not(.f) .fwc{color:#5a5648}
+.fd{font-size:40px;font-weight:700;color:#d4a843;letter-spacing:.18em;text-align:center;margin-bottom:1.25rem}
+.ci{width:100%;padding:14px;font-size:22px;font-weight:700;background:#1a1d27;border:2px solid #252836;border-radius:12px;color:#f0ece0;font-family:inherit;outline:none;text-align:center;letter-spacing:.15em;margin-bottom:1rem;-webkit-appearance:none}
+.ci:focus{border-color:#d4a843}.ci.ok{border-color:#4caf7d;color:#4caf7d}.ci.ng{border-color:#e05252}
+.cw{display:inline-block;padding:.75rem 1.5rem;background:rgba(212,168,67,.13);border:2px solid #d4a843;border-radius:12px;font-size:32px;font-weight:700;color:#d4a843;letter-spacing:.18em;margin-bottom:1.25rem}
+.rrow{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;margin-bottom:4px;font-size:13px;background:#252836}
+.rrow.me{background:rgba(212,168,67,.13);border:1px solid #7a5e1e}
+.rp{font-size:15px;font-weight:700;min-width:22px;text-align:center;color:#5a5648}
+.rp.p1{color:#ffd700}.rp.p2{color:#c0c0c0}.rp.p3{color:#cd7f32}
+</style>
+</head>
+<body>
+<div id="tb"><div class="tbi">
+  <div><div class="tbl">남은 시간</div><div class="tbv" id="tv">60:00</div></div>
+  <div><div class="tbl">모은 글자</div><div class="tch" id="tch"></div></div>
+</div></div>
+
+<!-- 시작 -->
+<div id="p0" class="pg on">
+<div style="padding:2rem 0 1.5rem;text-align:center">
+  <div class="badge">현장 방탈출 · AI 사진 인증</div>
+  <h1 style="font-size:26px;font-weight:700;line-height:1.3;margin-bottom:.5rem">백제의 비밀을<br>찾아라</h1>
+  <p style="font-size:13px;color:#a09880;line-height:1.75;margin-bottom:1.5rem">미륵사지 5곳을 직접 돌아다니며<br>📸 현장 사진을 찍어 AI에게 인증받고<br>역사 퀴즈와 계산으로 글자를 찾아라!</p>
+</div>
+<div class="card g" style="font-size:13px;color:#a09880;line-height:1.85;margin-bottom:1.5rem">
+  <p>639년 무왕의 스님이 서탑 심주석에 봉인한 다섯 글자.</p>
+  <p style="margin-top:.625rem">각 장소에서 <b style="color:#d4a843">📸 현장 사진 촬영 → 역사 퀴즈 → 공식 계산</b>으로 글자를 찾아라.<br>사진을 찍어 업로드하면 AI가 맞는 장소인지 확인해 준다!</p>
+</div>
+<div class="rg">
+  <div class="ri"><div class="rin">📸</div><div class="ril">AI 사진 인증</div></div>
+  <div class="ri"><div class="rin">5글자</div><div class="ril">단어 완성</div></div>
+  <div class="ri"><div class="rin">60분</div><div class="ril">제한 시간</div></div>
+  <div class="ri"><div class="rin">현장</div><div class="ril">직접 이동</div></div>
+</div>
+<div style="font-size:12px;color:#a09880;margin-bottom:.5rem">참가자 이름</div>
+<input class="ni" id="ni" type="text" placeholder="이름을 입력하세요" maxlength="8"/>
+<button class="bm" id="s0">지금 시작!</button>
+<button class="bs" onclick="openRank()">순위표 보기</button>
+</div>
+
+<!-- ST1: 서탑 -->
+<div id="p1" class="pg">
+<div style="font-size:11px;color:#5a5648;font-weight:700;letter-spacing:.08em;margin-bottom:4px">STAGE 1 / 5</div>
+<div style="font-size:20px;font-weight:700;margin-bottom:.375rem">서탑 앞에 서라</div>
+<div style="font-size:12px;color:#d4a843;margin-bottom:1.25rem">📍 서탑 기단부 앞</div>
+<div class="card g">입구에서 정면 직진 → <b style="color:#d4a843">서탑</b>이 보이면 탑 앞에 서세요.</div>
+
+<!-- 사진 인증 -->
+<div class="photo-card" id="pc1">
+  <div class="pc-title">📸 현장 인증 <span class="cam-tag">AI 확인</span></div>
+  <div class="photo-area" id="pa1" onclick="triggerPhoto(1)">
+    <div class="ph-icon">📷</div>
+    <div class="ph-text">서탑을 정면으로 찍어<br>업로드하세요</div>
+  </div>
+  <input class="photo-input" id="pi1" type="file" accept="image/*" capture="environment"/>
+  <div class="ai-result" id="ar1"></div>
+  <button class="bm" id="pb1" onclick="analyzePhoto(1)" disabled>AI에게 인증받기</button>
+</div>
+
+<div class="card lk" id="s1b">
+  <div class="slbl">역사 퀴즈 <span class="utag">사진 인증 완료 시 해제</span></div>
+  <div class="q">서탑 안에서 금제사리봉영기가 발견된 해는?</div>
+  <div class="chs" id="c1b">
+    <button class="bc" data-v="1999"><div class="d"></div>1999년</button>
+    <button class="bc" data-v="2009"><div class="d"></div>2009년</button>
+    <button class="bc" data-v="2015"><div class="d"></div>2015년</button>
+    <button class="bc" data-v="2019"><div class="d"></div>2019년</button>
+  </div>
+  <div class="fb" id="f1b"></div>
+</div>
+
+<div class="card lk" id="s1c">
+  <div class="slbl">계산 <span class="utag">퀴즈 완료 시 해제</span></div>
+  <div class="q">사진에서 확인한 서탑의 층수로 계산하세요.</div>
+  <div class="formula">
+    <div class="step"><span class="sn">①</span><span class="st">서탑 층수 × <b>9</b> = N</span></div>
+    <div class="step"><span class="sn">②</span><span class="st">N ÷ 14 의 나머지 = K &nbsp;(0이면 14)</span></div>
+    <div class="step"><span class="sn">③</span><span class="st">K번째 자음: ㄱ①ㄴ②ㄷ③ㄹ④ㅁ⑤ㅂ⑥ㅅ⑦ㅇ⑧ㅈ⑨ㅊ⑩ㅋ⑪ㅌ⑫ㅍ⑬ㅎ⑭</span></div>
+    <div class="step"><span class="sn">④</span><span class="st">그 자음 + <b>ㅏ</b> = 암호 조각</span></div>
+  </div>
+  <div class="ctx">AI가 층수를 알려줬나요? 6층이면: 6×9=54 → 54÷14=3 나머지 <b>12</b> → ㅌ → <b>타</b></div>
+  <div class="ir">
+    <input class="inp" id="i1c" type="text" placeholder="글자 1개" maxlength="1"/>
+    <button class="bm" id="b1c" style="flex:1;padding:12px;font-size:14px">확인</button>
+  </div>
+  <div class="fb" id="f1c"></div>
+</div>
+
+<div class="got" id="g1"><div class="got-lbl">🔤 글자 조각 1 획득!</div><div class="got-ch" id="gc1"></div><div class="got-sub" id="gd1"></div></div>
+<button class="bm" id="nx1" style="display:none" onclick="go(2)">다음 장소로 →</button>
+</div>
+
+<!-- ST2: 당간지주 -->
+<div id="p2" class="pg">
+<div style="font-size:11px;color:#5a5648;font-weight:700;letter-spacing:.08em;margin-bottom:4px">STAGE 2 / 5</div>
+<div style="font-size:20px;font-weight:700;margin-bottom:.375rem">당간지주를 살펴라</div>
+<div style="font-size:12px;color:#d4a843;margin-bottom:1.25rem">📍 서탑 동쪽 당간지주</div>
+<div class="card g">서탑에서 <b style="color:#d4a843">동쪽</b>. 두 돌기둥이 마주 서 있습니다.</div>
+
+<div class="photo-card" id="pc2">
+  <div class="pc-title">📸 현장 인증 <span class="cam-tag">AI 확인</span></div>
+  <div class="photo-area" id="pa2" onclick="triggerPhoto(2)">
+    <div class="ph-icon">📷</div>
+    <div class="ph-text">당간지주를 찍어<br>업로드하세요</div>
+  </div>
+  <input class="photo-input" id="pi2" type="file" accept="image/*" capture="environment"/>
+  <div class="ai-result" id="ar2"></div>
+  <button class="bm" id="pb2" onclick="analyzePhoto(2)" disabled>AI에게 인증받기</button>
+</div>
+
+<div class="card lk" id="s2b">
+  <div class="slbl">역사 퀴즈 <span class="utag">사진 인증 완료 시 해제</span></div>
+  <div class="q">백제가 사비(부여)로 수도를 옮긴 해는?</div>
+  <div class="chs" id="c2b">
+    <button class="bc" data-v="475"><div class="d"></div>475년 (웅진 천도)</button>
+    <button class="bc" data-v="538"><div class="d"></div>538년 (사비 천도)</button>
+    <button class="bc" data-v="600"><div class="d"></div>600년 (무왕 즉위)</button>
+    <button class="bc" data-v="660"><div class="d"></div>660년 (백제 멸망)</button>
+  </div>
+  <div class="fb" id="f2b"></div>
+</div>
+
+<div class="card lk" id="s2c">
+  <div class="slbl">계산 <span class="utag">퀴즈 완료 시 해제</span></div>
+  <div class="q">사진에서 확인한 기둥 수로 계산하세요.</div>
+  <div class="formula">
+    <div class="step"><span class="sn">①</span><span class="st">기둥 수 × <b>38</b> (사비 천도 연도 끝 두 자리) = M</span></div>
+    <div class="step"><span class="sn">②</span><span class="st">M의 각 자릿수를 모두 더하면 K</span></div>
+    <div class="step"><span class="sn">③</span><span class="st">K번째 모음(10개 순환): ㅏ①ㅑ②ㅓ③ㅕ④ㅗ⑤ㅛ⑥ㅜ⑦ㅠ⑧ㅡ⑨ㅣ⑩</span></div>
+    <div class="step"><span class="sn">④</span><span class="st">자음 <b>ㅅ</b> + 그 모음 = 암호 조각</span></div>
+  </div>
+  <div class="ctx">기둥 2개면: 2×38=76 → 7+6=13 → 13÷10 나머지 3 → ㅓ → <b>서</b></div>
+  <div class="ir">
+    <input class="inp" id="i2c" type="text" placeholder="글자 1개" maxlength="1"/>
+    <button class="bm" id="b2c" style="flex:1;padding:12px;font-size:14px">확인</button>
+  </div>
+  <div class="fb" id="f2c"></div>
+</div>
+
+<div class="got" id="g2"><div class="got-lbl">🔤 글자 조각 2 획득!</div><div class="got-ch" id="gc2"></div><div class="got-sub" id="gd2"></div></div>
+<button class="bm" id="nx2" style="display:none" onclick="go(3)">다음 장소로 →</button>
+</div>
+
+<!-- ST3: 금당터 -->
+<div id="p3" class="pg">
+<div style="font-size:11px;color:#5a5648;font-weight:700;letter-spacing:.08em;margin-bottom:4px">STAGE 3 / 5</div>
+<div style="font-size:20px;font-weight:700;margin-bottom:.375rem">금당터를 읽어라</div>
+<div style="font-size:12px;color:#d4a843;margin-bottom:1.25rem">📍 중원 금당터</div>
+<div class="card g">서탑과 동탑 <b style="color:#d4a843">사이 중앙</b>. 주춧돌 배열을 살피세요.</div>
+
+<div class="photo-card" id="pc3">
+  <div class="pc-title">📸 현장 인증 <span class="cam-tag">AI 확인</span></div>
+  <div class="photo-area" id="pa3" onclick="triggerPhoto(3)">
+    <div class="ph-icon">📷</div>
+    <div class="ph-text">금당터 주춧돌 배열을<br>찍어 업로드하세요</div>
+  </div>
+  <input class="photo-input" id="pi3" type="file" accept="image/*" capture="environment"/>
+  <div class="ai-result" id="ar3"></div>
+  <button class="bm" id="pb3" onclick="analyzePhoto(3)" disabled>AI에게 인증받기</button>
+</div>
+
+<div class="card lk" id="s3b">
+  <div class="slbl">역사 퀴즈 <span class="utag">사진 인증 완료 시 해제</span></div>
+  <div class="q">미륵사를 창건한 백제 왕은 누구인가?</div>
+  <div class="chs" id="c3b">
+    <button class="bc" data-v="성왕"><div class="d"></div>성왕 (聖王)</button>
+    <button class="bc" data-v="무왕"><div class="d"></div>무왕 (武王)</button>
+    <button class="bc" data-v="의자왕"><div class="d"></div>의자왕 (義慈王)</button>
+    <button class="bc" data-v="무령왕"><div class="d"></div>무령왕 (武寧王)</button>
+  </div>
+  <div class="fb" id="f3b"></div>
+</div>
+
+<div class="card lk" id="s3c">
+  <div class="slbl">계산 <span class="utag">퀴즈 완료 시 해제</span></div>
+  <div class="q">사진에서 확인한 가로 주춧돌 수로 계산하세요.</div>
+  <div class="formula">
+    <div class="step"><span class="sn">①</span><span class="st">가로 주춧돌 수 × <b>41</b> (무왕 재위 기간) = P</span></div>
+    <div class="step"><span class="sn">②</span><span class="st">P ÷ 6 의 나머지 = Q &nbsp;(0이면 6)</span></div>
+    <div class="step"><span class="sn">③</span><span class="st">Q번째 순모음: ㅏ①ㅓ②ㅗ③ㅜ④ㅡ⑤ㅣ⑥</span></div>
+    <div class="step"><span class="sn">④</span><span class="st">자음 <b>ㄷ</b> + 그 모음 = 암호 조각</span></div>
+  </div>
+  <div class="ctx">가로 5개면: 5×41=205 → 205÷6=34 나머지 1 → ㅏ → <b>다</b></div>
+  <div class="ir">
+    <input class="inp" id="i3c" type="text" placeholder="글자 1개" maxlength="1"/>
+    <button class="bm" id="b3c" style="flex:1;padding:12px;font-size:14px">확인</button>
+  </div>
+  <div class="fb" id="f3c"></div>
+</div>
+
+<div class="got" id="g3"><div class="got-lbl">🔤 글자 조각 3 획득!</div><div class="got-ch" id="gc3"></div><div class="got-sub" id="gd3"></div></div>
+<button class="bm" id="nx3" style="display:none" onclick="go(4)">다음 장소로 →</button>
+</div>
+
+<!-- ST4: 동탑 -->
+<div id="p4" class="pg">
+<div style="font-size:11px;color:#5a5648;font-weight:700;letter-spacing:.08em;margin-bottom:4px">STAGE 4 / 5</div>
+<div style="font-size:20px;font-weight:700;margin-bottom:.375rem">동탑 기단을 확인하라</div>
+<div style="font-size:12px;color:#d4a843;margin-bottom:1.25rem">📍 동원 복원 석탑 앞</div>
+<div class="card g">중원에서 <b style="color:#d4a843">동쪽</b>. 동탑 기단부를 확인하세요.</div>
+
+<div class="photo-card" id="pc4">
+  <div class="pc-title">📸 현장 인증 <span class="cam-tag">AI 확인</span></div>
+  <div class="photo-area" id="pa4" onclick="triggerPhoto(4)">
+    <div class="ph-icon">📷</div>
+    <div class="ph-text">동탑 전체를 찍어<br>업로드하세요</div>
+  </div>
+  <input class="photo-input" id="pi4" type="file" accept="image/*" capture="environment"/>
+  <div class="ai-result" id="ar4"></div>
+  <button class="bm" id="pb4" onclick="analyzePhoto(4)" disabled>AI에게 인증받기</button>
+</div>
+
+<div class="card lk" id="s4b">
+  <div class="slbl">역사 퀴즈 <span class="utag">사진 인증 완료 시 해제</span></div>
+  <div class="q">미륵사지 석탑(서탑)이 복원 완료된 해는?</div>
+  <div class="chs" id="c4b">
+    <button class="bc" data-v="1999"><div class="d"></div>1999년 (해체 시작)</button>
+    <button class="bc" data-v="2009"><div class="d"></div>2009년 (금제사리봉영기 발견)</button>
+    <button class="bc" data-v="2015"><div class="d"></div>2015년 (유네스코 등재)</button>
+    <button class="bc" data-v="2019"><div class="d"></div>2019년 (복원 완료)</button>
+  </div>
+  <div class="fb" id="f4b"></div>
+</div>
+
+<div class="card lk" id="s4c">
+  <div class="slbl">계산 <span class="utag">퀴즈 완료 시 해제</span></div>
+  <div class="q">사진에서 확인한 기단 층수로 계산하세요.</div>
+  <div class="formula">
+    <div class="step"><span class="sn">①</span><span class="st">기단 층수 × <b>9</b> (복원 완료 연도 끝 자리) = R</span></div>
+    <div class="step"><span class="sn">②</span><span class="st">R ÷ 14 의 나머지 = K &nbsp;(0이면 14)</span></div>
+    <div class="step"><span class="sn">③</span><span class="st">K번째 자음: ㄱ①ㄴ②ㄷ③ㄹ④ㅁ⑤ㅂ⑥ㅅ⑦ㅇ⑧ㅈ⑨ㅊ⑩ㅋ⑪ㅌ⑫ㅍ⑬ㅎ⑭</span></div>
+    <div class="step"><span class="sn">④</span><span class="st">그 자음 + <b>ㅗ</b> = 암호 조각</span></div>
+  </div>
+  <div class="ctx">기단 2층: 2×9=18 → 18÷14=1 나머지 4 → ㄹ → <b>로</b></div>
+  <div class="ir">
+    <input class="inp" id="i4c" type="text" placeholder="글자 1개" maxlength="1"/>
+    <button class="bm" id="b4c" style="flex:1;padding:12px;font-size:14px">확인</button>
+  </div>
+  <div class="fb" id="f4c"></div>
+</div>
+
+<div class="got" id="g4"><div class="got-lbl">🔤 글자 조각 4 획득!</div><div class="got-ch" id="gc4"></div><div class="got-sub" id="gd4"></div></div>
+<button class="bm" id="nx4" style="display:none" onclick="go(5)">다음 장소로 →</button>
+</div>
+
+<!-- ST5: 박물관 -->
+<div id="p5" class="pg">
+<div style="font-size:11px;color:#5a5648;font-weight:700;letter-spacing:.08em;margin-bottom:4px">STAGE 5 / 5</div>
+<div style="font-size:20px;font-weight:700;margin-bottom:.375rem">박물관 앞에서 완성하라</div>
+<div style="font-size:12px;color:#d4a843;margin-bottom:1.25rem">📍 국립익산박물관 앞</div>
+<div class="card g">미륵사지 동쪽 끝 <b style="color:#d4a843">국립익산박물관</b>. 건물 앞에 서세요.</div>
+
+<div class="photo-card" id="pc5">
+  <div class="pc-title">📸 현장 인증 <span class="cam-tag">AI 확인</span></div>
+  <div class="photo-area" id="pa5" onclick="triggerPhoto(5)">
+    <div class="ph-icon">📷</div>
+    <div class="ph-text">박물관 건물 또는<br>명패를 찍어 업로드하세요</div>
+  </div>
+  <input class="photo-input" id="pi5" type="file" accept="image/*" capture="environment"/>
+  <div class="ai-result" id="ar5"></div>
+  <button class="bm" id="pb5" onclick="analyzePhoto(5)" disabled>AI에게 인증받기</button>
+</div>
+
+<div class="card lk" id="s5b">
+  <div class="slbl">역사 퀴즈 <span class="utag">사진 인증 완료 시 해제</span></div>
+  <div class="q">백제역사유적지구가 유네스코 세계유산으로 등재된 해는?</div>
+  <div class="chs" id="c5b">
+    <button class="bc" data-v="2010"><div class="d"></div>2010년</button>
+    <button class="bc" data-v="2013"><div class="d"></div>2013년</button>
+    <button class="bc" data-v="2015"><div class="d"></div>2015년</button>
+    <button class="bc" data-v="2019"><div class="d"></div>2019년</button>
+  </div>
+  <div class="fb" id="f5b"></div>
+</div>
+
+<div class="card lk" id="s5c">
+  <div class="slbl">계산 <span class="utag">퀴즈 완료 시 해제</span></div>
+  <div class="q">「국립익산박물관」 글자 수로 계산하세요.</div>
+  <div class="formula">
+    <div class="step"><span class="sn">①</span><span class="st">박물관 이름 글자 수 × <b>5</b> (유네스코 등재 연도 끝 자리) = S</span></div>
+    <div class="step"><span class="sn">②</span><span class="st">S ÷ 12 의 나머지 = T &nbsp;(0이면 12)</span></div>
+    <div class="step"><span class="sn">③</span><span class="st">T번째 12지지 동물: 쥐①소②범③토끼④용⑤뱀⑥말⑦양⑧원숭이⑨닭⑩개⑪돼지⑫</span></div>
+    <div class="step"><span class="sn">④</span><span class="st">그 동물 이름의 <b>첫 글자</b> = 암호 조각</span></div>
+  </div>
+  <div class="ctx">7글자: 7×5=35 → 35÷12=2 나머지 11 → 11번째 지지 <b>개</b> → 첫글자 <b>개</b></div>
+  <div class="ir">
+    <input class="inp" id="i5c" type="text" placeholder="글자 1개" maxlength="1"/>
+    <button class="bm" id="b5c" style="flex:1;padding:12px;font-size:14px">확인</button>
+  </div>
+  <div class="fb" id="f5c"></div>
+</div>
+
+<div class="got" id="g5"><div class="got-lbl">🔤 글자 조각 5 획득!</div><div class="got-ch" id="gc5"></div><div class="got-sub" id="gd5"></div></div>
+<button class="bm" id="nx5" style="display:none" onclick="go(6)">🔤 단어 완성하러!</button>
+</div>
+
+<!-- 최종 -->
+<div id="p6" class="pg">
+<div style="text-align:center;padding:1.5rem 0 1.25rem">
+  <div class="badge">최종 단어 완성</div>
+  <h1 style="font-size:20px;margin-bottom:.5rem">다섯 조각을 모았다!</h1>
+  <p style="font-size:13px;color:#a09880;line-height:1.7">1→2→3→4→5 순서로 이어 입력하세요.</p>
+</div>
+<div class="fw">
+  <div class="fwb" id="fw1"><div class="fws">ST1</div><div class="fwc">?</div></div>
+  <div class="fwb" id="fw2"><div class="fws">ST2</div><div class="fwc">?</div></div>
+  <div class="fwb" id="fw3"><div class="fws">ST3</div><div class="fwc">?</div></div>
+  <div class="fwb" id="fw4"><div class="fws">ST4</div><div class="fwc">?</div></div>
+  <div class="fwb" id="fw5"><div class="fws">ST5</div><div class="fwc">?</div></div>
+</div>
+<div class="fd" id="fdsp">?????</div>
+<div style="font-size:13px;font-weight:700;color:#a09880;margin-bottom:8px">완성된 단어 입력</div>
+<input class="ci" id="cii" type="text" placeholder="단어 입력" maxlength="10"/>
+<div class="fb" id="ff" style="margin-bottom:1rem"></div>
+<button class="bm" id="fb2">비밀 단어 확인!</button>
+<div style="margin-top:.75rem">
+  <button class="bs" id="hb">힌트 보기 (+5분 패널티)</button>
+  <div style="font-size:11px;color:#5a5648;text-align:center;margin-top:6px" id="hm"></div>
+</div>
+</div>
+
+<!-- 클리어 -->
+<div id="p7" class="pg">
+<div style="text-align:center;padding:2.5rem 0 2rem">
+  <div style="font-size:60px;margin-bottom:1rem">🎉</div>
+  <div style="font-size:26px;font-weight:700;color:#d4a843;margin-bottom:.5rem">탈출 성공!</div>
+  <div style="font-size:13px;color:#a09880;line-height:1.75;margin-bottom:1.5rem" id="csub"></div>
+  <div class="cw" id="cword"></div>
+  <div style="font-size:20px;font-weight:700;color:#a09880;margin-bottom:.5rem" id="ctime"></div>
+  <div style="font-size:12px;color:#e05252;margin-bottom:1.5rem" id="cpen"></div>
+</div>
+<div class="card" style="margin-bottom:1.5rem">
+  <div style="font-size:11px;font-weight:700;color:#5a5648;letter-spacing:.06em;margin-bottom:10px">🏆 순위표</div>
+  <div id="rl"></div>
+</div>
+<button class="bm" onclick="location.reload()">다시 도전하기</button>
+</div>
+
+<script>
+/* ━━━ 현장 실측값 (진행자가 확인 후 수정) ━━━ */
+var S2_GROOVE=2, S3_COL=5, S4_BASE=2, S5_LETTERS=7;
+
+var CHO=['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+var MO_ALL=['ㅏ','ㅑ','ㅓ','ㅕ','ㅗ','ㅛ','ㅜ','ㅠ','ㅡ','ㅣ'];
+var MO_PURE=['ㅏ','ㅓ','ㅗ','ㅜ','ㅡ','ㅣ'];
+var JUN=['ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅗ','ㅘ','ㅙ','ㅚ','ㅛ','ㅜ','ㅝ','ㅞ','ㅟ','ㅠ','ㅡ','ㅢ','ㅣ'];
+var JIJI=['쥐','소','범','토끼','용','뱀','말','양','원숭이','닭','개','돼지'];
+function cmb(c,v){var ci=CHO.indexOf(c),vi=JUN.indexOf(v);if(ci<0||vi<0)return c+v;return String.fromCharCode(0xAC00+ci*21*28+vi*28);}
+function digsum(n){var s=0;while(n>0){s+=n%10;n=Math.floor(n/10);}return s;}
+
+var ANS1=(function(){var n=6*9,k=n%14||14;return cmb(CHO[k-1],'ㅏ');})();
+function calcS2(g){var m=g*38,k=digsum(m),ki=k%10||10;return cmb('ㅅ',MO_ALL[ki-1]);}
+var ANS2=calcS2(S2_GROOVE);
+function calcS3(col){var p=col*41,q=p%6||6;return cmb('ㄷ',MO_PURE[q-1]);}
+var ANS3=calcS3(S3_COL);
+function calcS4(b){var r=b*9,k=r%14||14;return cmb(CHO[k-1],'ㅗ');}
+var ANS4=calcS4(S4_BASE);
+function calcS5(l){var s=l*5,t=s%12||12;return JIJI[t-1][0];}
+var ANS5=calcS5(S5_LETTERS);
+var FINAL=ANS1+ANS2+ANS3+ANS4+ANS5;
+
+var chars=['','','','',''],pName='',startTs=null,timerItv=null,elapsed=0,penalty=0,hintUsed=false;
+var photoData={1:null,2:null,3:null,4:null,5:null};
+var photoVerified={1:false,2:false,3:false,4:false,5:false};
+
+/* ━━━ AI 사진 분석 프롬프트 ━━━ */
+var PHOTO_PROMPTS={
+  1:{check:'이 사진이 미륵사지 서탑(西塔)인지 확인해주세요. 서탑은 대형 석탑으로 여러 층이 쌓여 있습니다.',extract:'사진에서 탑의 층수를 세어주세요. 기단 위 몸돌 층만 세어 숫자로 알려주세요.'},
+  2:{check:'이 사진이 미륵사지 당간지주인지 확인해주세요. 당간지주는 두 개의 돌기둥이 마주 서 있는 구조물입니다.',extract:'사진에서 돌기둥이 몇 개인지 세어주세요.'},
+  3:{check:'이 사진이 미륵사지 금당터(주춧돌이 바닥에 놓인 공간)인지 확인해주세요.',extract:'사진에서 주춧돌 배열을 확인하고, 가로(동서) 방향 한 줄에 주춧돌이 몇 개인지 세어주세요.'},
+  4:{check:'이 사진이 미륵사지 동원 석탑(동탑)인지 확인해주세요.',extract:'사진에서 탑 기단(받침 단)이 몇 층인지 세어주세요.'},
+  5:{check:'이 사진이 국립익산박물관 건물이나 명패인지 확인해주세요.',extract:'사진에서 박물관 이름 「국립익산박물관」이 보이나요? 글자 수를 세어주세요.'}
+};
+
+/* ━━━ 사진 촬영/업로드 ━━━ */
+function triggerPhoto(n){
+  document.getElementById('pi'+n).click();
+}
+
+/* 파일 선택 시 미리보기 */
+for(var i=1;i<=5;i++){
+  (function(n){
+    document.getElementById('pi'+n).addEventListener('change',function(e){
+      var file=e.target.files[0];
+      if(!file)return;
+      var reader=new FileReader();
+      reader.onload=function(ev){
+        var pa=document.getElementById('pa'+n);
+        pa.innerHTML='<img src="'+ev.target.result+'" alt="현장 사진"/><div class="ph-change">다시 찍기</div>';
+        photoData[n]=ev.target.result.split(',')[1]; /* base64 */
+        document.getElementById('pb'+n).disabled=false;
+        document.getElementById('pc'+n).classList.add('has-photo');
+        document.getElementById('ar'+n).className='ai-result';
+      };
+      reader.readAsDataURL(file);
+    });
+  })(i);
+}
+
+/* ━━━ AI 사진 분석 ━━━ */
+async function analyzePhoto(n){
+  if(!photoData[n])return;
+  var btn=document.getElementById('pb'+n);
+  var ar=document.getElementById('ar'+n);
+  btn.disabled=true;
+  ar.className='ai-result on loading';
+  ar.innerHTML='<div class="ai-thinking">🤖 AI가 사진을 분석중입니다... <div class="dots"><span></span><span></span><span></span></div></div>';
+
+  var prompt=PHOTO_PROMPTS[n];
+  var userMsg=prompt.check+'\n\n'+prompt.extract+'\n\n답변 형식:\n1. 인증 여부: 맞음/틀림\n2. 분석 내용: (관찰한 것 설명)\n3. 숫자 정보: (세어낸 숫자)\n\n한국어로 친절하게 답해주세요. 불확실하면 솔직하게 말해주세요.';
+
+  try{
+    var response=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:400,
+        messages:[{
+          role:'user',
+          content:[
+            {type:'image',source:{type:'base64',media_type:'image/jpeg',data:photoData[n]}},
+            {type:'text',text:userMsg}
+          ]
+        }]
+      })
+    });
+    var data=await response.json();
+    var text=data.content&&data.content[0]?data.content[0].text:'분석 실패';
+
+    /* 인증 여부 판단 */
+    var isOk=text.includes('맞음')||text.includes('맞습니다')||text.includes('확인됩니다')||text.includes('맞아요');
+    ar.className='ai-result on '+(isOk?'ok':'ng');
+    ar.innerHTML='🤖 '+text;
+
+    if(isOk){
+      photoVerified[n]=true;
+      document.getElementById('pc'+n).classList.add('verified');
+      ulk('s'+n+'b');
+    }else{
+      btn.disabled=false;
+    }
+  }catch(err){
+    ar.className='ai-result on ng';
+    ar.innerHTML='❌ AI 연결 실패. 네트워크를 확인하거나 아래 버튼으로 건너뛰세요.';
+    /* 오류 시 수동 통과 버튼 추가 */
+    var skip=document.createElement('button');
+    skip.className='bm';skip.style.marginTop='8px';skip.style.background='#5a5648';
+    skip.textContent='사진 인증 건너뛰기 (수동 진행)';
+    skip.onclick=function(){ar.className='ai-result';photoVerified[n]=true;ulk('s'+n+'b');skip.remove();};
+    ar.parentNode.insertBefore(skip,ar.nextSibling);
+    btn.disabled=false;
+  }
+}
+
+/* ━━━ 공통 로직 ━━━ */
+function pad(n){return n<10?'0'+n:''+n;}
+function fmt(s){return pad(Math.floor(s/60))+':'+pad(s%60);}
+function tick(){elapsed=Math.floor((Date.now()-startTs)/1000)+penalty;var r=3600-elapsed;if(r<0)r=0;var t=document.getElementById('tv');t.textContent=pad(Math.floor(r/60))+':'+pad(r%60);t.className='tbv'+(r<=300?' red':'');updTch();}
+function updTch(){var el=document.getElementById('tch');if(!el)return;var h='';for(var i=0;i<5;i++)h+='<span class="tc '+(chars[i]?'g':'e')+'">'+(chars[i]||'_')+'</span>';el.innerHTML=h;}
+function go(n){for(var i=0;i<=7;i++){var p=document.getElementById('p'+i);if(p)p.className='pg'+(i===n?' on':'');}document.getElementById('tb').style.display=(n>=1&&n<=6)?'block':'none';if(n===6)fillFinal();window.scrollTo(0,0);}
+function sfb(id,ok,msg){var e=document.getElementById(id);if(!e)return;e.textContent=msg;e.className='fb on '+(ok?'ok':'ng');}
+function hfb(id){var e=document.getElementById(id);if(e)e.className='fb';}
+function ulk(id){var e=document.getElementById(id);if(!e)return;e.classList.remove('lk');setTimeout(function(){e.scrollIntoView({behavior:'smooth',block:'center'});},100);}
+function dis(id){var e=document.getElementById(id);if(!e)return;var bs=e.querySelectorAll('.bc');for(var i=0;i<bs.length;i++)bs[i].disabled=true;}
+
+function bnd(gid,corr,okM,ngM,cb){
+  var g=document.getElementById(gid);if(!g)return;
+  var bs=g.querySelectorAll('.bc');
+  for(var i=0;i<bs.length;i++){
+    (function(b){
+      b.addEventListener('click',function(){
+        var v=b.getAttribute('data-v');
+        for(var j=0;j<bs.length;j++)bs[j].className='bc';
+        var fid='f'+gid.substring(1);
+        if(v===corr){b.className='bc ok';dis(gid);sfb(fid,true,okM);setTimeout(cb,700);}
+        else{b.className='bc ng';sfb(fid,false,ngM);setTimeout(function(){for(var j=0;j<bs.length;j++)bs[j].className='bc';hfb(fid);},1500);}
+      });
+    })(bs[i]);
+  }
+}
+function bndInp(bid,iid,fid,getAns,onOk){
+  document.getElementById(bid).addEventListener('click',function(){
+    var el=document.getElementById(iid);if(!el)return;
+    var v=el.value.trim();if(!v)return;
+    if(v===getAns()){el.className='inp ok';sfb(fid,true,'정답! 글자 조각 획득!');onOk();}
+    else{el.className='inp ng';sfb(fid,false,'틀렸습니다. 공식을 다시 확인해 보세요.');setTimeout(function(){el.className='inp';hfb(fid);},1600);}
+  });
+}
+function gotChar(n,ch,desc){chars[n-1]=ch;FINAL=ANS1+ANS2+ANS3+ANS4+ANS5;document.getElementById('gc'+n).textContent=ch;document.getElementById('gd'+n).textContent=desc;document.getElementById('g'+n).className='got on';document.getElementById('nx'+n).style.display='block';updTch();}
+
+/* 퀴즈 바인딩 */
+bnd('c1b','2009','정답! 2009년 서탑 해체 중 금제사리봉영기가 발견되었습니다.','다시 생각해보세요.',function(){ulk('s1c');});
+bnd('c2b','538','정답! 538년 성왕이 사비(부여)로 천도. 끝 두 자리=38.','다시 생각해보세요.',function(){ulk('s2c');});
+bnd('c3b','무왕','정답! 백제 무왕(재위 600~641년, 41년)이 미륵사를 창건했습니다.','다시 생각해보세요.',function(){ulk('s3c');});
+bnd('c4b','2019','정답! 서탑은 2019년 복원 완료. 끝 자리=9.','다시 생각해보세요.',function(){ulk('s4c');});
+bnd('c5b','2015','정답! 2015년 백제역사유적지구 유네스코 등재. 끝 자리=5.','다시 생각해보세요.',function(){ulk('s5c');});
+
+/* 계산 입력 바인딩 */
+bndInp('b1c','i1c','f1c',function(){return ANS1;},function(){gotChar(1,ANS1,'6층×9=54→%14=12→ㅌ→타');});
+
+function bndS2(){bndInp('b2c','i2c','f2c',function(){return ANS2;},function(){gotChar(2,ANS2,'기둥'+S2_GROOVE+'×38='+S2_GROOVE*38+'→자릿수합→ㅅ+모음');});}
+function bndS3(){bndInp('b3c','i3c','f3c',function(){return ANS3;},function(){gotChar(3,ANS3,'가로'+S3_COL+'×41='+S3_COL*41+'→%6→ㄷ+순모음');});}
+function bndS4(){bndInp('b4c','i4c','f4c',function(){return ANS4;},function(){gotChar(4,ANS4,'기단'+S4_BASE+'×9='+S4_BASE*9+'→%14→자음+ㅗ');});}
+function bndS5(){bndInp('b5c','i5c','f5c',function(){return ANS5;},function(){gotChar(5,ANS5,S5_LETTERS+'글자×5='+S5_LETTERS*5+'→%12→지지→첫글자');});}
+bndS2();bndS3();bndS4();bndS5();
+
+/* 최종 */
+function fillFinal(){FINAL=ANS1+ANS2+ANS3+ANS4+ANS5;var w='';for(var i=0;i<5;i++){var fw=document.getElementById('fw'+(i+1));if(chars[i]){fw.querySelector('.fwc').textContent=chars[i];fw.classList.add('f');w+=chars[i];}else{fw.querySelector('.fwc').textContent='?';w+='?';}}document.getElementById('fdsp').textContent=w;document.getElementById('cii').value=w.replace(/\?/g,'');}
+document.getElementById('fb2').addEventListener('click',function(){FINAL=ANS1+ANS2+ANS3+ANS4+ANS5;var v=document.getElementById('cii').value.trim();if(v===FINAL){clearInterval(timerItv);saveScore(pName,elapsed,penalty);document.getElementById('cword').textContent=FINAL;document.getElementById('csub').textContent=pName+'님, 백제의 비밀을 풀었습니다!';document.getElementById('ctime').textContent='클리어: '+fmt(elapsed);if(penalty>0)document.getElementById('cpen').textContent='패널티 +'+fmt(penalty)+' 포함';renderRank();go(7);}else{document.getElementById('cii').className='ci ng';sfb('ff',false,'틀렸습니다! 1→2→3→4→5 순서로 이어 보세요.');setTimeout(function(){document.getElementById('cii').className='ci';hfb('ff');},2000);}});
+document.getElementById('hb').addEventListener('click',function(){if(hintUsed)return;hintUsed=true;penalty+=300;FINAL=ANS1+ANS2+ANS3+ANS4+ANS5;var ms=[];for(var i=0;i<5;i++)if(!chars[i])ms.push('ST'+(i+1));document.getElementById('hm').textContent='완성 단어: '+FINAL+' | 미완성: '+(ms.length?ms.join(','):'모두 완료')+' (+5분 패널티)';document.getElementById('hm').style.color='#d4a843';});
+function saveScore(n,s,p){var l=getS();l.push({name:n,sec:s,pen:p});l.sort(function(a,b){return a.sec-b.sec;});l=l.slice(0,10);try{localStorage.setItem('mse3',JSON.stringify(l));}catch(e){}}
+function getS(){try{var d=localStorage.getItem('mse3');return d?JSON.parse(d):[];}catch(e){return[];}}
+function renderRank(){var l=getS();var el=document.getElementById('rl');if(!el)return;if(!l.length){el.innerHTML='<div style="font-size:13px;color:#5a5648;text-align:center">기록 없음</div>';return;}var m=['🥇','🥈','🥉'];el.innerHTML=l.map(function(s,i){return'<div class="rrow'+(s.name===pName?' me':'')+'"><div class="rp p'+(i+1)+'">'+(i<3?m[i]:i+1)+'</div><div style="flex:1;font-weight:500">'+s.name+'</div><div style="font-weight:700;color:#d4a843;font-variant-numeric:tabular-nums">'+fmt(s.sec)+(s.pen?'<span style="font-size:10px;color:#e05252;margin-left:3px">+'+fmt(s.pen)+'</span>':'')+'</div></div>';}).join('');}
+function openRank(){var l=getS();if(!l.length){alert('기록 없음');return;}alert('[순위표]\n\n'+l.map(function(s,i){return(i+1)+'. '+s.name+' — '+fmt(s.sec);}).join('\n'));}
+document.getElementById('s0').addEventListener('click',function(){var n=document.getElementById('ni').value.trim();if(!n){document.getElementById('ni').style.borderColor='#e05252';document.getElementById('ni').focus();return;}pName=n;chars=['','','','',''];elapsed=0;penalty=0;hintUsed=false;startTs=Date.now();timerItv=setInterval(tick,1000);go(1);});
+document.getElementById('ni').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('s0').click();});
+document.getElementById('cii').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('fb2').click();});
+</script>
+</body>
+</html>
