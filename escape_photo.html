@@ -15,7 +15,7 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 .slbl{font-size:10px;font-weight:700;color:#5a5648;letter-spacing:.07em;margin-bottom:10px;display:flex;align-items:center;gap:6px}
 .utag{background:rgba(155,127,232,.15);border:1px solid #9b7fe8;color:#9b7fe8;padding:1px 8px;border-radius:10px;font-size:10px}
 .q{font-size:15px;font-weight:700;line-height:1.7;color:#f0ece0;margin-bottom:.875rem}
-.ctx{font-size:13px;color:#a09880;line-height:1.75;background:#252836;border-radius:8px;padding:.875rem 1rem;margin-bottom:.875rem}
+.ctx{font-size:13px;color:#a09880;line-height:1.75;background:#252836;border-radius:8px;padding:.875rem 1rem;margin-bottom:.875rem;cursor:pointer;user-select:none;position:relative}
 .ctx b{color:#f0ece0}
 .chs{display:flex;flex-direction:column;gap:8px;margin-bottom:.875rem}
 .bc{width:100%;padding:13px 16px;background:#252836;border:2px solid #252836;border-radius:8px;font-size:14px;color:#f0ece0;cursor:pointer;text-align:left;font-family:inherit;display:flex;align-items:flex-start;gap:10px;-webkit-appearance:none;line-height:1.5}
@@ -92,6 +92,7 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 .rp{font-size:15px;font-weight:700;min-width:22px;text-align:center;color:#5a5648}
 .rp.p1{color:#ffd700}.rp.p2{color:#c0c0c0}.rp.p3{color:#cd7f32}
 .ir2{display:flex;flex-direction:column;gap:8px;margin-bottom:.875rem}
+@keyframes pop-up{0%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-80%) scale(1.2)}}
 </style>
 </head>
 <body>
@@ -338,6 +339,29 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 </div>
 </div>
 
+<!-- 최종 퀴즈 -->
+<div id="p6f" class="pg">
+<div style="text-align:center;padding:1.5rem 0 1rem">
+  <div class="badge">🏛️ 최종 관문</div>
+  <h1 style="font-size:20px;margin-bottom:.5rem">단어를 완성했다!</h1>
+  <p style="font-size:13px;color:#a09880;line-height:1.7;margin-bottom:1.5rem">마지막 관문을 통과해야 탈출이 완성된다.</p>
+</div>
+<div class="card" style="border-color:#d4a843;background:rgba(212,168,67,.07);text-align:center;padding:1.5rem;margin-bottom:1rem">
+  <div style="font-size:36px;font-weight:700;color:#d4a843;letter-spacing:.2em;margin-bottom:.5rem">서동요백제</div>
+  <div style="font-size:12px;color:#a09880">비밀 단어 완성!</div>
+</div>
+<div class="card" id="final-quiz-card">
+  <div class="slbl">🏛️ 최종 퀴즈 — 국립익산박물관 전시 유물</div>
+  <div class="q">국립익산박물관에 전시된 유물 중<br>백제 왕실에서 사용된 것으로 추정되는 향로로,<br>1993년 부여 능산리 절터에서 발견된<br>국보 제287호의 이름은?</div>
+  <div class="ctx" style="filter:none;cursor:default">백제의 뛰어난 금속 공예 기술을 보여주는 대표 유물로,<br>국립부여박물관과 함께 국립익산박물관 특별전에서도 만날 수 있습니다.</div>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:.875rem">
+    <input class="inp" id="fq-inp" type="text" placeholder="유물 이름 입력" style="font-size:15px;text-align:center"/>
+  </div>
+  <button class="bm" id="fq-btn" style="margin-bottom:.875rem">제출</button>
+  <div class="fb" id="fq-fb"></div>
+</div>
+</div>
+
 <!-- 클리어 -->
 <div id="p7" class="pg">
 <div style="text-align:center;padding:2.5rem 0 2rem">
@@ -537,8 +561,10 @@ function updTch(){
   el.innerHTML=h;
 }
 function go(n){
-  for(var i=0;i<=7;i++){var p=document.getElementById('p'+i);if(p)p.className='pg'+(i===n?' on':'');}
-  document.getElementById('tb').style.display=(n>=1&&n<=6)?'block':'none';
+  var ids=['p0','p1','p2','p3','p4','p5','p6','p6f','p7'];
+  ids.forEach(function(id){var p=document.getElementById(id);if(p)p.className='pg'+(id==='p'+n?' on':'');});
+  var inGame=(n>=1&&n<=6)||n==='6f';
+  document.getElementById('tb').style.display=inGame?'block':'none';
   if(n===6)fillFinal();
   window.scrollTo(0,0);
 }
@@ -597,9 +623,9 @@ bindSubjective('bq1',[['q1a',['6','6층']],['q1b',['2009','2009년']]],1,
 bindSubjective('bq2',[['q2a',['평평','평두','평두형','평탄','수평']],['q2b',['번','번기','깃발','기','幡']]],2,
   '정답! 평두형 · 번(깃발). 상단이 평평한 평두형은 백제 당간지주의 특징이며, 당간에는 번(幡, 깃발)을 달았습니다. ✨ 글자 조각 「동」획득!',
   '다시 확인해보세요! ① 기둥 꼭대기를 올려다보고 ② 당간에 무엇을 달았는지 안내판을 읽어보세요.');
-bindSubjective('bq3',[['q3a',['5','5개']],['q3b',['탑금당회랑','탑 금당 회랑','금당탑회랑','금당 탑 회랑','탑,금당,회랑','탑, 금당, 회랑']]],3,
+bindSubjective('bq3',[['q3a',['5','5개']],['q3b',['탑금당회랑','탑 금당 회랑','금당탑회랑','금당 탑 회랑','탑,금당,회랑','탑, 금당, 회랑','탑·금당·회랑','탑·금당·화랑','회랑금당탑','회랑 금당 탑','금당회랑탑','탑금당화랑']]],3,
   '정답! 주춧돌 가로 5개 · 탑·금당·회랑. 각 원마다 이 세 건물이 갖춰진 것이 미륵사 3원 가람의 핵심입니다. ✨ 글자 조각 「요」획득!',
-  '다시 확인해보세요! ① 주춧돌을 직접 세고 ② 안내판 복원 조감도에서 각 원의 공통 건물을 찾아보세요.');
+  '다시 확인해보세요! ② 정답은 탑·금당·회랑(回廊) 입니다. 화랑(花郞)이 아니라 회랑(回廊)이에요!');
 bindSubjective('bq4',[['q4a',['9','9층']],['q4b',['1993','1993년']]],4,
   '정답! 동탑 9층 · 1993년 복원. 서탑(6층)보다 3층 높고, 서탑(2019년)보다 26년 먼저 복원되었습니다. ✨ 글자 조각 「백」획득!',
   '다시 확인해보세요! ① 동탑 층수를 직접 세고 ② 동탑 안내판에서 복원 연도를 확인하세요.');
@@ -635,6 +661,38 @@ document.getElementById('fb2').addEventListener('click',function(){
     setTimeout(function(){document.getElementById('cii').className='ci';hfb('ff');},2000);
   }
 });
+
+/* 최종 퀴즈 */
+document.getElementById('fq-btn').addEventListener('click',function(){
+  var el=document.getElementById('fq-inp');
+  var v=el.value.trim();
+  if(!v)return;
+  var accepts=['백제금동대향로','百濟金銅大香爐','금동대향로','백제 금동 대향로'];
+  var ok=accepts.some(function(a){return v===a;});
+  if(ok){
+    el.className='inp ok';
+    var fb=document.getElementById('fq-fb');
+    fb.textContent='정답! 백제금동대향로(百濟金銅大香爐). 백제 예술의 정수! 이제 진짜 탈출 성공입니다! 🎉';
+    fb.className='fb on ok';
+    document.getElementById('fq-btn').disabled=true;
+    clearInterval(timerItv);
+    saveScore(pName,elapsed,penalty);
+    setTimeout(function(){
+      document.getElementById('cword').textContent=FINAL_WORD;
+      document.getElementById('csub').textContent=pName+'님, 백제의 모든 비밀을 풀었습니다!';
+      document.getElementById('ctime').textContent='클리어: '+fmt(elapsed);
+      if(penalty>0)document.getElementById('cpen').textContent='패널티 +'+fmt(penalty)+' 포함';
+      renderRank();renderGallery();go(7);
+    },1500);
+  }else{
+    el.className='inp ng';
+    var fb=document.getElementById('fq-fb');
+    fb.textContent='아깝습니다! 국보 제287호, 백제 금속공예의 최고 걸작입니다.';
+    fb.className='fb on ng';
+    setTimeout(function(){el.className='inp';fb.className='fb';},1800);
+  }
+});
+document.getElementById('fq-inp').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('fq-btn').click();});
 
 document.getElementById('hb').addEventListener('click',function(){
   if(hintUsed)return;hintUsed=true;penalty+=180;
@@ -687,11 +745,38 @@ function renderRank(){
 function openRank(){var l=getS();if(!l.length){alert('기록 없음');return;}alert('[순위표]\n\n'+l.map(function(s,i){return(i+1)+'. '+s.name+' — '+fmt(s.sec);}).join('\n'));}
 
 /* ━━━ 시작 ━━━ */
+function initCtxPenalty(){
+  var ctxEls=document.querySelectorAll('.ctx');
+  for(var i=0;i<ctxEls.length;i++){
+    (function(el){
+      var used=false;
+      /* 힌트 표시 — 처음엔 흐리게 블러 처리 */
+      el.style.filter='blur(4px)';
+      el.setAttribute('title','탭하면 힌트 공개 (-5초)');
+      el.addEventListener('click',function(){
+        if(used)return;
+        used=true;
+        el.style.filter='none';
+        el.style.cursor='default';
+        /* 5초 패널티 */
+        elapsed+=5; penalty+=5;
+        /* 패널티 팝업 */
+        var pop=document.createElement('div');
+        pop.textContent='-5초';
+        pop.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#e05252;color:#fff;font-size:20px;font-weight:700;padding:10px 22px;border-radius:12px;z-index:999;pointer-events:none;animation:pop-up .9s ease forwards';
+        document.body.appendChild(pop);
+        setTimeout(function(){pop.remove();},900);
+      });
+    })(ctxEls[i]);
+  }
+}
+
 document.getElementById('s0').addEventListener('click',function(){
   var n=document.getElementById('ni').value.trim();
   if(!n){document.getElementById('ni').style.borderColor='#e05252';document.getElementById('ni').focus();return;}
   pName=n;chars=['','','','',''];elapsed=0;penalty=0;hintUsed=false;
   startTs=Date.now();timerItv=setInterval(tick,1000);
+  initCtxPenalty();
   go(1);
 });
 document.getElementById('ni').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('s0').click();});
