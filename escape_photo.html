@@ -106,14 +106,14 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 <div style="padding:2rem 0 1.5rem;text-align:center">
   <div class="badge">📸 현장 방탈출 · AI 사진 인증</div>
   <h1 style="font-size:26px;font-weight:700;line-height:1.3;margin-bottom:.5rem">백제의 비밀을<br>찾아라</h1>
-  <p style="font-size:13px;color:#a09880;line-height:1.75;margin-bottom:1.5rem">미륵사지 5곳을 직접 돌아다니며<br>📸 현장 사진을 찍어 장소를 인증받고<br>역사 퀴즈를 풀어 글자 조각을 모아라!</p>
+  <p style="font-size:13px;color:#a09880;line-height:1.75;margin-bottom:1.5rem">미륵사지 5곳을 직접 돌아다니며<br>📁 현장 사진을 업로드해 장소를 인증받고<br>역사 퀴즈를 풀어 글자 조각을 모아라!</p>
 </div>
 <div class="card g" style="font-size:13px;color:#a09880;line-height:1.85;margin-bottom:1.5rem">
   <p>639년 무왕의 스님이 서탑 심주석에 봉인한 비밀.</p>
   <p style="margin-top:.625rem">각 장소에서 <b style="color:#d4a843">📸 사진 인증 → 역사 퀴즈</b> 두 단계로 글자 하나를 얻는다.<br>다섯 글자를 합치면 비밀 단어가 완성된다!</p>
 </div>
 <div class="rg">
-  <div class="ri"><div class="rin">📸</div><div class="ril">AI 사진 인증</div></div>
+  <div class="ri"><div class="rin">📁</div><div class="ril">AI 사진 인증</div></div>
   <div class="ri"><div class="rin">5글자</div><div class="ril">단어 완성</div></div>
   <div class="ri"><div class="rin">60분</div><div class="ril">제한 시간</div></div>
   <div class="ri"><div class="rin">현장</div><div class="ril">직접 이동</div></div>
@@ -139,10 +139,10 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 <div class="photo-card" id="pc1">
   <div class="pc-title">📸 장소 인증 <span class="cam-tag">AI 확인</span></div>
   <div class="photo-area" id="pa1" onclick="triggerPhoto(1)">
-    <div class="ph-icon">📷</div>
-    <div class="ph-text">서탑을 찍으면<br>자동으로 인증됩니다 📸</div>
+    <div class="ph-icon">📁</div>
+    <div class="ph-text">서탑 사진을<br>업로드하세요 📁</div>
   </div>
-  <input class="photo-input" id="pi1" type="file" accept="image/*" capture="environment"/>
+  <input class="photo-input" id="pi1" type="file" accept="image/*"/>
   <div class="ai-result" id="ar1"></div>
   <button class="bm" id="pb1" onclick="analyzePhoto(1)" disabled style="display:none">AI에게 인증받기</button>
 </div>
@@ -177,10 +177,10 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 <div class="photo-card" id="pc2">
   <div class="pc-title">📸 장소 인증 <span class="cam-tag">AI 확인</span></div>
   <div class="photo-area" id="pa2" onclick="triggerPhoto(2)">
-    <div class="ph-icon">📷</div>
-    <div class="ph-text">당간지주를 찍으면<br>자동으로 인증됩니다 📸</div>
+    <div class="ph-icon">📁</div>
+    <div class="ph-text">당간지주 사진을<br>업로드하세요 📁</div>
   </div>
-  <input class="photo-input" id="pi2" type="file" accept="image/*" capture="environment"/>
+  <input class="photo-input" id="pi2" type="file" accept="image/*"/>
   <div class="ai-result" id="ar2"></div>
   <button class="bm" id="pb2" onclick="analyzePhoto(2)" disabled style="display:none">AI에게 인증받기</button>
 </div>
@@ -215,10 +215,10 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 <div class="photo-card" id="pc3">
   <div class="pc-title">📸 장소 인증 <span class="cam-tag">AI 확인</span></div>
   <div class="photo-area" id="pa3" onclick="triggerPhoto(3)">
-    <div class="ph-icon">📷</div>
-    <div class="ph-text">금당터를 찍으면<br>자동으로 인증됩니다 📸</div>
+    <div class="ph-icon">📁</div>
+    <div class="ph-text">금당터 사진을<br>업로드하세요 📁</div>
   </div>
-  <input class="photo-input" id="pi3" type="file" accept="image/*" capture="environment"/>
+  <input class="photo-input" id="pi3" type="file" accept="image/*"/>
   <div class="ai-result" id="ar3"></div>
   <button class="bm" id="pb3" onclick="analyzePhoto(3)" disabled style="display:none">AI에게 인증받기</button>
 </div>
@@ -253,10 +253,10 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 <div class="photo-card" id="pc4">
   <div class="pc-title">📸 장소 인증 <span class="cam-tag">AI 확인</span></div>
   <div class="photo-area" id="pa4" onclick="triggerPhoto(4)">
-    <div class="ph-icon">📷</div>
-    <div class="ph-text">동탑을 찍으면<br>자동으로 인증됩니다 📸</div>
+    <div class="ph-icon">📁</div>
+    <div class="ph-text">동탑 사진을<br>업로드하세요 📁</div>
   </div>
-  <input class="photo-input" id="pi4" type="file" accept="image/*" capture="environment"/>
+  <input class="photo-input" id="pi4" type="file" accept="image/*"/>
   <div class="ai-result" id="ar4"></div>
   <button class="bm" id="pb4" onclick="analyzePhoto(4)" disabled style="display:none">AI에게 인증받기</button>
 </div>
@@ -291,10 +291,10 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 <div class="photo-card" id="pc5">
   <div class="pc-title">📸 장소 인증 <span class="cam-tag">AI 확인</span></div>
   <div class="photo-area" id="pa5" onclick="triggerPhoto(5)">
-    <div class="ph-icon">📷</div>
-    <div class="ph-text">금제사리봉영기 전시물을<br>찍으면 인증됩니다 📸</div>
+    <div class="ph-icon">📁</div>
+    <div class="ph-text">금제사리봉영기 사진을<br>업로드하세요 📁</div>
   </div>
-  <input class="photo-input" id="pi5" type="file" accept="image/*" capture="environment"/>
+  <input class="photo-input" id="pi5" type="file" accept="image/*"/>
   <div class="ai-result" id="ar5"></div>
   <button class="bm" id="pb5" onclick="analyzePhoto(5)" disabled style="display:none">AI에게 인증받기</button>
 </div>
@@ -357,9 +357,9 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
   <div style="font-size:13px;color:#a09880;margin-bottom:.875rem;line-height:1.6">오늘 가장 기억에 남는 유물을 찍어주세요.<br>금제사리봉영기, 석탑, 주춧돌… 무엇이든 좋습니다.</div>
   <div class="photo-area" id="pm1-area" onclick="document.getElementById('pm1-input').click()" style="aspect-ratio:4/3">
     <div class="ph-icon">🏺</div>
-    <div class="ph-text">유물 사진 찍기</div>
+    <div class="ph-text">유물 사진 업로드 📁</div>
   </div>
-  <input type="file" id="pm1-input" accept="image/*" capture="environment" style="display:none"/>
+  <input type="file" id="pm1-input" accept="image/*" style="display:none"/>
   <input id="pm1-caption" type="text" placeholder="이 유물을 선택한 이유 (선택)" maxlength="40"
     style="width:100%;padding:10px 12px;font-size:14px;background:#252836;border:1.5px solid #3a3d4a;border-radius:8px;color:#f0ece0;font-family:inherit;outline:none;margin-top:8px;-webkit-appearance:none"/>
 </div>
@@ -370,9 +370,9 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
   <div style="font-size:13px;color:#a09880;margin-bottom:.875rem;line-height:1.6">사람, 풍경, 건물… 오늘 가장 기억하고 싶은 순간을 찍어주세요.</div>
   <div class="photo-area" id="pm2-area" onclick="document.getElementById('pm2-input').click()" style="aspect-ratio:4/3">
     <div class="ph-icon">✨</div>
-    <div class="ph-text">장면 사진 찍기</div>
+    <div class="ph-text">장면 사진 업로드 📁</div>
   </div>
-  <input type="file" id="pm2-input" accept="image/*" capture="environment" style="display:none"/>
+  <input type="file" id="pm2-input" accept="image/*" style="display:none"/>
   <input id="pm2-caption" type="text" placeholder="이 장면을 선택한 이유 (선택)" maxlength="40"
     style="width:100%;padding:10px 12px;font-size:14px;background:#252836;border:1.5px solid #3a3d4a;border-radius:8px;color:#f0ece0;font-family:inherit;outline:none;margin-top:8px;-webkit-appearance:none"/>
 </div>
