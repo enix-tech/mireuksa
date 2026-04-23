@@ -411,7 +411,10 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
   </div>
 </div>
 <div class="card" style="margin-bottom:1.5rem">
-  <div style="font-size:11px;font-weight:700;color:#5a5648;letter-spacing:.06em;margin-bottom:10px">🏆 순위표</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+    <div style="font-size:11px;font-weight:700;color:#5a5648;letter-spacing:.06em">🏆 순위표</div>
+    <button onclick="adminClear()" style="font-size:11px;padding:3px 10px;background:transparent;border:1px solid #3a3d4a;border-radius:8px;color:#5a5648;cursor:pointer;font-family:inherit">관리자</button>
+  </div>
   <div id="rl"></div>
 </div>
 <div style="background:rgba(224,82,82,.1);border:1.5px solid #e05252;border-radius:10px;padding:1rem 1.25rem;margin-bottom:.875rem;text-align:center">
@@ -705,6 +708,18 @@ document.getElementById('fq-inp').addEventListener('keydown',function(e){if(e.ke
 
 
 /* ━━━ 점수 ━━━ */
+function adminClear(){
+  var pw=prompt('관리자 비밀번호를 입력하세요');
+  if(pw===null)return;
+  if(pw==='4197'){
+    try{localStorage.removeItem('mse4');}catch(e){}
+    document.getElementById('rl').innerHTML='<div style="font-size:13px;color:#5a5648;text-align:center;padding:.5rem">순위표가 초기화되었습니다.</div>';
+    alert('순위표가 초기화되었습니다.');
+  }else{
+    alert('비밀번호가 틀렸습니다.');
+  }
+}
+
 function saveScore(n,s,p){var l=getS();l.push({name:n,sec:s,pen:p});l.sort(function(a,b){return a.sec-b.sec;});l=l.slice(0,10);try{localStorage.setItem('mse4',JSON.stringify(l));}catch(e){}}
 function getS(){try{var d=localStorage.getItem('mse4');return d?JSON.parse(d):[];}catch(e){return[];}}
 function renderGallery(){
