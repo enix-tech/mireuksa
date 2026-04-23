@@ -120,6 +120,11 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 </div>
 <div style="font-size:12px;color:#a09880;margin-bottom:.5rem">참가자 이름</div>
 <input class="ni" id="ni" type="text" placeholder="이름을 입력하세요" maxlength="8"/>
+<div style="background:rgba(224,82,82,.12);border:1.5px solid #e05252;border-radius:10px;padding:1rem 1.25rem;margin-bottom:.875rem;text-align:center">
+  <div style="font-size:18px;margin-bottom:.375rem">⚠️</div>
+  <div style="font-size:14px;font-weight:700;color:#e05252;margin-bottom:.375rem">꼴찌에게는 벌칙이 준비되어 있습니다</div>
+  <div style="font-size:12px;color:#a09880;line-height:1.65">가장 늦게 탈출에 성공하는 멤버는<br>진행자가 준비한 벌칙을 수행해야 합니다.<br>빠르게, 그리고 정확하게!</div>
+</div>
 <button class="bm" id="s0">지금 시작!</button>
 <button class="bs" onclick="openRank()">순위표 보기</button>
 </div>
@@ -337,6 +342,45 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 </div>
 </div>
 
+<!-- 추억 사진 -->
+<div id="p6m" class="pg">
+<div style="text-align:center;padding:1.5rem 0 1rem">
+  <div style="font-size:40px;margin-bottom:.5rem">📸</div>
+  <div class="badge">오늘의 추억</div>
+  <h1 style="font-size:20px;margin-bottom:.5rem">두 장의 사진을 남겨보세요</h1>
+  <p style="font-size:13px;color:#a09880;line-height:1.7">미륵사지에서 만난 순간들을<br>기록으로 남겨두세요.</p>
+</div>
+
+<!-- 사진 1: 인상 깊은 유물 -->
+<div class="card" style="margin-bottom:.875rem">
+  <div style="font-size:11px;font-weight:700;color:#d4a843;letter-spacing:.06em;margin-bottom:.5rem">🏺 인상 깊게 본 유물</div>
+  <div style="font-size:13px;color:#a09880;margin-bottom:.875rem;line-height:1.6">오늘 가장 기억에 남는 유물을 찍어주세요.<br>금제사리봉영기, 석탑, 주춧돌… 무엇이든 좋습니다.</div>
+  <div class="photo-area" id="pm1-area" onclick="document.getElementById('pm1-input').click()" style="aspect-ratio:4/3">
+    <div class="ph-icon">🏺</div>
+    <div class="ph-text">유물 사진 찍기</div>
+  </div>
+  <input type="file" id="pm1-input" accept="image/*" capture="environment" style="display:none"/>
+  <input id="pm1-caption" type="text" placeholder="이 유물을 선택한 이유 (선택)" maxlength="40"
+    style="width:100%;padding:10px 12px;font-size:14px;background:#252836;border:1.5px solid #3a3d4a;border-radius:8px;color:#f0ece0;font-family:inherit;outline:none;margin-top:8px;-webkit-appearance:none"/>
+</div>
+
+<!-- 사진 2: 인상 깊은 장면 -->
+<div class="card" style="margin-bottom:1.25rem">
+  <div style="font-size:11px;font-weight:700;color:#9b7fe8;letter-spacing:.06em;margin-bottom:.5rem">✨ 인상 깊은 장면</div>
+  <div style="font-size:13px;color:#a09880;margin-bottom:.875rem;line-height:1.6">사람, 풍경, 건물… 오늘 가장 기억하고 싶은 순간을 찍어주세요.</div>
+  <div class="photo-area" id="pm2-area" onclick="document.getElementById('pm2-input').click()" style="aspect-ratio:4/3">
+    <div class="ph-icon">✨</div>
+    <div class="ph-text">장면 사진 찍기</div>
+  </div>
+  <input type="file" id="pm2-input" accept="image/*" capture="environment" style="display:none"/>
+  <input id="pm2-caption" type="text" placeholder="이 장면을 선택한 이유 (선택)" maxlength="40"
+    style="width:100%;padding:10px 12px;font-size:14px;background:#252836;border:1.5px solid #3a3d4a;border-radius:8px;color:#f0ece0;font-family:inherit;outline:none;margin-top:8px;-webkit-appearance:none"/>
+</div>
+
+<button class="bm" id="pm-done-btn">탈출 성공! 🎉</button>
+<button class="bs" id="pm-skip-btn">사진 없이 넘어가기</button>
+</div>
+
 <!-- 클리어 -->
 <div id="p7" class="pg">
 <div style="text-align:center;padding:2.5rem 0 2rem">
@@ -369,6 +413,10 @@ body{font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:#0f
 <div class="card" style="margin-bottom:1.5rem">
   <div style="font-size:11px;font-weight:700;color:#5a5648;letter-spacing:.06em;margin-bottom:10px">🏆 순위표</div>
   <div id="rl"></div>
+</div>
+<div style="background:rgba(224,82,82,.1);border:1.5px solid #e05252;border-radius:10px;padding:1rem 1.25rem;margin-bottom:.875rem;text-align:center">
+  <div style="font-size:14px;font-weight:700;color:#e05252;margin-bottom:.25rem">⚠️ 꼴찌 벌칙 주의</div>
+  <div style="font-size:12px;color:#a09880;line-height:1.65">순위표 맨 아래 멤버에게는<br>진행자가 준비한 벌칙이 기다리고 있습니다! 😈</div>
 </div>
 <button class="bm" onclick="location.reload()">다시 도전하기</button>
 </div>
@@ -536,11 +584,11 @@ function updTch(){
   el.innerHTML=h;
 }
 function go(n){
-  ['p0','p1','p2','p3','p4','p5','p6f','p7'].forEach(function(id){
+  ['p0','p1','p2','p3','p4','p5','p6f','p6m','p7'].forEach(function(id){
     var p=document.getElementById(id);
     if(p)p.className='pg'+(id==='p'+n?' on':'');
   });
-  document.getElementById('tb').style.display=((n>=1&&n<=5)||n==='6f')?'block':'none';
+  document.getElementById('tb').style.display=((n>=1&&n<=5)||n==='6f'||n==='6m')?'block':'none';
   window.scrollTo(0,0);
 }
 
@@ -643,13 +691,7 @@ document.getElementById('fq-btn').addEventListener('click',function(){
     document.getElementById('fq-btn').disabled=true;
     clearInterval(timerItv);
     saveScore(pName,elapsed,penalty);
-    setTimeout(function(){
-      document.getElementById('cword').textContent=FINAL_WORD;
-      document.getElementById('csub').textContent=pName+'님, 백제의 모든 비밀을 풀었습니다!';
-      document.getElementById('ctime').textContent='클리어: '+fmt(elapsed);
-      if(penalty>0)document.getElementById('cpen').textContent='패널티 +'+fmt(penalty)+' 포함';
-      renderRank();renderGallery();go(7);
-    },1500);
+    setTimeout(function(){ go('6m'); },1500);
   }else{
     el.className='inp ng';
     var fb=document.getElementById('fq-fb');
@@ -668,16 +710,24 @@ function getS(){try{var d=localStorage.getItem('mse4');return d?JSON.parse(d):[]
 function renderGallery(){
   var el=document.getElementById('photo-gallery');
   if(!el)return;
-  var labels={1:'ST1 서탑',2:'ST2 당간지주',3:'ST3 금당터',4:'ST4 동탑',5:'ST5 금제사리봉영기'};
+  var labels={1:'ST1 서탑',2:'ST2 당간지주',3:'ST3 금당터',4:'ST4 동탑',5:'ST5 금제사리봉영기',6:'🏺 인상 깊은 유물',7:'✨ 인상 깊은 장면'};
   var html='';
   var hasAny=false;
-  for(var i=1;i<=5;i++){
+  /* 추억 사진 추가 */
+  if(window.memPhoto1) photoData[6]=window.memPhoto1;
+  if(window.memPhoto2) photoData[7]=window.memPhoto2;
+  for(var i=1;i<=7;i++){
     if(photoData[i]){
       hasAny=true;
+      var cap='';
+      if(i===6){var ci=document.getElementById('pm1-caption');cap=ci?ci.value:'';}
+      if(i===7){var ci=document.getElementById('pm2-caption');cap=ci?ci.value:'';}
       html+='<div style="border-radius:8px;overflow:hidden;position:relative">'
         +'<img src="data:image/jpeg;base64,'+photoData[i]+'" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:8px"/>'
-        +'<div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.7));padding:6px 8px;font-size:10px;font-weight:700;color:#d4a843;letter-spacing:.04em">'+labels[i]+'</div>'
-        +'</div>';
+        +'<div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.8));padding:6px 8px;">'
+        +'<div style="font-size:10px;font-weight:700;color:#d4a843;letter-spacing:.04em">'+labels[i]+'</div>'
+        +(cap?'<div style="font-size:10px;color:#f0ece0;margin-top:1px">'+cap+'</div>':'')
+        +'</div></div>';
     }
   }
   if(!hasAny){
@@ -741,7 +791,38 @@ document.getElementById('s0').addEventListener('click',function(){
   go(1);
 });
 document.getElementById('ni').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('s0').click();});
-document.getElementById('cii').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('fb2').click();});
+document.getElementById('cii') && document.getElementById('cii').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('fb2') && document.getElementById('fb2').click();});
+
+/* ━━━ 추억 사진 ━━━ */
+function setupMemPhoto(inputId, areaId, storeKey){
+  var inp=document.getElementById(inputId);
+  var area=document.getElementById(areaId);
+  if(!inp||!area)return;
+  inp.addEventListener('change',function(e){
+    var file=e.target.files[0];if(!file)return;
+    var reader=new FileReader();
+    reader.onload=function(ev){
+      area.innerHTML='<img src="'+ev.target.result+'" style="width:100%;height:100%;object-fit:cover;border-radius:8px"/><div class="ph-change">다시 찍기</div>';
+      window[storeKey]=ev.target.result.split(',')[1];
+    };
+    reader.readAsDataURL(file);
+  });
+}
+setupMemPhoto('pm1-input','pm1-area','memPhoto1');
+setupMemPhoto('pm2-input','pm2-area','memPhoto2');
+
+function goToClear(){
+  document.getElementById('cword').textContent=FINAL_WORD;
+  document.getElementById('csub').textContent=pName+'님, 백제의 모든 비밀을 풀었습니다!';
+  document.getElementById('ctime').textContent='클리어: '+fmt(elapsed);
+  if(penalty>0)document.getElementById('cpen').textContent='패널티 +'+fmt(penalty)+' 포함';
+  renderRank();renderGallery();go(7);
+}
+
+var pmDone=document.getElementById('pm-done-btn');
+var pmSkip=document.getElementById('pm-skip-btn');
+if(pmDone) pmDone.addEventListener('click', goToClear);
+if(pmSkip) pmSkip.addEventListener('click', goToClear);
 </script>
 </body>
 </html>
