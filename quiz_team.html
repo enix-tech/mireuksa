@@ -149,8 +149,9 @@ body{background:#f5f4f0;min-height:100vh;font-family:'Apple SD Gothic Neo','Malg
     <div class="hero-desc">단서를 하나씩 열며 답을 추론하세요.<br>단서를 적게 쓸수록 더 높은 점수!<br>팀을 선택하고 동시에 시작하세요.</div>
   </div>
   <div class="rule-box">
-    🔵 <b>팀 A</b> — 1·3·5·7번 문제<br>
-    🔴 <b>팀 B</b> — 2·4·6·8번 문제<br>
+    🔵 <b>팀 A</b> — 1번부터 순서대로<br>
+    🔴 <b>팀 B</b> — 10번부터 역순으로<br>
+    ✅ 맞을 때까지 다음 문제로 넘어가지 않음<br>
     ⏱ 완료 시간과 점수로 승패 결정<br>
     📲 결과 링크를 단톡방에 공유하면 비교 가능
   </div>
@@ -158,12 +159,12 @@ body{background:#f5f4f0;min-height:100vh;font-family:'Apple SD Gothic Neo','Malg
     <button class="team-btn" id="ba" onclick="pick('a')">
       <div class="tb-em">🔵</div>
       <div class="tb-name a">팀 A</div>
-      <div class="tb-sub">1·3·5·7번<br>문제 담당</div>
+      <div class="tb-sub">1번→순서대로<br>10문제</div>
     </button>
     <button class="team-btn" id="bb" onclick="pick('b')">
       <div class="tb-em">🔴</div>
       <div class="tb-name b">팀 B</div>
-      <div class="tb-sub">2·4·6·8번<br>문제 담당</div>
+      <div class="tb-sub">10번→역순으로<br>10문제</div>
     </button>
   </div>
   <input class="name-inp" id="ni" type="text" placeholder="팀 이름 입력 (예: 백제팀)" maxlength="10" style="display:none"/>
@@ -185,7 +186,7 @@ body{background:#f5f4f0;min-height:100vh;font-family:'Apple SD Gothic Neo','Malg
       </div>
     </div>
     <div class="fb" id="fb"></div>
-    <button class="btn ghost" id="skipbtn" onclick="skip()" style="margin-top:4px">모르겠어요 (0점)</button>
+    <button class="btn ghost" id="skipbtn" onclick="skip()" style="margin-top:4px;display:none">모르겠어요, 넘어가기 (+30초 패널티)</button>
   </div>
 </div>
 
@@ -250,17 +251,17 @@ body{background:#f5f4f0;min-height:100vh;font-family:'Apple SD Gothic Neo','Malg
 
 <script>
 var QS=[
-  {id:1,title:'나는 누구일까요?',maxPts:5,
+  {id:1,title:'나는 무엇일까요?',maxPts:5,
    clues:[
-     {l:'단서 1',t:'나는 2009년 어떤 건축물 안에서 발견되었다.'},
-     {l:'단서 2',t:'나를 만든 재료는 금(金)이다. 이름에도 들어간다.'},
-     {l:'단서 3',t:'나는 백제 639년에 제작되었다는 기록이 새겨져 있다.'},
-     {l:'단서 4',t:'나는 익산 미륵사지 서탑 심주석에서 나왔다.'},
-     {l:'단서 5',t:'내 이름은 다섯 글자. ○○사리봉영기.'}
+     {l:'단서 1',t:'나는 1400년 가까이 빛 한 줄기 없는 곳에 잠들어 있었다.'},
+     {l:'단서 2',t:'나를 세상에 꺼낸 것은 어떤 건축물을 조심스럽게 해체하던 중이었다.'},
+     {l:'단서 3',t:'나는 한 여성이 간절한 염원을 담아 직접 봉안한 것이다. 그녀의 이름은 역사책에 없었다.'},
+     {l:'단서 4',t:'나에게는 639년이라는 연도와 함께 발원자가 「왕후」임을 밝히는 기록이 새겨져 있다.'},
+     {l:'단서 5',t:'나의 발견으로 수백 년간 믿어온 선화공주 창건 설화가 역사적 사실과 다를 수 있다는 논란이 일었다.'}
    ],
-   accept:['금제사리봉영기','사리봉영기'],
+   accept:['금제사리봉영기','사리봉영기','금제사리봉영기(金製舍利奉迎記)'],
    answer:'금제사리봉영기',
-   explain:'2009년 서탑 해체 중 발견. 639년 무왕 40년 제작 기록이 새겨진 결정적 유물.'
+   explain:'2009년 미륵사지 서탑 심주석 해체 중 발견. 639년 사탁왕후가 발원자임이 밝혀져 선화공주 설화를 뒤흔든 백제 최고의 유물.'
   },
   {id:2,title:'나는 어떤 사건일까요?',maxPts:5,
    clues:[
@@ -343,6 +344,30 @@ var QS=[
    accept:['백제역사유적지구','백제역사유적','백제유적지구'],
    answer:'백제역사유적지구',
    explain:'2015년 유네스코 등재. 공주·부여·익산 3지역 8개소 포함.'
+  },
+  {id:9,title:'나는 누구일까요?',maxPts:5,
+   clues:[
+     {l:'단서 1',t:'나는 백제가 멸망하던 날 5천 명의 군사를 이끌었다.'},
+     {l:'단서 2',t:'나는 신라 5만 대군과 황산벌에서 맞섰다.'},
+     {l:'단서 3',t:'나는 출전 전 처자식을 직접 죽이고 전장에 나섰다 전해진다.'},
+     {l:'단서 4',t:'나의 결사대는 네 번이나 적군을 물리쳤으나 결국 패했다.'},
+     {l:'단서 5',t:'나는 백제의 마지막 충신이자 명장으로 불린다.'}
+   ],
+   accept:['계백','階伯'],
+   answer:'계백',
+   explain:'백제 말기 장군. 660년 황산벌 전투에서 5000 결사대로 신라 5만 대군에 맞서 싸우다 전사한 백제의 마지막 명장.'
+  },
+  {id:10,title:'나는 어떤 노래일까요?',maxPts:5,
+   clues:[
+     {l:'단서 1',t:'나는 삼국시대에 만들어진 노래다.'},
+     {l:'단서 2',t:'나를 만든 사람은 훗날 왕이 되었다.'},
+     {l:'단서 3',t:'나는 어떤 여성을 얻기 위해 만들어졌다.'},
+     {l:'단서 4',t:'나는 신라의 아이들 입에서 입으로 퍼져나갔다.'},
+     {l:'단서 5',t:'나는 현존하는 가장 오래된 향가 중 하나로, 미륵사지와 깊은 관련이 있다.'}
+   ],
+   accept:['서동요','薯童謠'],
+   answer:'서동요',
+   explain:'백제 무왕(서동)이 신라 선화공주를 얻기 위해 지어 퍼뜨린 향가. 현존 최고(最古) 향가 중 하나.'
   }
 ];
 
@@ -369,7 +394,12 @@ function pick(t){
 function startGame(){
   var n=document.getElementById('ni').value.trim();
   label=n||(team==='a'?'팀 A':'팀 B');
-  myQs=QS.filter(function(q){return team==='a'?q.id%2===1:q.id%2===0;});
+  /* 전체 10문제를 팀에 따라 다른 순서로 */
+  myQs=QS.slice();
+  if(team==='b'){
+    /* 팀B는 뒤에서부터 */
+    myQs=myQs.slice().reverse();
+  }
   qi=0;score=0;results=[];
   startTs=Date.now();
   timerItv=setInterval(tick,500);
@@ -387,7 +417,7 @@ function renderQ(){
   opened=0;
   document.getElementById('pg1').style.display='block';
   document.getElementById('pg2').style.display='none';
-  document.getElementById('pq').textContent=(qi+1)+'/'+myQs.length;
+  document.getElementById('pq').textContent=(qi+1)+' / '+myQs.length+'문제';
   updPts(q.maxPts);
   document.getElementById('qn').textContent='문제 '+(qi+1)+' / '+myQs.length+' — '+q.title;
   document.getElementById('qh').textContent='단서를 하나씩 열며 답을 추론하세요.';
@@ -407,7 +437,7 @@ function renderQ(){
   document.getElementById('fb').className='fb';
   document.getElementById('pw').style.display='none';
   document.getElementById('al').textContent=label+' 답 입력';
-  document.getElementById('skipbtn').style.display='block';
+  document.getElementById('skipbtn').style.display='none'; /* 단서 다 열릴 때만 표시 */
   document.getElementById('subbtn').disabled=false;
 }
 
@@ -434,33 +464,73 @@ function updPts(p){
   el.className='prog-pts p'+Math.min(p,5);
 }
 
+var SKIP_PENALTY = 30; /* 넘기기 패널티 초 */
+
+function allCluesOpen(){
+  var q=myQs[qi];
+  for(var i=0;i<q.clues.length;i++){
+    var bd=document.getElementById('cbd'+i);
+    if(bd&&!bd.classList.contains('open'))return false;
+  }
+  return true;
+}
+
 function sub(){
   var q=myQs[qi];
   var v=document.getElementById('ai').value.trim();if(!v)return;
   var ok=q.accept.some(function(a){return v.replace(/\s/g,'')===a.replace(/\s/g,'');});
-  var pts=ok?calcPts():0;
-  score+=pts;
-  results.push({q:q,ok:ok,pts:pts,opened:opened+1});
   var fb=document.getElementById('fb');
-  fb.textContent=ok?'정답! +'+pts+'점 🎉':'아깝습니다! 정답은 「'+q.answer+'」';
-  fb.className='fb on '+(ok?'ok':'ng');
-  if(ok)popPts(pts);
-  document.getElementById('ps').textContent=score+'점';
-  document.getElementById('subbtn').disabled=true;
-  document.getElementById('skipbtn').style.display='none';
-  for(var i=0;i<q.clues.length;i++){var b=document.getElementById('clb'+i);if(b)b.disabled=true;}
-  setTimeout(function(){fb.className='fb';document.getElementById('subbtn').disabled=false;qi++;renderQ();},1800);
+  if(ok){
+    var pts=calcPts();
+    score+=pts;
+    results.push({q:q,ok:true,pts:pts,opened:opened+1});
+    fb.textContent='정답! +'+pts+'점 🎉';
+    fb.className='fb on ok';
+    popPts(pts);
+    document.getElementById('ps').textContent=score+'점';
+    document.getElementById('subbtn').disabled=true;
+    document.getElementById('skipbtn').style.display='none';
+    for(var i=0;i<q.clues.length;i++){var b=document.getElementById('clb'+i);if(b)b.disabled=true;}
+    setTimeout(function(){fb.className='fb';document.getElementById('subbtn').disabled=false;qi++;renderQ();},1800);
+  }else{
+    /* 오답 — 단서 여부 관계없이 계속 시도 가능 */
+    fb.textContent='틀렸습니다! 다시 시도해보세요.';
+    fb.className='fb on ng';
+    document.getElementById('ai').value='';
+    /* 단서 다 열렸으면 넘기기 버튼 표시 */
+    if(allCluesOpen()){
+      document.getElementById('skipbtn').style.display='block';
+      document.getElementById('skipbtn').textContent='모르겠어요, 넘어가기 (+'+SKIP_PENALTY+'초 패널티)';
+    }
+    setTimeout(function(){fb.className='fb';},1800);
+  }
 }
 
 function skip(){
+  if(!allCluesOpen()){
+    var fb=document.getElementById('fb');
+    fb.textContent='단서를 모두 열어야 넘어갈 수 있습니다!';
+    fb.className='fb on ng';
+    setTimeout(function(){fb.className='fb';},1500);
+    return;
+  }
   var q=myQs[qi];
-  results.push({q:q,ok:false,pts:0,opened:opened+1,sk:true});
+  /* 패널티 적용 */
+  elapsed+=SKIP_PENALTY;
+  startTs-=SKIP_PENALTY*1000;
+  results.push({q:q,ok:false,pts:0,opened:opened+1,sk:true,penalty:SKIP_PENALTY});
   var fb=document.getElementById('fb');
-  fb.textContent='패스! 정답: 「'+q.answer+'」';
-  fb.className='fb on sk';
+  fb.textContent='정답은 「'+q.answer+'」 · +'+SKIP_PENALTY+'초 패널티 적용!';
+  fb.className='fb on ng';
+  /* 패널티 팝업 */
+  var pop=document.createElement('div');
+  pop.textContent='+'+SKIP_PENALTY+'초 ⏱';
+  pop.style.cssText='position:fixed;top:45%;left:50%;transform:translate(-50%,-50%);background:#dc2626;color:#fff;font-size:24px;font-weight:700;padding:12px 24px;border-radius:12px;z-index:999;pointer-events:none';
+  document.body.appendChild(pop);
+  setTimeout(function(){pop.remove();},1200);
   document.getElementById('subbtn').disabled=true;
   document.getElementById('skipbtn').style.display='none';
-  setTimeout(function(){fb.className='fb';document.getElementById('subbtn').disabled=false;qi++;renderQ();},1500);
+  setTimeout(function(){fb.className='fb';document.getElementById('subbtn').disabled=false;qi++;renderQ();},2000);
 }
 
 function popPts(pts){
@@ -489,10 +559,11 @@ function endGame(){
 
   /* 결과 목록 */
   document.getElementById('rlist').innerHTML=results.map(function(r){
+    var penStr=r.penalty?'<span style="color:#dc2626;font-size:10px"> +'+r.penalty+'초</span>':'';
     return '<div class="al-item">'
       +'<span class="al-ic">'+(r.ok?'✅':r.sk?'⏭':'❌')+'</span>'
       +'<span class="al-info"><span class="al-ans">'+r.q.answer+'</span><div class="al-exp">'+r.q.explain+'</div></span>'
-      +'<span class="al-pt">'+(r.ok?'+'+r.pts+'점':'0점')+'</span>'
+      +'<span class="al-pt">'+(r.ok?'+'+r.pts+'점':'0점')+penStr+'</span>'
       +'</div>';
   }).join('');
 
